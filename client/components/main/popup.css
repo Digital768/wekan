@@ -31,12 +31,15 @@
   padding: 0 0.5rem;
 }
 .pop-over .header {
+  display: flex;  /*rtl_changes*/
   height: 36px;
   position: relative;
   margin-bottom: 8px;
   background: #f7f7f7;
   border-bottom: 1px solid #dcdcdc;
   color: #666;
+  flex-direction: row;  /*rtl_changes*/
+  justify-content: center;  /*rtl_changes*/
 }
 .pop-over .header .header-title {
   display: block;
@@ -80,6 +83,7 @@
   transition: transform 0.2s;
 }
 .pop-over .content-container .content {
+  direction: rtl; /*rtl_changes*/
   width: 280px;
   padding: 0 10px 10px;
   float: left;

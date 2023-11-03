@@ -73,6 +73,7 @@ body {
   height: 100vh;
 }
 #content {
+  direction: rtl; /*rtl_changes*/
   position: relative;
   flex: 1;
   overflow-x: hidden;

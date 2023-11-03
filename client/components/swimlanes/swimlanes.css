@@ -64,7 +64,7 @@
 }
 .swimlane .swimlane-header-wrap {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse; /*rtl_changes*/
   flex: 1 0 100%;
   background-color: #ccc;
 }
