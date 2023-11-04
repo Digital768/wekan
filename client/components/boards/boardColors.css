@@ -17,6 +17,8 @@
 .board-color-nephritis .sidebar .sidebar-content .sidebar-btn {
   background-color: #1f8b4d;
   border-radius: 7px;
+    /* float change */
+  float: left
 }
 .board-color-nephritis.pop-over .pop-over-list li a:not(.disabled):hover,
 .board-color-nephritis .sidebar .sidebar-content .sidebar-btn:hover,
