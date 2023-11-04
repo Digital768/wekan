@@ -45,7 +45,10 @@
   width: auto;
 }
 #header #header-main-bar .board-header-btns.left {
-  float: left;
+    /* direction + float change */
+  display: flex;
+  direction: rtl;
+  float: right;
 }
 #header #header-main-bar .board-header-btns.right {
   float: right;
