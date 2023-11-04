@@ -14,7 +14,8 @@
   padding: 0 10px;
   margin: 0;
   margin-right: 10px;
-  float: left;
+  /*new change float left -> right*/
+  float: right;
   border-radius: 3px;
 }
 #header #header-main-bar h1 .board-header-watch-icon {
