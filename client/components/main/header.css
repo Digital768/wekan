@@ -51,7 +51,10 @@
   float: right;
 }
 #header #header-main-bar .board-header-btns.right {
-  float: right;
+    /* direction + float change */
+  display: flex;
+  direction: rtl;
+  float: left;
 }
 #header #header-main-bar .board-header-btn {
   border-radius: 3px;
