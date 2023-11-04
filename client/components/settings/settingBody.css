@@ -7,6 +7,7 @@
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
+  direction: rtl; /*rtl_cahnges */
 }
 .setting-content {
   color: #727479;
