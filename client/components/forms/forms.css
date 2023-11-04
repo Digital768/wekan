@@ -42,6 +42,9 @@ input[type="password"],
 input[type="email"] {
   transition: background 85ms ease-in, border-color 85ms ease-in;
   width: 250px;
+    /* direction + text align change */
+  direction: rtl;
+  text-align: right
 }
 input[type="text"].inline-input,
 input[type="password"].inline-input,
