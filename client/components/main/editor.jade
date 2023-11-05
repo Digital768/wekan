@@ -1,9 +1,10 @@
+//- changed dir to right from auto
 template(name="editor")
   a.fa.fa-brands.fa-markdown(title="{{_ 'convert-to-markdown'}}")
   a.fa.fa-copy(title="{{_ 'copy-text-to-clipboard'}}")
   span.copied-tooltip {{_ 'copied'}}
   textarea.editor(
-    dir="auto"
+    dir="right"
     class="{{class}}"
     id=id
     autofocus=autofocus

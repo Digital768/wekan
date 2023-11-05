@@ -121,7 +121,7 @@ services:
     # image: wekanteam/wekan:v6.89
     # b) GitHub Container registry.
     # b1) Latest release tag:
-    image: shlomi:latest
+    image: shlomi5:test1
     # b2) Newest git commit automatic build:
     #image: ghcr.io/wekan/wekan:main
     # c) Quay:
@@ -152,7 +152,7 @@ services:
       # For example, if you want to have wekan on port 3001,
       # use 3001:8080 . Do not add any extra address etc here, that way it does not work.
       # remove port mapping if you use nginx reverse proxy, port 8080 is already exposed to wekan-tier network
-      - 80:8080
+      - 83:8080
     environment:
       #-----------------------------------------------------------------
       # ==== WRITEABLE PATH FOR FILE UPLOADS ====

@@ -246,11 +246,15 @@ direction: rtl; /*rtl_changes */
 }
 .pop-over.miniprofile .header {
   border-bottom-color: transparent;
-  height: 30px;
-  position: absolute;
+  /* changed height: 30px;*/
+  /* height: 30px; */
+  height: 10px;
+  /* deleted position: absolute; */
+  /* position: absolute; */
   right: 0;
   top: 0;
-  width: 60px;
+  /* deleted width: 60px; */
+  /* width: 60px; */
   z-index: 1;
 }
 .pop-over.miniprofile .header-title {

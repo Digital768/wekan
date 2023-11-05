@@ -22,6 +22,8 @@
   margin: 0.5px 0;
   padding: 6px 0;
   display: flex;
+  /* added gap:0.5em; */
+  gap:0.5em;
 }
 .activities .activity .member {
   width: 32px;

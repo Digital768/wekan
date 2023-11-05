@@ -1,0 +1,12 @@
+html {
+    direction: rtl;
+}
+
+.tabs-list {
+    text-align: right !important;
+}
+
+.board-widget-content{
+    display:flex;
+    gap:0.5em;
+}

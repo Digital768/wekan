@@ -1,6 +1,8 @@
 @import url("../../../css/reset.css") print, screen;
 
 .board-list {
+  /* added display: flex; */
+  display: flex;
   margin: 0 8px;
 }
 .board-list li {
@@ -82,8 +84,17 @@
   opacity: 0;
   padding: 9px 9px;
   position: absolute;
+  /* changed 
   right: 0;
   top: 0;
+  to
+  left: 0;
+  bottom: 0;
+  */
+  /* right: 0;
+  top: 0; */
+  left: 0;
+  bottom: 0;
   transition-duration: 0.15s;
   transition-property: color, font-size, background;
 }

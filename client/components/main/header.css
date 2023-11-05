@@ -4,11 +4,17 @@
   background: #2980b9;
   z-index: 17;
 }
+
 #header #header-main-bar {
+  display: flex;
+  flex-direction: row-reverse;
   height: 40px;
   padding: 7px 10px 0;
 }
+
 #header #header-main-bar h1 {
+  /* added  flex-grow:1; */
+  flex-grow: 1;
   font-size: 20px;
   line-height: 1.7em;
   padding: 0 10px;
@@ -18,17 +24,21 @@
   float: right;
   border-radius: 3px;
 }
+
 #header #header-main-bar h1 .board-header-watch-icon {
   padding-left: 7px;
 }
+
 #header #header-main-bar h1 a.fa,
 #header #header-main-bar h1 a i.fa {
   color: #fff;
 }
+
 #header #header-main-bar h1 .back-btn {
   font-size: 0.9em;
   margin-right: 10px;
 }
+
 #header #header-main-bar .wekan-logo {
   margin: 3px auto auto;
   width: 97px;
@@ -36,26 +46,34 @@
   transition: opacity 0.15s;
   float: right;
 }
+
 #header #header-main-bar .wekan-logo:hover {
   opacity: 0.9;
 }
+
 #header #header-main-bar .board-header-btns {
   display: block;
   margin-top: 3px;
   width: auto;
 }
+
 #header #header-main-bar .board-header-btns.left {
-    /* direction + float change */
+  /* direction + float change */
   display: flex;
   direction: rtl;
   float: right;
 }
+
+/* changed */
 #header #header-main-bar .board-header-btns.right {
-    /* direction + float change */
+  /* direction + float change */
+  /* added  flex-direction:row-reverse;*/
+  flex-direction: row-reverse;
   display: flex;
   direction: rtl;
   float: left;
 }
+
 #header #header-main-bar .board-header-btn {
   border-radius: 3px;
   color: #f2f2f2;
@@ -67,6 +85,7 @@
   line-height: 28px;
   margin: 0 2px;
 }
+
 #header #header-main-bar .board-header-btn i.fa {
   float: left;
   display: block;
@@ -74,30 +93,38 @@
   color: #f2f2f2;
   margin: 0 10px;
 }
-#header #header-main-bar .board-header-btn i.fa + span {
+
+#header #header-main-bar .board-header-btn i.fa+span {
   display: inline-block;
   margin-top: 1px;
   margin-right: 10px;
 }
+
 #header #header-main-bar .board-header-btn .board-header-btn-close {
   float: right;
 }
+
 #header #header-main-bar .board-header-btn .board-header-btn-close i.fa {
   margin: 0 6px;
 }
+
 #header #header-main-bar .board-header-btn.is-active,
 #header #header-main-bar h1.is-clickable.is-active,
 #header #header-main-bar .board-header-btn:hover:not(.is-disabled),
 #header #header-main-bar h1.is-clickable:hover:not(.is-disabled) {
-  background: rgba(0,0,0,0.15);
+  background: rgba(0, 0, 0, 0.15);
 }
+
 #header #header-main-bar .separator {
   margin: 2px 4px;
-  border-left: 1px solid rgba(255,255,255,0.3);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
   height: 24px;
   float: left;
 }
+
 #header-quick-access {
+  /* added align-items:center; */
+  align-items: center;
   color: #fff;
   transition: background-color 0.4s;
   background: #2573a7;
@@ -105,31 +132,40 @@
   font-size: 12px;
   display: flex;
   z-index: 1000;
-  padding: 10px 0px;
+  /* changed padding x */
+  /* padding: 10px 0px; */
+  padding: 10px 10px;
 }
+
 #header-quick-access .allBoards {
   font-size: 14px;
   padding: 4px 15px;
 }
+
 #header-quick-access a {
   text-decoration: none;
 }
+
 #header-quick-access i.fa {
   color: #fff;
 }
+
 #header-quick-access i.fa:hover {
   color: #ccc;
 }
+
 #header-quick-access #header-user-bar,
 #header-quick-access #header-new-board-icon,
 #header-quick-access ul li {
   color: #d4d4d4;
 }
+
 #header-quick-access #header-user-bar .fa,
 #header-quick-access #header-new-board-icon .fa,
 #header-quick-access ul li .fa {
   color: inherit;
 }
+
 #header-quick-access #header-user-bar a:hover,
 #header-quick-access #header-new-board-icon a:hover,
 #header-quick-access ul li a:hover,
@@ -138,6 +174,7 @@
 #header-quick-access ul li a.is-active {
   color: #fff;
 }
+
 #header-quick-access ul.header-quick-access-list {
   transition: opacity 0.2s;
   overflow-x: auto;
@@ -146,6 +183,7 @@
   padding: 10px;
   margin: -10px;
 }
+
 #header-quick-access ul.header-quick-access-list li {
   display: inline;
   width: auto;
@@ -153,44 +191,55 @@
   padding: 12px 0px;
   margin: -10px 0px;
 }
+
 #header-quick-access ul.header-quick-access-list li a {
   padding: 12px 10px;
   margin: -10px 0px;
 }
+
 #header-quick-access ul.header-quick-access-list li a .viewer {
   display: inline;
   white-space: nowrap;
 }
+
 #header-quick-access ul.header-quick-access-list li a .viewer p {
   display: inline;
   white-space: nowrap;
 }
+
 #header-quick-access ul.header-quick-access-list li.current {
   color: #f2f2f2;
 }
+
 #header-quick-access ul.header-quick-access-list li.current.empty {
   padding: 12px 10px 12px 10px;
 }
+
 #header-quick-access ul.header-quick-access-list li:first-child .fa-home,
 #header-quick-access ul.header-quick-access-list li:nth-child(3) .fa-globe {
   margin-right: 5px;
 }
+
 #header-quick-access ul.header-quick-access-list li a.js-create-board {
   margin-left: 5px;
 }
+
 #header-quick-access #header-user-bar,
 #header-quick-access #header-new-board-icon {
   flex-shrink: 0;
 }
+
 #header-quick-access #header-user-bar {
   margin: 2px 0;
 }
+
 #header-quick-access #header-user-bar .header-user-bar-avatar {
   float: left;
   position: relative;
   top: -5px;
   margin-right: 5px;
 }
+
 #header-quick-access #header-user-bar .header-user-bar-avatar .member,
 #header-quick-access #header-help {
   width: 24px;
@@ -198,68 +247,85 @@
   margin: 0;
   margin-top: 1px;
 }
+
 #header-quick-access #header-user-bar .header-user-bar-name,
-#header-quick-access #header-help  {
+#header-quick-access #header-help {
   margin: 4px 8px 0 0;
   float: left;
 }
+
 #header-quick-access #header-user-bar .header-user-bar-name i.fa-chevron-down {
   margin-right: 4px;
 }
+
 #header-quick-access #header-new-board-icon {
   flex-grow: 1;
   margin: 6px 5px 0;
   width: 12px;
 }
+
 @media screen and (max-width: 800px) {
   #header #header-main-bar {
     height: 40px;
   }
+
   #header #header-main-bar .board-header-btns {
     margin-top: 0px;
   }
+
   #header #header-main-bar .board-header-btn {
     height: 32px;
     line-height: 32px;
     font-size: 15px;
   }
+
   #header #header-main-bar .board-header-btn i.fa {
     line-height: 32px;
   }
-  #header #header-main-bar .board-header-btn i.fa + span {
+
+  #header #header-main-bar .board-header-btn i.fa+span {
     display: none;
   }
+
   #header-quick-access {
     transition: background-color 0.4s;
     width: 100%;
     z-index: 30;
   }
+
   #header-quick-access ul {
     width: calc(100% - 60px);
     margin-right: 10px;
   }
+
   #header-quick-access ul li {
     height: 100%;
   }
+
   #header-quick-access ul li a {
     height: 100%;
   }
+
   #header-quick-access span .fa-home {
     font-size: 26px;
     margin-top: -2px;
     margin-right: 10px;
     margin-left: 10px;
   }
+
   #header-quick-access #header-new-board-icon {
     display: none;
   }
+
   #header-quick-access #header-user-bar {
     right: 0px;
     padding: 10px;
     margin: -8px 0 -10px -10px;
   }
 }
+
 @media print {
+
   #header-quick-access .allBoards,
   #header-quick-access ul,
   #header-quick-access .js-toggle-desktop-drag-handles,
@@ -268,13 +334,16 @@
   #header #header-main-bar .board-header-btns {
     display: none;
   }
+
   #header #header-user-bar {
     float: right;
   }
 }
+
 .announcement .viewer {
   display: inline-block;
 }
+
 .announcement,
 .offline-warning {
   width: 100%;
@@ -284,11 +353,13 @@
   background: #f8ecbd;
   clear: both;
 }
+
 .announcement p,
 .offline-warning p {
   margin: 7px;
   padding: 0;
 }
+
 #headerIsSettingDatabaseCallDone {
   display: none;
 }
