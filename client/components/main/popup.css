@@ -246,9 +246,9 @@ direction: rtl; /*rtl_changes */
 }
 .pop-over.miniprofile .header {
   border-bottom-color: transparent;
-  /* changed height: 30px;*/
+  /* changed height: 30px; to height: 25px;*/
   /* height: 30px; */
-  height: 10px;
+  height: 25px;
   /* deleted position: absolute; */
   /* position: absolute; */
   right: 0;

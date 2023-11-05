@@ -71,7 +71,8 @@
 }
 
 .minicard-details-menu {
-  float: right;
+  /* deleted */
+  /* float: right; */
   font-size: 18px;
 }
 
@@ -204,6 +205,7 @@
 @media only screen {
   .minicard .minicard-title p:last-child {
     margin-bottom: 0;
+    margin-top: 20px;
   }
 
   .minicard .minicard-title .viewer {
@@ -275,9 +277,12 @@
 .minicard .minicard-members,
 .minicard .minicard-assignees,
 .minicard .minicard-creator {
-  float: right;
-  margin-left: 5px;
-  margin-bottom: 4px;
+  /* float: right; */
+  /* margin-left: 5px; */
+  /* margin-bottom: 4px; */
+  top: 5px;
+  position: absolute;
+  left: 0;
 }
 
 .minicard .minicard-members .member,
@@ -310,7 +315,7 @@
 }
 
 .minicard .minicard-creator {
-  border-bottom: 1px solid #008000;
+  /* border-bottom: 1px solid #008000; */
 }
 
 .minicard .minicard-members:empty,

@@ -6,7 +6,11 @@ html {
     text-align: right !important;
 }
 
-.board-widget-content{
-    display:flex;
-    gap:0.5em;
+.board-widget-content {
+    display: flex;
+    gap: 0.5em;
+}
+
+.js-open-inlined-form>.fa.fa-pencil-square-o {
+    margin-left: 0.2em;
 }
