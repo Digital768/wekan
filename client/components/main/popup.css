@@ -19,6 +19,7 @@
 .pop-over input[type="password"],
 .pop-over input[type="file"] {
   width: 100%;
+  direction: rtl; /* rtl_changes */
 }
 .pop-over select {
   width: 100%;
@@ -38,8 +39,9 @@
   background: #f7f7f7;
   border-bottom: 1px solid #dcdcdc;
   color: #666;
-  flex-direction: row;  /*rtl_changes*/
-  justify-content: center;  /*rtl_changes*/
+  direction: rtl; /* rtl_changes */
+  display: flex; /* rtl_changes */
+  justify-content: space-between; /* rtl_changes */
 }
 .pop-over .header .header-title {
   display: block;
@@ -52,8 +54,10 @@
   white-space: nowrap;
 }
 .pop-over .header .back-btn {
+  /*  rtl_changes - removed:
   float: left;
   overflow: hidden;
+  */
   width: 30px;
   transition: width 0.2s;
 }
@@ -66,9 +70,11 @@
 }
 .pop-over .header .close-btn {
   padding: 10px 10px 10px 4px;
+  /* rtl_changes - removed :
   position: absolute;
   top: 0;
   right: 0;
+  */
 }
 .pop-over.no-title .header {
   background: none;
@@ -93,6 +99,7 @@
 }
 .pop-over .quiet {
 /*  padding: 6px 6px 4px;*/
+direction: rtl; /*rtl_changes */
 }
 .pop-over.search-over {
   background: #f0f0f0;
