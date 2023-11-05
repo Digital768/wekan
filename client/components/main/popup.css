@@ -19,7 +19,9 @@
 .pop-over input[type="password"],
 .pop-over input[type="file"] {
   width: 100%;
-  direction: rtl; /* rtl_changes */
+   /* direction + float change */
+  direction: rtl;
+  text-align: right;
 }
 .pop-over select {
   width: 100%;
@@ -27,6 +29,9 @@
 }
 .pop-over textarea {
   height: 72px;
+   /* direction + text align change */
+  direction: rtl;
+  text-align: right
 }
 .pop-over form a span {
   padding: 0 0.5rem;
@@ -73,8 +78,9 @@
   /* rtl_changes - removed :
   position: absolute;
   top: 0;
-  right: 0;
   */
+  /* margin change */
+  left: 0;
 }
 .pop-over.no-title .header {
   background: none;
@@ -82,6 +88,9 @@
 .pop-over .content-wrapper {
   width: 100%;
   overflow: hidden;
+   /*new change direction*/
+  display: flex;
+  direction: rtl
 }
 .pop-over .content-container {
   width: 5000px;
@@ -92,7 +101,8 @@
   direction: rtl; /*rtl_changes*/
   width: 280px;
   padding: 0 10px 10px;
-  float: left;
+  /*new change float*/
+  float: right;
 }
 .pop-over .content-container .content.no-height {
   height: 20px;
@@ -321,6 +331,8 @@ direction: rtl; /*rtl_changes */
     width: 1000%;
     height: 100%;
     max-height: 100%;
+        /* direction change */
+    direction: rtl;
   }
   .pop-over .content-container .content {
     width: calc(10% - 20px);

@@ -14,7 +14,8 @@
   padding: 0 10px;
   margin: 0;
   margin-right: 10px;
-  float: left;
+  /*new change float left -> right*/
+  float: right;
   border-radius: 3px;
 }
 #header #header-main-bar h1 .board-header-watch-icon {
@@ -44,10 +45,16 @@
   width: auto;
 }
 #header #header-main-bar .board-header-btns.left {
-  float: left;
+    /* direction + float change */
+  display: flex;
+  direction: rtl;
+  float: right;
 }
 #header #header-main-bar .board-header-btns.right {
-  float: right;
+    /* direction + float change */
+  display: flex;
+  direction: rtl;
+  float: left;
 }
 #header #header-main-bar .board-header-btn {
   border-radius: 3px;

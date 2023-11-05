@@ -16,7 +16,8 @@
 }
 .sidebar-xmark {
   position: absolute;
-  right: 10px;
+  /* new side change  right -> left*/
+  left: 5px;
   top: 5px;
   font-size: 25px;
 }
@@ -121,6 +122,8 @@
 }
 .board-sidebar.is-open {
   right: 0;
+    /* direction change */
+  direction: rtl;
 }
 .board-widget h4 {
   margin: 5px 0;
