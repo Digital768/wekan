@@ -174,7 +174,6 @@ ENV BUILD_DEPS="apt-utils libarchive-tools gnupg gosu wget curl bzip2 g++ build-
 COPY ${SRC_PATH} /home/wekan/app
 
 RUN \
-    apt-get update && apt-get install -y nano &&\
     set -o xtrace && \
     # Add non-root user wekan
     useradd --user-group --system --home-dir /home/wekan wekan && \

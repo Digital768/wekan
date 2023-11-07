@@ -222,20 +222,20 @@ template(name="cardDetails")
                 = getAssignedBy
 
         if $or currentBoard.allowsCardSortingByNumber getSpentTime
-          hr
-
-        if currentBoard.allowsCardSortingByNumber
-          .card-details-item.card-details-sort-order
-            h3.card-details-item-title
-              i.fa.fa-sort
-              | {{_ 'sort'}}
-            if canModifyCard
-              +inlinedForm(classNames="js-card-details-sort")
-                +editCardSortOrderForm
-              else
-                a.js-open-inlined-form
-                  +viewer
-                    = sort
+          hr     
+          //html change    
+        //-  if currentBoard.allowsCardSortingByNumber
+        //-   .card-details-item.card-details-sort-order
+        //-     h3.card-details-item-title
+        //-       i.fa.fa-sort
+        //-       | {{_ 'sort'}}
+        //-     if canModifyCard
+        //-       +inlinedForm(classNames="js-card-details-sort")
+        //-         +editCardSortOrderForm
+        //-       else
+        //-         a.js-open-inlined-form
+        //-           +viewer
+        //-             = sort
 
         if currentBoard.allowsShowLists
           .card-details-item.card-details-show-lists
