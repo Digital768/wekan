@@ -1,6 +1,7 @@
 FROM --platform=linux/amd64 ubuntu:23.10 as wekan
 LABEL maintainer="wekan"
-
+USER 0 
+WORKDIR /code
 # 2022-09-04:
 # - above "--platform=linux/amd64 ubuntu:22.04 as wekan" is needed to build Dockerfile
 #   correctly on Mac M1 etc, to not get this error:
@@ -173,6 +174,7 @@ ENV BUILD_DEPS="apt-utils libarchive-tools gnupg gosu wget curl bzip2 g++ build-
 COPY ${SRC_PATH} /home/wekan/app
 
 RUN \
+    apt-get update && apt-get install -y nano &&\
     set -o xtrace && \
     # Add non-root user wekan
     useradd --user-group --system --home-dir /home/wekan wekan && \
@@ -277,4 +279,4 @@ STOPSIGNAL SIGKILL
 # CMD ["node", "/build/main.js"]
 
 #CMD ["bash", "-c", "ulimit -s 65500; exec node --stack-size=65500 /build/main.js"]
-CMD ["bash", "-c", "ulimit -s 65500; exec node /build/main.js"]
+CMD ["bash", "-c", "ulimit -s 65500; exec node /build/main.js", "--reload"]
