@@ -292,7 +292,11 @@
   border-radius: 50%;
   height: 28px;
   width: 28px;
-  margin-bottom: 4px;
+  /*margin change: 
+    margin-bottom: 4px -->
+  */
+  margin-right: 35px;
+  margin-top: -5px;
 }
 
 .minicard .minicard-members .assignee,
@@ -340,6 +344,7 @@
 
 .minicard.minicard-composer {
   margin-bottom: 10px;
+
 }
 
 .minicard.minicard-composer textarea.minicard-composer-textarea,
@@ -355,6 +360,7 @@
   min-height: 36px;
   margin-bottom: 20px;
   overflow-y: auto;
+  direction: rtl; /*rtl change*/
 }
 
 .parent-prefix {

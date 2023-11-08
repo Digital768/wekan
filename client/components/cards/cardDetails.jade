@@ -222,20 +222,20 @@ template(name="cardDetails")
                 = getAssignedBy
 
         if $or currentBoard.allowsCardSortingByNumber getSpentTime
-          hr
-
-        if currentBoard.allowsCardSortingByNumber
-          .card-details-item.card-details-sort-order
-            h3.card-details-item-title
-              i.fa.fa-sort
-              | {{_ 'sort'}}
-            if canModifyCard
-              +inlinedForm(classNames="js-card-details-sort")
-                +editCardSortOrderForm
-              else
-                a.js-open-inlined-form
-                  +viewer
-                    = sort
+          hr     
+          //html change    
+        //-  if currentBoard.allowsCardSortingByNumber
+        //-   .card-details-item.card-details-sort-order
+        //-     h3.card-details-item-title
+        //-       i.fa.fa-sort
+        //-       | {{_ 'sort'}}
+        //-     if canModifyCard
+        //-       +inlinedForm(classNames="js-card-details-sort")
+        //-         +editCardSortOrderForm
+        //-       else
+        //-         a.js-open-inlined-form
+        //-           +viewer
+        //-             = sort
 
         if currentBoard.allowsShowLists
           .card-details-item.card-details-show-lists
@@ -600,26 +600,26 @@ template(name="cardDetails")
 template(name="editCardTitleForm")
   a.fa.fa-copy(title="{{_ 'copy-text-to-clipboard'}}")
   span.copied-tooltip {{_ 'copied'}}
-  textarea.js-edit-card-title(rows='1' autofocus dir="right")
+  textarea.js-edit-card-title(rows='1' autofocus dir="auto")
     = getTitle
   .edit-controls.clearfix
     button.primary.confirm.js-submit-edit-card-title-form(type="submit") {{_ 'save'}}
     a.fa.fa-times-thin.js-close-inlined-form
 
 template(name="editCardRequesterForm")
-  input.js-edit-card-requester(type='text' autofocus value=getRequestedBy dir="right")
+  input.js-edit-card-requester(type='text' autofocus value=getRequestedBy dir="auto")
   .edit-controls.clearfix
     button.primary.confirm.js-submit-edit-card-requester-form(type="submit") {{_ 'save'}}
     a.fa.fa-times-thin.js-close-inlined-form
 
 template(name="editCardAssignerForm")
-  input.js-edit-card-assigner(type='text' autofocus value=getAssignedBy dir="right")
+  input.js-edit-card-assigner(type='text' autofocus value=getAssignedBy dir="auto")
   .edit-controls.clearfix
     button.primary.confirm.js-submit-edit-card-assigner-form(type="submit") {{_ 'save'}}
     a.fa.fa-times-thin.js-close-inlined-form
 
 template(name="editCardSortOrderForm")
-  input.js-edit-card-sort(type='text' autofocus value=sort dir="right")
+  input.js-edit-card-sort(type='text' autofocus value=sort dir="auto")
   .edit-controls.clearfix
     button.primary.confirm.js-submit-edit-card-sort-form(type="submit") {{_ 'save'}}
     a.fa.fa-times-thin.js-close-inlined-form

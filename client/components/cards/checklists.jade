@@ -6,9 +6,11 @@ template(name="checklists")
       if canModifyCard
         +inlinedForm(autoclose=false classNames="js-add-checklist" cardId = cardId  position="top")
           +addChecklistItemForm
-        else
-          a.add-checklist-top.js-open-inlined-form(title="{{_ 'add-checklist'}}")
-            i.fa.fa-plus
+
+          //html change    
+        //-  else
+        //-    a.add-checklist-top.js-open-inlined-form(title="{{_ 'add-checklist'}}")
+        //-    i.fa.fa-plus
 
   .card-checklist-items
     each checklist in checklists
@@ -68,7 +70,7 @@ template(name="addChecklistItemForm")
 template(name="editChecklistItemForm")
   a.fa.fa-copy(title="{{_ 'copy-text-to-clipboard'}}")
   span.copied-tooltip {{_ 'copied'}}
-  textarea.js-edit-checklist-item(rows='1' autofocus dir="right")
+  textarea.js-edit-checklist-item(rows='1' autofocus dir="auto")
     if $eq type 'item'
       = item.title
     else

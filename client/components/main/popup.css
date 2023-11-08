@@ -105,9 +105,12 @@
 .pop-over .content-wrapper {
   width: 100%;
   overflow: hidden;
-  /*new change direction*/
-  display: flex;
-  direction: rtl
+  /*
+   delete change: 
+    display: flex;
+    direction: rtl
+  */
+
 }
 
 .pop-over .content-container {

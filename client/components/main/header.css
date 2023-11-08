@@ -6,8 +6,6 @@
 }
 
 #header #header-main-bar {
-  display: flex;
-  flex-direction: row-reverse;
   height: 40px;
   padding: 7px 10px 0;
 }
@@ -67,8 +65,8 @@
 /* changed */
 #header #header-main-bar .board-header-btns.right {
   /* direction + float change */
-  /* added  flex-direction:row-reverse;*/
-  flex-direction: row-reverse;
+  /* added  flex-direction:row;*/
+  flex-direction: row;
   display: flex;
   direction: rtl;
   float: left;
