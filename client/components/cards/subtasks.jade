@@ -37,13 +37,13 @@ template(name="subtaskDetail")
                 = subtask.title
 
 template(name="addSubtaskItemForm")
-  textarea.js-add-subtask-item(rows='1' autofocus dir="right")
+  textarea.js-add-subtask-item(rows='1' autofocus dir="auto")
   .edit-controls.clearfix
     button.primary.confirm.js-submit-add-subtask-item-form(type="submit") {{_ 'save'}}
     a.fa.fa-times-thin.js-close-inlined-form
 
 template(name="editSubtaskItemForm")
-  textarea.js-edit-subtask-item(rows='1' autofocus dir="right")
+  textarea.js-edit-subtask-item(rows='1' autofocus dir="auto")
     if $eq type 'item'
       = item.title
     else
@@ -64,7 +64,7 @@ template(name="subtasksItems")
       else
         +subtaskItemDetail(item = item subtasks = subtasks)
     if canModifyCard
-      +inlinedForm(autoclose=false classNames="js-add-subtask-item" subtasks = subtasks dir="right")
+      +inlinedForm(autoclose=false classNames="js-add-subtask-item" subtasks = subtasks dir="auto")
         +addSubtaskItemForm
       else
         a.add-subtask-item.js-open-inlined-form

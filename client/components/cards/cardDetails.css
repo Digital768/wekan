@@ -251,7 +251,7 @@
   .card-details {
     top: 97px;
     left: calc(50% - (600px / 2));
-    width: 600px;
+    width: 700px; /*width change*/ 
     bottom: 0;
     position: fixed;
     resize: both;

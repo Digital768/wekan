@@ -45,7 +45,7 @@ template(name="addCardForm")
       .minicard-labels
         each getLabels
           .minicard-label(class="card-label-{{color}}" title="{{name}}")
-    textarea.minicard-composer-textarea.js-card-title(autofocus dir="right")
+    textarea.minicard-composer-textarea.js-card-title(autofocus dir="auto")
     if members.get
       .minicard-members.js-minicard-composer-members
         each members.get
@@ -104,7 +104,7 @@ template(name="searchElementPopup")
   form
     label
       | {{_ 'title'}}
-      input.js-element-title(type="text" placeholder="{{_ 'title'}}" autofocus required dir="right")
+      input.js-element-title(type="text" placeholder="{{_ 'title'}}" autofocus required dir="auto")
   unless isTemplateSearch
     label {{_ 'boards'}}:
     .link-board-wrapper
@@ -115,7 +115,7 @@ template(name="searchElementPopup")
   form.js-search-term-form
     label
       | {{_ 'template'}}
-    input(type="text" name="searchTerm" placeholder="{{_ 'search-example'}}" autofocus dir="right")
+    input(type="text" name="searchTerm" placeholder="{{_ 'search-example'}}" autofocus dir="auto")
   .list-body.search-card-results
     .minicards.clearfix.js-minicards
       if isBoardTemplateSearch

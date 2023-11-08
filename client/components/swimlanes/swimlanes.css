@@ -68,6 +68,11 @@
   flex: 1 0 100%;
   background-color: #ccc;
 }
+/* added */
+.swimlane.js-lists.js-swimlane.ui-sortable{
+  overflow-x:auto;
+  width:100%;
+}
 .swimlane .swimlane-header-wrap .swimlane-header {
   font-size: 14px;
   padding: 5px 5px;
