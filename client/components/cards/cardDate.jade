@@ -4,12 +4,14 @@ template(name="dateBadge")
       time(datetime="{{showISODate}}")
         | {{showDate}}
         b
-          | {{showWeek}}
+        //-  Number_of_week:
+          //- | {{showWeek}}
   else
     a.card-date(title="{{showTitle}} {{_ 'predicate-week'}} {{showWeek}}" class="{{classes}}")
       time(datetime="{{showISODate}}")
         | {{showDate}}
         b
+        //-  Number_of_week:
           | {{showWeek}}
 
 template(name="dateCustomField")
@@ -17,4 +19,5 @@ template(name="dateCustomField")
     time(datetime="{{showISODate}}")
       | {{showDate}}
       b
+      //-  Number_of_week:
         | {{showWeek}}

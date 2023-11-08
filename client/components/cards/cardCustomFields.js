@@ -143,10 +143,10 @@ CardCustomField.register('cardCustomField');
       self.date.set(moment(self.data().value));
     });
   }
-
-  showWeek() {
-    return this.date.get().week().toString();
-  }
+// function that gets the number of the week
+  // showWeek() {
+  //   return this.date.get().week().toString();
+  // }
 
   showDate() {
     // this will start working once mquandalle:moment

@@ -342,16 +342,17 @@ Template.changeSettingsPopup.events({
     let ret = regex.test(charCode);
     return ret;
   },
-  'click .js-toggle-desktop-drag-handles'() {
-    currentUser = Meteor.user();
-    if (currentUser) {
-      Meteor.call('toggleDesktopDragHandles');
-    } else if (window.localStorage.getItem('showDesktopDragHandles')) {
-      window.localStorage.removeItem('showDesktopDragHandles');
-    } else {
-      window.localStorage.setItem('showDesktopDragHandles', 'true');
-    }
-  },
+  // removed - js-toggle-desktop-drag-handles
+  // 'click .js-toggle-desktop-drag-handles'() {
+  //   currentUser = Meteor.user();
+  //   if (currentUser) {
+  //     Meteor.call('toggleDesktopDragHandles');
+  //   } else if (window.localStorage.getItem('showDesktopDragHandles')) {
+  //     window.localStorage.removeItem('showDesktopDragHandles');
+  //   } else {
+  //     window.localStorage.setItem('showDesktopDragHandles', 'true');
+  //   }
+  // },
   'click .js-toggle-system-messages'() {
     currentUser = Meteor.user();
     if (currentUser) {
