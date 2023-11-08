@@ -85,6 +85,7 @@ template(name="cardCustomField-date")
             time(datetime="{{showISODate}}")
               | {{showDate}}
               b
+            //-  Number_of_week: 
                 | {{showWeek}}
         else
           | {{_ 'edit'}}
@@ -94,6 +95,7 @@ template(name="cardCustomField-date")
           time(datetime="{{showISODate}}")
             | {{showDate}}
             b
+            //-  Number_of_week:
               | {{showWeek}}
 
 template(name="cardCustomField-dropdown")
