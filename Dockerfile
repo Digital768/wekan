@@ -26,7 +26,7 @@ ENV BUILD_DEPS="apt-utils libarchive-tools gnupg gosu wget curl bzip2 g++ build-
     METEOR_RELEASE=METEOR@2.13.3 \
     USE_EDGE=false \
     METEOR_EDGE=1.5-beta.17 \
-    NPM_VERSION=9.8.1 \
+    NPM_VERSION=9.9.1 \
     FIBERS_VERSION=4.0.1 \
     ARCHITECTURE=linux-x64 \
     SRC_PATH=./ \
@@ -239,10 +239,6 @@ RUN \
     cd node_modules/fibers && \
     node build.js && \
     cd ../.. && \
-    # Remove legacy webbroser bundle, so that Wekan works also at Android Firefox, iOS Safari, etc.
-    rm -rf /home/wekan/app_build/bundle/programs/web.browser.legacy && \
-    mv /home/wekan/app_build/bundle /build && \
-    \
     # Put back the original tar
     mv $(which tar)~ $(which tar) && \
     \
