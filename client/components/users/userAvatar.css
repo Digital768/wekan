@@ -15,6 +15,11 @@
   overflow: hidden;
   border-radius: 50%;
 }
+/* added border radius to creator avatar - 9/11 */
+.minicard-creator .member .avatar.avatar-initials {
+  border: 2px solid red;
+ }
+
 .member .avatar.avatar-initials {
   /* changed
   height: 70%;
@@ -27,7 +32,8 @@
   width: 70%; */
   height: 15px;
   width: 15px;
-  padding: 25%; /*padding change: 15% - 25%*/
+   padding: 15%; 
+  margin-top: 15%; /* changed - added margin-top - 9/11*/
   background-color: #dbdbdb;
   color: #444;
   position: absolute;

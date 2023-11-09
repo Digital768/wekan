@@ -115,7 +115,8 @@ const CardDate = BlazeComponent.extendComponent({
     // is updated to at least moment.js 2.10.5
     // until then, the date is displayed in the "L" format
     return this.date.get().calendar(null, {
-      sameElse: 'llll',
+      // date format change - 9/11
+      sameElse: 'DD.MM.YYYY',
     });
   },
 
@@ -153,7 +154,8 @@ class CardReceivedDate extends CardDate {
   showTitle() {
     return `${TAPi18n.__('card-received-on')} ${this.date
       .get()
-      .format('LLLL')}`;
+      // date format change - 9/11
+      .format('DD.MM.YYYY')}`;
   }
 
   events() {
@@ -188,7 +190,8 @@ class CardStartDate extends CardDate {
   }
 
   showTitle() {
-    return `${TAPi18n.__('card-start-on')} ${this.date.get().format('LLLL')}`;
+    // date format change - 9/11
+    return `${TAPi18n.__('card-start-on')} ${this.date.get().format('DD.MM.YYYY')}`;
   }
 
   events() {
@@ -224,7 +227,8 @@ class CardDueDate extends CardDate {
   }
 
   showTitle() {
-    return `${TAPi18n.__('card-due-on')} ${this.date.get().format('LLLL')}`;
+    // date format change - 9/11
+    return `${TAPi18n.__('card-due-on')} ${this.date.get().format('DD.MM.YYYY')}`;
   }
 
   events() {
@@ -255,7 +259,8 @@ class CardEndDate extends CardDate {
   }
 
   showTitle() {
-    return `${TAPi18n.__('card-end-on')} ${this.date.get().format('LLLL')}`;
+    // date format change - 9/11
+    return `${TAPi18n.__('card-end-on')} ${this.date.get().format('DD.MM.YYYY')}`;
   }
 
   events() {
@@ -288,12 +293,14 @@ class CardCustomFieldDate extends CardDate {
     // is updated to at least moment.js 2.10.5
     // until then, the date is displayed in the "L" format
     return this.date.get().calendar(null, {
-      sameElse: 'llll',
+      // date format change - 9/11
+      sameElse: 'DD.MM.YYYY',
     });
   }
 
   showTitle() {
-    return `${this.date.get().format('LLLL')}`;
+    // date format change - 9/11
+    return `${this.date.get().format('DD.MM.YYYY')}`;
   }
 
   classes() {
@@ -352,7 +359,7 @@ class VoteEndDate extends CardDate {
     return this.date.get().format('L LT');
   }
   showTitle() {
-    return `${TAPi18n.__('card-end-on')} ${this.date.get().format('LLLL')}`;
+    return `${TAPi18n.__('card-end-on')} ${this.date.get().format('DD.MM.YYYY')}`;
   }
 
   events() {
@@ -379,7 +386,8 @@ class PokerEndDate extends CardDate {
     return this.date.get().format('l LT');
   }
   showTitle() {
-    return `${TAPi18n.__('card-end-on')} ${this.date.get().format('LLLL')}`;
+    // date format change - 9/11
+    return `${TAPi18n.__('card-end-on')} ${this.date.get().format('DD.MM.YYYY')}`;
   }
 
   events() {

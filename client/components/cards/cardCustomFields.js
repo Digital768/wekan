@@ -153,7 +153,8 @@ CardCustomField.register('cardCustomField');
     // is updated to at least moment.js 2.10.5
     // until then, the date is displayed in the "L" format
     return this.date.get().calendar(null, {
-      sameElse: 'llll',
+      // Date format change - 9/11
+      sameElse: 'DD.MM.YYYY',
     });
   }
 
@@ -172,7 +173,8 @@ CardCustomField.register('cardCustomField');
   }
 
   showTitle() {
-    return `${TAPi18n.__('card-start-on')} ${this.date.get().format('LLLL')}`;
+    // Date format change - 9/11
+    return `${TAPi18n.__('card-start-on')} ${this.date.get().format('DD.MM.YYYY')}`;
   }
 
   events() {

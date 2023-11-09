@@ -117,6 +117,8 @@
   width: 5000px;
   max-height: 550px;
   transition: transform 0.2s;
+    /* language card overflow - 9/11*/
+    overflow:auto;
 }
 
 .pop-over .content-container .content {

@@ -94,7 +94,9 @@
   padding-left: 0;
 }
 .card-details .card-details-canvas {
-  width: inherit; /*width change auto --> inherit*/
+ /* changed width - 9/11 */
+  /* width: inherit; width change auto --> inherit */
+  width: calc(100% - 50px); /*width change auto --> inherit*/
   padding: 0 20px;
 }
 .card-details .card-details-header {
