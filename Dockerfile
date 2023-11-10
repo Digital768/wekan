@@ -1,7 +1,8 @@
 FROM --platform=linux/amd64 ubuntu:23.10 as wekan
-LABEL maintainer="wekan"
-USER 0 
-WORKDIR /code
+LABEL maintainer="wekan" \
+      org.opencontainers.image.ref.name="ubuntu" \
+      org.opencontainers.image.version="23.10"
+
 # 2022-09-04:
 # - above "--platform=linux/amd64 ubuntu:22.04 as wekan" is needed to build Dockerfile
 #   correctly on Mac M1 etc, to not get this error:
@@ -26,7 +27,7 @@ ENV BUILD_DEPS="apt-utils libarchive-tools gnupg gosu wget curl bzip2 g++ build-
     METEOR_RELEASE=METEOR@2.13.3 \
     USE_EDGE=false \
     METEOR_EDGE=1.5-beta.17 \
-    NPM_VERSION=9.9.1 \
+    NPM_VERSION=9.8.1 \
     FIBERS_VERSION=4.0.1 \
     ARCHITECTURE=linux-x64 \
     SRC_PATH=./ \
@@ -239,6 +240,10 @@ RUN \
     cd node_modules/fibers && \
     node build.js && \
     cd ../.. && \
+    # Remove legacy webbroser bundle, so that Wekan works also at Android Firefox, iOS Safari, etc.
+    rm -rf /home/wekan/app_build/bundle/programs/web.browser.legacy && \
+    mv /home/wekan/app_build/bundle /build && \
+    \
     # Put back the original tar
     mv $(which tar)~ $(which tar) && \
     \
@@ -274,4 +279,4 @@ STOPSIGNAL SIGKILL
 # CMD ["node", "/build/main.js"]
 
 #CMD ["bash", "-c", "ulimit -s 65500; exec node --stack-size=65500 /build/main.js"]
-CMD ["bash", "-c", "ulimit -s 65500; exec node /build/main.js", "--reload"]
+CMD ["bash", "-c", "ulimit -s 65500; exec node /build/main.js"]

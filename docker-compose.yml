@@ -121,7 +121,7 @@ services:
     # image: wekanteam/wekan:v6.89
     # b) GitHub Container registry.
     # b1) Latest release tag:
-    image: features
+    image: features:lastTry
     # b2) Newest git commit automatic build:
     #image: ghcr.io/wekan/wekan:main
     # c) Quay:
@@ -143,7 +143,6 @@ services:
     #-------------------------------------------------------------------------------------
     # ==== BUILD wekan-app DOCKER CONTAINER FROM SOURCE, if you uncomment these ====
     # ==== and use commands: docker-compose up -d --build
-    # command: command
     #build:
     #  context: .
     #  dockerfile: Dockerfile
@@ -153,7 +152,7 @@ services:
       # For example, if you want to have wekan on port 3001,
       # use 3001:8080 . Do not add any extra address etc here, that way it does not work.
       # remove port mapping if you use nginx reverse proxy, port 8080 is already exposed to wekan-tier network
-      - 83:8080
+      - 80:8080
     environment:
       #-----------------------------------------------------------------
       # ==== WRITEABLE PATH FOR FILE UPLOADS ====
@@ -181,7 +180,7 @@ services:
       #  - http://example.com
       #  - http://boards.example.com
       #  - http://192.168.1.100    <=== using at local LAN
-      - ROOT_URL=http://localhost:83 #   <=== using only at same laptop/desktop where Wekan is installed
+      - ROOT_URL=http://localhost  #   <=== using only at same laptop/desktop where Wekan is installed
       #---------------------------------------------------------------
       # ==== EMAIL SETTINGS ====
       # Email settings are only at MAIL_URL and MAIL_FROM.
@@ -718,7 +717,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - wekan-files:/data:rw
-      - .:/code
+
 #---------------------------------------------------------------------------------
 # ==== OPTIONAL: SHARE DATABASE TO OFFICE LAN AND REMOTE VPN ====
 #  When using Wekan both at office LAN and remote VPN:
