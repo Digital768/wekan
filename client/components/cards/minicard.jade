@@ -9,6 +9,17 @@ template(name="minicard")
         .fa.fa-arrows
     else
       a.fa.fa-navicon.minicard-details-menu.js-open-minicard-details-menu(title="{{_ 'cardDetailsActionsPopup-title'}}")
+    <!-- arrange card details - members change- 12.11    -->
+
+     if showMembers
+      if getMembers
+        .minicard-members.js-minicard-members
+          each getMembers
+            +userAvatar(userId=this)
+      if showCreator
+      .minicard-creator
+        +userAvatar(userId=this.usesrId noRemove=true)
+
     .dates
       if getReceived
         unless getStart
@@ -123,15 +134,15 @@ template(name="minicard")
           each getAssignees
             +userAvatar(userId=this)
 
-    if showMembers
-      if getMembers
-        .minicard-members.js-minicard-members
-          each getMembers
-            +userAvatar(userId=this)
+    //- if showMembers
+    //-   if getMembers
+    //-     .minicard-members.js-minicard-members
+    //-       each getMembers
+    //-         +userAvatar(userId=this)
 
-    if showCreator
-      .minicard-creator
-        +userAvatar(userId=this.userId noRemove=true)
+    //- if showCreator
+    //-   .minicard-creator
+    //-     +userAvatar(userId=this.userId noRemove=true)
 
     .badges
       unless currentUser.isNoComments
