@@ -52,7 +52,8 @@ template(name="addListForm")
           +inlinedForm(autoclose=false)
             input.list-name-input.full-line(type="text" placeholder="{{_ 'add-list'}}"
               autocomplete="off" autofocus)
-            //-  if currentBoard.getLastList
+            //- remove add after list - 12.11
+              if currentBoard.getLastList   
                   | {{_ 'add-after-list'}}
                 select.list-position-input.full-line
                   each currentBoard.lists
