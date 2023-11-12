@@ -1,3 +1,5 @@
+    //- arrange card details - members change- 12.11    -->
+
 template(name="minicard")
   .minicard(
     class="{{#if isLinkedCard}}linked-card{{/if}}"
@@ -9,7 +11,6 @@ template(name="minicard")
         .fa.fa-arrows
     else
       a.fa.fa-navicon.minicard-details-menu.js-open-minicard-details-menu(title="{{_ 'cardDetailsActionsPopup-title'}}")
-    <!-- arrange card details - members change- 12.11    -->
 
      if showMembers
       if getMembers
