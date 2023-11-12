@@ -1,7 +1,7 @@
 export const ALLOWED_BOARD_COLORS = [
+  'pomegranate',
   'belize',
   'nephritis',
-  'pomegranate',
   'pumpkin',
   'wisteria',
   'moderatepink',
