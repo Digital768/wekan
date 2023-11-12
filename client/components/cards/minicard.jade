@@ -15,6 +15,12 @@ template(name="minicard")
    
       //- arrange card layout - 12.11
 
+    if showAssignee
+      if getAssignees
+        .minicard-assignees.js-minicard-assignees
+          each getAssignees
+            +userAvatar(userId=this)
+
     if showMembers
       if getMembers
         .minicard-members.js-minicard-members
@@ -22,8 +28,8 @@ template(name="minicard")
             +userAvatar(userId=this)
             
     if showCreator
-    .minicard-creator
-      +userAvatar(userId=this.usesrId noRemove=true)
+      .minicard-creator
+        +userAvatar(userId=this.usesrId noRemove=true)
 
     .dates
       if getReceived
@@ -133,11 +139,11 @@ template(name="minicard")
           //hr
           //+checklists(cardId=_id showAtMinicard=true)
 
-    if showAssignee
-      if getAssignees
-        .minicard-assignees.js-minicard-assignees
-          each getAssignees
-            +userAvatar(userId=this)
+    //- if showAssignee
+    //-   if getAssignees
+    //-     .minicard-assignees.js-minicard-assignees
+    //-       each getAssignees
+    //-         +userAvatar(userId=this)
 
     //- if showMembers
     //-   if getMembers
