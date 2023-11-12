@@ -1,24 +1,29 @@
+
 template(name="minicard")
+
   .minicard(
     class="{{#if isLinkedCard}}linked-card{{/if}}"
     class="{{#if isLinkedBoard}}linked-board{{/if}}"
     class="{{#if colorClass}}minicard-{{colorClass}}{{/if}}")
+    
     if isTouchScreenOrShowDesktopDragHandles
       a.fa.fa-navicon.minicard-details-menu-with-handle.js-open-minicard-details-menu(title="{{_ 'cardDetailsActionsPopup-title'}}")
       .handle
         .fa.fa-arrows
     else
       a.fa.fa-navicon.minicard-details-menu.js-open-minicard-details-menu(title="{{_ 'cardDetailsActionsPopup-title'}}")
-    <!-- arrange card details - members change- 12.11    -->
+   
+      //- arrange card layout - 12.11
 
-     if showMembers
+    if showMembers
       if getMembers
         .minicard-members.js-minicard-members
           each getMembers
             +userAvatar(userId=this)
-      if showCreator
-      .minicard-creator
-        +userAvatar(userId=this.usesrId noRemove=true)
+            
+    if showCreator
+    .minicard-creator
+      +userAvatar(userId=this.usesrId noRemove=true)
 
     .dates
       if getReceived

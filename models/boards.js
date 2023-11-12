@@ -413,7 +413,8 @@ Boards.attachSchema(
        * Does the board allows cover attachment on minicard?
        */
       type: Boolean,
-      defaultValue: false,
+      // show image on mission by default- 12.11 change
+      defaultValue: true,
     },
 
     allowsBadgeAttachmentOnMinicard: {
