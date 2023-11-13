@@ -933,7 +933,7 @@ Users.helpers({
     const profile = this.profile || {};
     if (typeof profile.startDayOfWeek === 'undefined') {
       // default is 'Monday' (1)
-      return 1;
+      return 0; // default changed to sunday - 13.11
     }
     return profile.startDayOfWeek;
   },
