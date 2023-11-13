@@ -926,7 +926,7 @@ Users.helpers({
 
   getLanguage() {
     const profile = this.profile || {};
-    return profile.language || 'en';
+    return profile.language || 'he'; //changed default language to 'he' (hebrew)
   },
 
   getStartDayOfWeek() {
@@ -1328,10 +1328,10 @@ if (Meteor.isServer) {
       // Prevent Hyperlink Injection https://github.com/wekan/wekan/issues/5176
       // Thanks to mc-marcy and xet7 !
       if (fullname.includes('/') ||
-         username.includes('/') ||
-         email.includes('/') ||
-         initials.includes('/')) {
-         return false;
+        username.includes('/') ||
+        email.includes('/') ||
+        initials.includes('/')) {
+        return false;
       }
       if (ReactiveCache.getCurrentUser()?.isAdmin) {
         const nUsersWithUsername = ReactiveCache.getUsers({
@@ -1376,8 +1376,8 @@ if (Meteor.isServer) {
       // Prevent Hyperlink Injection https://github.com/wekan/wekan/issues/5176
       // Thanks to mc-marcy and xet7 !
       if (username.includes('/') ||
-         userId.includes('/')) {
-         return false;
+        userId.includes('/')) {
+        return false;
       }
       if (ReactiveCache.getCurrentUser()?.isAdmin) {
         const nUsersWithUsername = ReactiveCache.getUsers({
@@ -1400,8 +1400,8 @@ if (Meteor.isServer) {
       // Prevent Hyperlink Injection https://github.com/wekan/wekan/issues/5176
       // Thanks to mc-marcy and xet7 !
       if (username.includes('/') ||
-         email.includes('/')) {
-         return false;
+        email.includes('/')) {
+        return false;
       }
       if (ReactiveCache.getCurrentUser()?.isAdmin) {
         if (Array.isArray(email)) {
@@ -1440,9 +1440,9 @@ if (Meteor.isServer) {
       // Prevent Hyperlink Injection https://github.com/wekan/wekan/issues/5176
       // Thanks to mc-marcy and xet7 !
       if (username.includes('/') ||
-         email.includes('/') ||
-         userId.includes('/')) {
-         return false;
+        email.includes('/') ||
+        userId.includes('/')) {
+        return false;
       }
       if (ReactiveCache.getCurrentUser()?.isAdmin) {
         if (Array.isArray(email)) {
@@ -1466,8 +1466,8 @@ if (Meteor.isServer) {
       // Prevent Hyperlink Injection https://github.com/wekan/wekan/issues/5176
       // Thanks to mc-marcy and xet7 !
       if (email.includes('/') ||
-         userId.includes('/')) {
-         return false;
+        userId.includes('/')) {
+        return false;
       }
       if (ReactiveCache.getCurrentUser()?.isAdmin) {
         Users.update(userId, {
@@ -1488,8 +1488,8 @@ if (Meteor.isServer) {
       // Prevent Hyperlink Injection https://github.com/wekan/wekan/issues/5176
       // Thanks to mc-marcy and xet7 !
       if (initials.includes('/') ||
-         userId.includes('/')) {
-         return false;
+        userId.includes('/')) {
+        return false;
       }
       if (ReactiveCache.getCurrentUser()?.isAdmin) {
         Users.update(userId, {
@@ -1506,8 +1506,8 @@ if (Meteor.isServer) {
       // Prevent Hyperlink Injection https://github.com/wekan/wekan/issues/5176
       // Thanks to mc-marcy and xet7 !
       if (username.includes('/') ||
-          boardId.includes('/')) {
-         return false;
+        boardId.includes('/')) {
+        return false;
       }
       const inviter = ReactiveCache.getCurrentUser();
       const board = ReactiveCache.getBoard(boardId);
@@ -1554,8 +1554,8 @@ if (Meteor.isServer) {
         // Prevent Hyperlink Injection https://github.com/wekan/wekan/issues/5176
         // Thanks to mc-marcy and xet7 !
         if (username.includes('/') ||
-           email.includes('/')) {
-           return false;
+          email.includes('/')) {
+          return false;
         }
         const newUserId = Accounts.createUser({
           username,
@@ -1742,8 +1742,8 @@ if (Meteor.isServer) {
       // Prevent Hyperlink Injection https://github.com/wekan/wekan/issues/5176
       // Thanks to mc-marcy and xet7 !
       if (user.username.includes('/') ||
-         email.includes('/')) {
-         return false;
+        email.includes('/')) {
+        return false;
       }
 
 
