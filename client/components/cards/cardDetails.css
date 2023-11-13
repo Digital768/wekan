@@ -228,6 +228,7 @@
   display: block;
   word-wrap: break-word;
   max-width: 36%;
+  border-left: 2px solid; /*border adding - changed 12.11*/
 }
 .card-details .card-details-items .card-details-item.card-details-item-creator,
 .card-details .card-details-items .card-details-item.card-details-item-received,
@@ -237,6 +238,7 @@
   display: block;
   word-wrap: break-word;
   max-width: 28%;
+  border-left: 2px solid; /*border adding - changed 12.11*/
 }
 .card-details .card-details-items .card-details-item.custom-fields {
   padding-left: 10px;

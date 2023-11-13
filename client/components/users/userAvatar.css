@@ -19,6 +19,10 @@
 .minicard-creator .member .avatar.avatar-initials {
   border: 2px solid red;
  }
+ /* added border radius to assigne avatar - 12/11 */
+ .minicard-assignees .member .avatar.avatar-initials{
+  border: 2px solid green;
+ }
 
 .member .avatar.avatar-initials {
   /* changed

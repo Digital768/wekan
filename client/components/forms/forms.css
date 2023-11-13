@@ -127,6 +127,7 @@ textarea {
 textarea.editor {
   resize: none;
   padding-bottom: 22px;
+  text-align: right; /*text align change - 12.11*/
 }
 .button {
   border-radius: 3px;
