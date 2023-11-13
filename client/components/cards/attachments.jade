@@ -137,6 +137,6 @@ template(name="attachmentActionsPopup")
               | {{_ 'attachment-move-storage-s3'}}
 
 template(name="attachmentRenamePopup")
-  input.js-edit-attachment-name(type='text' autofocus value="{{getNameWithoutExtension}}" dir="auto")
+  input.js-edit-attachment-name(type='text' autofocus value="{{getNameWithoutExtension}}" dir="rtl")
   .edit-controls.clearfix
     button.primary.confirm.js-submit-edit-attachment-name(type="submit") {{_ 'save'}}
