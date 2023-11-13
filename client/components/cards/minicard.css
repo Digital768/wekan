@@ -17,6 +17,16 @@
   align-items: center;
   margin-bottom: 9px;
 }
+/* added css to minicard-header - 13.11 */
+.minicard-header{
+  display: flex;
+  flex-direction: row;
+}
+.avatar-icons {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-grow: 1;
+}
 
 .minicard-wrapper.placeholder {
   background: #ccc;
@@ -276,42 +286,43 @@
   padding-left: 0px;
   line-height: 12px;
 }
-
-.minicard .minicard-members,
+/* cahnged 13.11 */
+/* .minicard .minicard-members,
 .minicard .minicard-assignees,
 .minicard .minicard-creator {
-  /* float: right; */
-  /* margin-left: 5px; */
-  /* margin-bottom: 4px; */
+  float: right; 
+  margin-left: 5px; 
+  margin-bottom: 4px; 
   display: flex;
   align-items:center;
   top: 5px;
   position: absolute;
   left: 0;
-}
+} */
 
 .minicard .minicard-members .member,
 .minicard .minicard-assignees .member,
 .minicard .minicard-creator .member {
-  float: right;
-  border-radius: 50%;
+  /* float: right;
+  border-radius: 50%; */
   height: 28px;
   width: 28px;
   /*margin change: 
     margin-bottom: 4px -->
   */
-  margin-right: 35px;
-  margin-top: -5px;
+  /* margin-right: 35px;
+  margin-top: -5px; */
 }
 
-.minicard .minicard-members .assignee,
+/* changed 13.11 */
+/* .minicard .minicard-members .assignee,
 .minicard .minicard-assignees .assignee,
 .minicard .minicard-creator .assignee {
   float: right;
   border-radius: 50%;
   height: 28px;
   width: 28px;
-}
+} */
 
 .minicard .minicard-members+.badges,
 .minicard .minicard-assignees+.badges,

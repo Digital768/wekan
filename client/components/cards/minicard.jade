@@ -6,31 +6,33 @@ template(name="minicard")
     class="{{#if isLinkedBoard}}linked-board{{/if}}"
     class="{{#if colorClass}}minicard-{{colorClass}}{{/if}}")
     
-    if isTouchScreenOrShowDesktopDragHandles
-      a.fa.fa-navicon.minicard-details-menu-with-handle.js-open-minicard-details-menu(title="{{_ 'cardDetailsActionsPopup-title'}}")
-      .handle
-        .fa.fa-arrows
-    else
-      a.fa.fa-navicon.minicard-details-menu.js-open-minicard-details-menu(title="{{_ 'cardDetailsActionsPopup-title'}}")
-   
-      //- arrange card layout - 12.11
+    .minicard-header
+      if isTouchScreenOrShowDesktopDragHandles
+        a.fa.fa-navicon.minicard-details-menu-with-handle.js-open-minicard-details-menu(title="{{_ 'cardDetailsActionsPopup-title'}}")
+        .handle
+          .fa.fa-arrows
+      else
+        a.fa.fa-navicon.minicard-details-menu.js-open-minicard-details-menu(title="{{_ 'cardDetailsActionsPopup-title'}}")
+    
+        //- arrange card layout - 12.11
 
-    if showAssignee
-      if getAssignees
-        .minicard-assignees.js-minicard-assignees
-          each getAssignees
-            +userAvatar(userId=this)
-
-    if showMembers
-      if getMembers
-        .minicard-members.js-minicard-members
-          each getMembers
-            +userAvatar(userId=this)
-            
-    if showCreator
-      .minicard-creator
-        +userAvatar(userId=this.usesrId noRemove=true)
-
+      .avatar-icons
+        if showAssignee
+          if getAssignees
+            .minicard-assignees.js-minicard-assignees
+              each getAssignees
+                +userAvatar(userId=this)
+        //- removed members/friends - changed 13.11 
+        //- if showMembers
+        //-   if getMembers
+        //-     .minicard-members.js-minicard-members
+        //-       each getMembers
+        //-         +userAvatar(userId=this)
+                
+        if showCreator
+          .minicard-creator
+            +userAvatar(userId=this.usesrId noRemove=true)
+    
     .dates
       if getReceived
         unless getStart
