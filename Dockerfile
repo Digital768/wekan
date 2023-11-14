@@ -3,6 +3,7 @@ LABEL maintainer="wekan" \
       org.opencontainers.image.ref.name="ubuntu" \
       org.opencontainers.image.version="23.10"
 
+WORKDIR /code
 # 2022-09-04:
 # - above "--platform=linux/amd64 ubuntu:22.04 as wekan" is needed to build Dockerfile
 #   correctly on Mac M1 etc, to not get this error:
@@ -188,25 +189,25 @@ RUN \
     ln -sf $(which bsdtar) $(which tar) && \
     \
     # Download nodejs
-    wget https://github.com/wekan/node-v14-esm/releases/download/${NODE_VERSION}/node-${NODE_VERSION}-${ARCHITECTURE}.tar.gz && \
-    wget https://github.com/wekan/node-v14-esm/releases/download/${NODE_VERSION}/SHASUMS256.txt && \
-    #wget https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-${ARCHITECTURE}.tar.gz && \
-    #wget https://nodejs.org/dist/${NODE_VERSION}/SHASUMS256.txt.asc && \
+    wget https://github.com/wekan/node-v14-esm/releases/download/${v14.21.4}/node-${v14.21.4}-${linux-x64}.tar.gz && \
+    wget https://github.com/wekan/node-v14-esm/releases/download/${v14.21.4}/SHASUMS256.txt && \
+    #wget https://nodejs.org/dist/${v14.21.4}/node-${v14.21.4}-${linux-x64}.tar.gz && \
+    #wget https://nodejs.org/dist/${v14.21.4}/SHASUMS256.txt.asc && \
     #---------------------------------------------------------------------------------------------
     \
     # Verify nodejs authenticity
-    grep node-${NODE_VERSION}-${ARCHITECTURE}.tar.gz SHASUMS256.txt | shasum -a 256 -c - && \
+    grep node-${v14.21.4}-${linux-x64}.tar.gz SHASUMS256.txt | shasum -a 256 -c - && \
     rm -f SHASUMS256.txt && \
-    #grep ${NODE_VERSION}-${ARCHITECTURE}.tar.gz SHASUMS256.txt.asc | shasum -a 256 -c - && \
+    #grep ${v14.21.4}-${linux-x64}.tar.gz SHASUMS256.txt.asc | shasum -a 256 -c - && \
     #rm -f SHASUMS256.txt.asc && \
     \
     # Install Node
-    tar xvzf node-${NODE_VERSION}-${ARCHITECTURE}.tar.gz && \
-    rm node-${NODE_VERSION}-${ARCHITECTURE}.tar.gz && \
-    mv node-${NODE_VERSION}-${ARCHITECTURE} /opt/nodejs && \
+    tar xvzf node-${v14.21.4}-${linux-x64}.tar.gz && \
+    rm node-${v14.21.4}-${linux-x64}.tar.gz && \
+    mv node-${v14.21.4}-${linux-x64} /opt/nodejs && \
     ln -s /opt/nodejs/bin/node /usr/bin/node && \
     ln -s /opt/nodejs/bin/npm /usr/bin/npm && \
-    mkdir -p /opt/nodejs/lib/node_modules/fibers/.node-gyp /root/.node-gyp/${NODE_VERSION} /home/wekan/.config && \
+    mkdir -p /opt/nodejs/lib/node_modules/fibers/.node-gyp /root/.node-gyp/${v14.21.4} /home/wekan/.config && \
     chown wekan --recursive /home/wekan/.config && \
     \
     #DOES NOT WORK: paxctl fix for alpine linux: https://github.com/wekan/wekan/issues/1303
