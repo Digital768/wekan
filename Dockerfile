@@ -3,6 +3,7 @@ LABEL maintainer="wekan" \
       org.opencontainers.image.ref.name="ubuntu" \
       org.opencontainers.image.version="23.10"
 
+WORKDIR /code
 # 2022-09-04:
 # - above "--platform=linux/amd64 ubuntu:22.04 as wekan" is needed to build Dockerfile
 #   correctly on Mac M1 etc, to not get this error:
