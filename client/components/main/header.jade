@@ -45,7 +45,7 @@ template(name="header")
               img(src="{{currentSetting.customTopLeftCornerLogoImageUrl}}" height="{{#if currentSetting.customTopLeftCornerLogoHeight}}#{currentSetting.customTopLeftCornerLogoHeight}{{else}}27{{/if}}" width="auto" margin="0" padding="0" alt="{{currentSetting.productName}}" title="{{currentSetting.productName}}")
           unless currentSetting.customTopLeftCornerLogoImageUrl
             div#headerIsSettingDatabaseCallDone
-              img(src="{{pathFor '/logo-header.png'}}" alt="{{currentSetting.productName}}" title="{{currentSetting.productName}}")
+              img(src="{{pathFor '/T-BOARD_big.svg'}}" alt="{{currentSetting.productName}}" title="{{currentSetting.productName}}")
         span.allBoards
           a(href="{{pathFor 'home'}}")
             span.fa.fa-home

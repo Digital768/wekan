@@ -104,7 +104,8 @@
   padding: 7px 20px;
   background: #ededed;
   border-bottom: 1px solid #dbdbdb;
-  position: sticky;
+  /* changed at 14.11 */
+  /* position: sticky; */
   top: 0px;
   z-index: 500;
 }
