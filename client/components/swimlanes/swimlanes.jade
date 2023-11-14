@@ -53,7 +53,6 @@ template(name="addListForm")
             input.list-name-input.full-line(type="text" placeholder="{{_ 'add-list'}}"
               autocomplete="off" autofocus)
             if currentBoard.getLastList
-              | {{_ 'add-after-list'}}
               select.list-position-input.full-line(hidden)
                 each currentBoard.lists
                   option(value="{{_id}}" selected=currentBoard.getLastList.title) {{title}}
