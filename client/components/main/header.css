@@ -3,7 +3,7 @@
   transition: background-color 0.4s;
   /* background: #2980b9; */
   /* background color changed to T-Board color */
-  color: #2b4b6e;
+  background: #2b4b6e;
   z-index: 17;
 }
 
@@ -129,7 +129,7 @@
   transition: background-color 0.4s;
   /* background: #2573a7; */
   /* background color changed - 13.11 */
-  color: #233e5b;
+  background: #233e5b;
   height: 28px;
   font-size: 12px;
   display: flex;

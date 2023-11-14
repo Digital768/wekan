@@ -91,6 +91,8 @@
   font-size: 18px;
   margin: 0 12px;
   /*margin change - 12.11*/
+  /* aded height - 14.11 */
+  height:15px;
 }
 
 @media print {

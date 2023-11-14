@@ -173,6 +173,8 @@
   font-size: 1.33em;
   margin: 50px -150px 0px; /*margin change - 14.11*/
   padding: 0;
+  /* added 14.11 */
+  max-width:100%;
 }
 .card-details .card-details-header .linked-card-location {
   font-style: italic;
@@ -185,7 +187,16 @@
 .card-details .card-details-header form.inlined-form {
   margin-top: 5px;
   margin-bottom: 10px;
+  /* added 14.11 */
+  flex: 1;
 }
+
+form.inlined-form > textarea{
+  /* added 14.11 */
+  width:100%;
+}
+
+
 .card-details .card-details-header form.inlined-form .copied-tooltip {
   padding: 0px 10px;
 }

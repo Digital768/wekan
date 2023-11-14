@@ -196,18 +196,18 @@ RUN \
     #---------------------------------------------------------------------------------------------
     \
     # Verify nodejs authenticity
-    grep node-${v14.21.4}-${linux-x64}.tar.gz SHASUMS256.txt | shasum -a 256 -c - && \
+    grep node-v14.21.4-linux-x64.tar.gz SHASUMS256.txt | shasum -a 256 -c - && \
     rm -f SHASUMS256.txt && \
     #grep ${v14.21.4}-${linux-x64}.tar.gz SHASUMS256.txt.asc | shasum -a 256 -c - && \
     #rm -f SHASUMS256.txt.asc && \
     \
     # Install Node
-    tar xvzf node-${v14.21.4}-${linux-x64}.tar.gz && \
-    rm node-${v14.21.4}-${linux-x64}.tar.gz && \
-    mv node-${v14.21.4}-${linux-x64} /opt/nodejs && \
+    tar xvzf node-v14.21.4-linux-x64.tar.gz && \
+    rm node-v14.21.4-linux-x64.tar.gz && \
+    mv node-v14.21.4-linux-x64 /opt/nodejs && \
     ln -s /opt/nodejs/bin/node /usr/bin/node && \
     ln -s /opt/nodejs/bin/npm /usr/bin/npm && \
-    mkdir -p /opt/nodejs/lib/node_modules/fibers/.node-gyp /root/.node-gyp/${v14.21.4} /home/wekan/.config && \
+    mkdir -p /opt/nodejs/lib/node_modules/fibers/.node-gyp /root/.node-gyp/v14.21.4 /home/wekan/.config && \
     chown wekan --recursive /home/wekan/.config && \
     \
     #DOES NOT WORK: paxctl fix for alpine linux: https://github.com/wekan/wekan/issues/1303
