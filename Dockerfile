@@ -189,8 +189,8 @@ RUN \
     ln -sf $(which bsdtar) $(which tar) && \
     \
     # Download nodejs
-    wget https://github.com/wekan/node-v14-esm/releases/download/${v14.21.4}/node-${v14.21.4}-${linux-x64}.tar.gz && \
-    wget https://github.com/wekan/node-v14-esm/releases/download/${v14.21.4}/SHASUMS256.txt && \
+    wget https://github.com/wekan/node-v14-esm/releases/download/v14.21.4/node-v14.21.4-linux-x64.tar.gz && \
+    wget https://github.com/wekan/node-v14-esm/releases/download/v14.21.4/SHASUMS256.txt && \
     #wget https://nodejs.org/dist/${v14.21.4}/node-${v14.21.4}-${linux-x64}.tar.gz && \
     #wget https://nodejs.org/dist/${v14.21.4}/SHASUMS256.txt.asc && \
     #---------------------------------------------------------------------------------------------
