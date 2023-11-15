@@ -77,7 +77,7 @@ body {
   position: relative;
   flex: 1;
   overflow-x: hidden;
-  background-color: #68d7c045; /*add color - 15.11*/
+  background-color: #b8d7c045; /*add color - 15.11*/
 }
 #content .sk-spinner {
   margin-top: 30vh;
