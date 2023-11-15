@@ -46,7 +46,8 @@
   background: #dedede;
   display: flex;
   flex-direction: row;
-  overflow: 0;
+  overflow: 1;
+  background-color: #68d7c045; /*add color - 15.11*/
 }
 .swimlane.placeholder {
   background-color: rgba(0,0,0,0.2);

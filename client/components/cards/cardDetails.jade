@@ -47,6 +47,7 @@ template(name="cardDetails")
               = getTitle
             if isWatching
               i.card-details-watch.fa.fa-eye
+        a.fa.fa-edit
         .card-details-path
           each parentList
             | &nbsp; &gt; &nbsp;
@@ -57,6 +58,7 @@ template(name="cardDetails")
           a.linked-card-location.js-go-to-linked-card
             +viewer
               | {{getBoardTitle}} > {{getTitle}}
+            
 
     if getArchived
       if isLinkedBoard
