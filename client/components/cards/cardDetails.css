@@ -209,6 +209,8 @@
   padding: 10px;
   /* added 14.11 */
   max-width: 100%;
+  width: 300px;
+  /*width change - 16.11*/
 }
 
 .card-details .card-details-header .linked-card-location {

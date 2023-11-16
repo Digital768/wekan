@@ -6,7 +6,7 @@
   bottom: 0;
   overflow-x: hidden;
   overflow-y: hidden;
-  background-color: #68d7c045; /*add color - 15.11*/
+  background-color: #f6fff945; /*add color - 15.11*/
 }
 .board-wrapper .board-canvas {
   position: absolute;
@@ -15,7 +15,7 @@
   top: 0;
   bottom: 0;
   transition: margin 0.1s;
-  background-color: #68d7c045; /*add color - 15.11*/
+  background-color: #f6fff945; /*add color - 15.11*/
   /* removed 15.11.23 */
   /* overflow-y: auto; */}
 .board-wrapper .board-canvas.is-sibling-sidebar-open {

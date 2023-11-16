@@ -1,9 +1,9 @@
 #header {
   color: #fff;
   transition: background-color 0.4s;
-  /* background: #2980b9; */
-  /* background color changed to T-Board color */
-  background: #2b4b6e;
+  
+  /* background color changed to T-Board color - 16.11*/
+  background: #21354b;
   z-index: 17;
 }
 
@@ -129,7 +129,7 @@
   transition: background-color 0.4s;
   /* background: #2573a7; */
   /* background color changed - 13.11 */
-  background: #233e5b;
+  background: #0b2239; /*color change - 16.11*/
   height: 28px;
   font-size: 12px;
   display: flex;

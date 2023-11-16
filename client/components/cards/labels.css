@@ -15,6 +15,7 @@
   vertical-align: middle;
   white-space: initial;
   overflow: initial;
+  border-radius: 15px; /*changed 16.11*/
 }
 .card-label:hover {
   color: #fff;
