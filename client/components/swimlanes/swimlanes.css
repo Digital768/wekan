@@ -43,7 +43,7 @@
   left: 0;
 }
 .swimlane {
-  background: #dedede;
+  /* background: #dedede;  no-need*/
   display: flex;
   flex-direction: row;
   overflow: 1;

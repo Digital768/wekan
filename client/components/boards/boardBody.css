@@ -6,6 +6,7 @@
   bottom: 0;
   overflow-x: hidden;
   overflow-y: hidden;
+  /* background-color: #b8d7c045; no need */
   background-color: #f6fff945; /*add color - 15.11*/
 }
 .board-wrapper .board-canvas {

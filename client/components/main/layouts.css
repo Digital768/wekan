@@ -1,6 +1,7 @@
 * {
   -webkit-box-sizing: unset;
   box-sizing: unset;
+  /* margin-top: 5px; */
 }
 /* Fixed missing 'import nib' stylesheet reset and extra li bullet points
  * https://github.com/wekan/wekan/issues/4512#issuecomment-1129347536
