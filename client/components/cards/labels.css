@@ -17,6 +17,10 @@
   overflow: initial;
   border-radius: 10px; /*changed 16.11*/
 }
+/* added at 19.11 */
+label {
+  margin-right: 5px;
+}
 .card-label:hover {
   color: #fff;
 }
