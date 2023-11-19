@@ -17,7 +17,7 @@ template(name="userAvatar")
 
 template(name="userAvatarInitials")
   svg.avatar.avatar-initials(viewBox="0 0 {{viewPortWidth}} 15")
-    text(x="50%" y="13" text-anchor="middle")= initials
+    text(x="50%" y="80%" text-anchor="middle")= initials
 
 template(name="orgAvatar")
   a.member.orgOrTeamMember(class="js-member" title="{{orgData.orgDisplayName}}")
@@ -51,7 +51,7 @@ template(name="boardTeamRow")
 
 template(name="boardOrgName")
   svg.avatar.avatar-initials(viewBox="0 0 {{orgViewPortWidth}} 15")
-    text(x="50%" y="13" text-anchor="middle")= orgName
+    text(x="50%" y="80%" text-anchor="middle")= orgName
 
 template(name="teamAvatar")
   a.member.orgOrTeamMember(class="js-member" title="{{teamData.teamDisplayName}}")
@@ -59,7 +59,7 @@ template(name="teamAvatar")
 
 template(name="boardTeamName")
   svg.avatar.avatar-initials(viewBox="0 0 {{teamViewPortWidth}} 15")
-    text(x="50%" y="13" text-anchor="middle")= teamName
+    text(x="50%" y="80%" text-anchor="middle")= teamName
 
 template(name="userPopup")
   .board-member-menu

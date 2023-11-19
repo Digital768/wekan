@@ -244,13 +244,13 @@ BlazeComponent.extendComponent({
   },
 
   isViewLists() {
-    // const currentUser = ReactiveCache.getCurrentUser();
-    // if (currentUser) {
-    //   return (currentUser.profile || {}).boardView === 'board-view-lists';
-    // } else {
-    //   return window.localStorage.getItem('boardView') === 'board-view-lists';
-    // }
-    return true; // Set this to always return true for the default view as lists
+    const currentUser = ReactiveCache.getCurrentUser();
+    if (currentUser) {
+      return (currentUser.profile || {}).boardView === 'board-view-lists';
+    } else {
+      return window.localStorage.getItem('boardView') === 'board-view-lists';
+    }
+    // return true; // Set this to always return true for the default view as lists
   },
   
 

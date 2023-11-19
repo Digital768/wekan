@@ -9,13 +9,13 @@
   margin-bottom: 5px;
   padding: 3px 8px;
   max-width: 210px;
-  min-width: 8px;
+  min-width: 15px; /*changed - 19.11*/
   word-wrap: break-word;
   min-height: 18px;
   vertical-align: middle;
   white-space: initial;
   overflow: initial;
-  border-radius: 15px; /*changed 16.11*/
+  border-radius: 10px; /*changed 16.11*/
 }
 .card-label:hover {
   color: #fff;
@@ -137,6 +137,9 @@
 }
 .card-label-indigo {
   background-color: #4b0082;
+}
+.card-label-new {
+  background-color: #ffe600;
 }
 .edit-label .card-label,
 .create-label .card-label {
