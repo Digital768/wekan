@@ -52,12 +52,10 @@ template(name="addListForm")
           +inlinedForm(autoclose=false)
             input.list-name-input.full-line(type="text" placeholder="{{_ 'add-list'}}"
               autocomplete="off" autofocus)
-            //- remove add after list - 12.11
-              if currentBoard.getLastList   
-                  | {{_ 'add-after-list'}}
-                select.list-position-input.full-line
-                  each currentBoard.lists
-                    option(value="{{_id}}" selected=currentBoard.getLastList.title) {{title}}
+            if currentBoard.getLastList
+              select.list-position-input.full-line(hidden)
+                each currentBoard.lists
+                  option(value="{{_id}}" selected=currentBoard.getLastList.title) {{title}}
             .edit-controls.clearfix
               button.primary.confirm(type="submit") {{_ 'save'}}
               .fa.fa-times-thin.js-close-inlined-form

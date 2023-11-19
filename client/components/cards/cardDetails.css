@@ -104,9 +104,14 @@
   padding: 7px 20px;
   background: #ededed;
   border-bottom: 1px solid #dbdbdb;
-  position: sticky;
+  /* changed at 14.11 */
+  /* position: sticky; */
   top: 0px;
   z-index: 500;
+
+  /*direcrtion rtl change - 14.11*/
+  display: flex;
+  direction: rtl;
 }
 .card-details .card-details-header .card-number {
   color: #b3b3b3;
@@ -130,6 +135,7 @@
   font-size: 24px;
   padding: 5px 10px 5px 10px;
   margin-right: -8px;
+  height: 20px; /*height change - 14.11*/
 }
 .card-details .card-details-header .close-card-details-mobile-web {
   font-size: 24px;
@@ -140,6 +146,7 @@
   font-size: 17px;
   padding: 10px;
   margin-right: 10px;
+  height: 20px; /*height changed - 14.11*/
 }
 .card-details .card-details-header .card-copy-mobile-button {
   font-size: 17px;
@@ -149,6 +156,7 @@
 .card-details .card-details-header .card-details-menu {
   font-size: 17px;
   padding: 10px;
+  height: 20px; /*height changed - 14.11*/
 }
 .card-details .card-details-header .card-details-menu-mobile-web {
   font-size: 17px;
@@ -163,8 +171,10 @@
 .card-details .card-details-header .card-details-title {
   font-weight: bold;
   font-size: 1.33em;
-  margin: 7px 0 0;
+  margin: 50px -150px 0px; /*margin change - 14.11*/
   padding: 0;
+  /* added 14.11 */
+  max-width:100%;
 }
 .card-details .card-details-header .linked-card-location {
   font-style: italic;
@@ -177,7 +187,16 @@
 .card-details .card-details-header form.inlined-form {
   margin-top: 5px;
   margin-bottom: 10px;
+  /* added 14.11 */
+  flex: 1;
 }
+
+form.inlined-form > textarea{
+  /* added 14.11 */
+  width:100%;
+}
+
+
 .card-details .card-details-header form.inlined-form .copied-tooltip {
   padding: 0px 10px;
 }
@@ -195,8 +214,9 @@
   padding: 0px 5px;
 }
 .card-details .card-details-header .copied-tooltip {
-  margin-right: 10px;
+  margin-right: -60px; /*margin change - 14.11*/
   padding: 10px;
+  height: 20px; /*height changed - 14.11*/
 }
 .card-details .card-description i.fa.fa-pencil-square-o {
   float: right;
@@ -324,6 +344,7 @@ input[type="submit"].attachment-add-link-submit {
   }
   .card-details .card-details-header .close-card-details {
     margin-right: 0px;
+
   }
   .card-details .card-details-header .card-details-menu {
     margin-right: 40px;
