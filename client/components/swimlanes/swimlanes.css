@@ -46,7 +46,6 @@
   /* background: #dedede;  no-need*/
   display: flex;
   flex-direction: row;
-  overflow: 1;
   background-color: #f6fff945; /*add color - 15.11*/
 }
 .swimlane.placeholder {
@@ -126,6 +125,7 @@
 }
 .list-group {
   height: 100%;
+  background-color: #f6fff945;
 }
 .moving-swimlane {
   display: none;
