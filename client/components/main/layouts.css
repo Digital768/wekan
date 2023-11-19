@@ -377,6 +377,9 @@ a.fa,
 a i.fa {
   color: #5d5c5c; /*color change - 16.11*/
 }
+i.fa.fa-plus {
+  margin-left: 5px;
+}
 a:not(.disabled):hover.fa,
 a:not(.disabled).is-active.fa,
 a:not(.disabled):hover i.fa,

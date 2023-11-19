@@ -17,6 +17,7 @@
   /* overflow: auto; - List width and height resizeable */
   /* added 19.11 */
   height: fit-content;
+  margin-left: 10px; /*margin adding - 19.11*/
 }
 
 .list:first-child {
@@ -175,7 +176,6 @@
   flex-shrink: 0;
   /** get card drag/drop working for empty swimlanes */
   min-height: 32px;
-  height: 200px;
 }
 
 .list-body .minicards form {

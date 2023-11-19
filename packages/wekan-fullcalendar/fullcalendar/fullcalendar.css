@@ -127,7 +127,7 @@ body .fc {
 .fc-button-group {
   /*added 19.11*/
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   }
 
 /*
