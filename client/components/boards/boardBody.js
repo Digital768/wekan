@@ -333,7 +333,8 @@ BlazeComponent.extendComponent({
         center:
           //changed at 15.11 -  'agendaDay,listDay,timelineDay agendaWeek,listWeek,timelineWeek month,listMonth',
         'timelineWeek month,listMonth',
-        right: 'title   today prev,next',
+        // changed between the next and prev
+        right: 'title   today next,prev',
       },
       // height: 'parent', nope, doesn't work as the parent might be small
       height: 'auto',
