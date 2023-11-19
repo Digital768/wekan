@@ -41,7 +41,7 @@ fi
 # 4) Generate docs.
 #python3 ./openapi/generate_openapi.py --release $(git describe --tags --abbrev=0) > ./public/api/wekan.yml
 python3 ./openapi/generate_openapi.py --release v$1 > ./public/api/wekan.yml
-api2html -c ./public/logo-header.png -o ./public/api/wekan.html ./public/api/wekan.yml
+api2html -c ./public/T-BOARD_big.svg -o ./public/api/wekan.html ./public/api/wekan.yml
 
 # Copy docs to bundle
 #cp -pR ./public/api ~/repos/wekan/.build/bundle/programs/web.browser/app/

@@ -233,12 +233,12 @@ template(name="activity")
       if(currentData.timeKey)
         | {{_ activity.activityType }}
         = ' '
-        i(title=currentData.timeValue).activity-meta {{ moment currentData.timeValue 'LLL' }}
+        i(title=currentData.timeValue).activity-meta {{ moment currentData.timeValue 'YYYY-MM-DD' }}
         if (currentData.timeOldValue)
           = ' '
             | {{{_ "previous_as" }}}
             = ' '
-            i(title=currentData.timeOldValue).activity-meta {{ moment currentData.timeOldValue 'LLL' }}
+            i(title=currentData.timeOldValue).activity-meta {{ moment currentData.timeOldValue 'YYYY-MM-DD' }}
         = ' @'
       else if(currentData.timeValue)
         | {{_ activity.activityType currentData.timeValue}}

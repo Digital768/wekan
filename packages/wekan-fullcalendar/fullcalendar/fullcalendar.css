@@ -313,6 +313,12 @@ temporary rendered events).
   /* don't put a border between event cells */
   border-top: 0; }
 
+  /* added text align at 15.11 */
+
+  .fc-content{
+    text-align: right;
+  }
+
 /* Scrolling Container
 --------------------------------------------------------------------------------------------------*/
 .fc-scroller {
@@ -858,7 +864,10 @@ NOTE: use percentage font sizes or else old IE chokes
 .fc-view > table {
   /* so dragged elements can be above the view's main element */
   position: relative;
-  z-index: 1; }
+  z-index: 1; 
+  /* added  height: 100vh; 15.11.23*/
+  height: 100vh;
+}
 
 /* BasicView
 --------------------------------------------------------------------------------------------------*/
@@ -900,7 +909,8 @@ NOTE: use percentage font sizes or else old IE chokes
   float: right; }
 
 .fc-rtl .fc-basic-view .fc-day-top .fc-day-number {
-  float: left; }
+  /* changed at 15.11 */
+  float: right; }
 
 .fc-ltr .fc-basic-view .fc-day-top .fc-week-number {
   float: left;

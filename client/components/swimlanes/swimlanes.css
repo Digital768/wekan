@@ -43,10 +43,11 @@
   left: 0;
 }
 .swimlane {
-  background: #dedede;
+  /* background: #dedede;  no-need*/
   display: flex;
   flex-direction: row;
-  overflow: 0;
+  overflow: 1;
+  background-color: #f6fff945; /*add color - 15.11*/
 }
 .swimlane.placeholder {
   background-color: rgba(0,0,0,0.2);

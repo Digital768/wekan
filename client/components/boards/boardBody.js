@@ -250,7 +250,9 @@ BlazeComponent.extendComponent({
     } else {
       return window.localStorage.getItem('boardView') === 'board-view-lists';
     }
+    // return true; // Set this to always return true for the default view as lists
   },
+  
 
   isViewCalendar() {
     const currentUser = ReactiveCache.getCurrentUser();
@@ -324,12 +326,15 @@ BlazeComponent.extendComponent({
       editable: true,
       selectable: true,
       timezone: 'local',
-      weekNumbers: true,
+      // changed weeknubmers to false at 15.11
+      weekNumbers: false,
       header: {
-        left: 'title   today prev,next',
+        left: '',
         center:
-          'agendaDay,listDay,timelineDay agendaWeek,listWeek,timelineWeek month,listMonth',
-        right: '',
+          //changed at 15.11 -  'agendaDay,listDay,timelineDay agendaWeek,listWeek,timelineWeek month,listMonth',
+        'timelineWeek month,listMonth',
+        // changed between the next and prev
+        right: 'title   today next,prev',
       },
       // height: 'parent', nope, doesn't work as the parent might be small
       height: 'auto',

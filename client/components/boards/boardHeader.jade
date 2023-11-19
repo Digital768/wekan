@@ -121,10 +121,10 @@ template(name="boardHeaderBar")
         a.board-header-btn.js-toggle-board-view(
           title="{{_ 'board-view'}}")
           i.fa.fa-caret-down
-          if $eq boardView 'board-view-swimlanes'
-            i.fa.fa-th-large
           if $eq boardView 'board-view-lists'
             i.fa.fa-trello
+          if $eq boardView 'board-view-swimlanes'
+            i.fa.fa-th-large
           if $eq boardView 'board-view-cal'
             i.fa.fa-calendar
           span {{#if boardView}}{{_ boardView}}{{else}}{{_ 'board-view-swimlanes'}}{{/if}}
@@ -264,10 +264,10 @@ template(name="boardChangeTitlePopup")
   form
     label
       | {{_ 'title'}}
-      input.js-board-name(type="text" value=title autofocus dir="auto")
+      input.js-board-name(type="text" value=title autofocus dir="rtl")
     label
       | {{_ 'description'}}
-      textarea.js-board-desc(dir="auto")= description
+      textarea.js-board-desc(dir="rtl")= description
     input.primary.wide(type="submit" value="{{_ 'rename'}}")
 
 template(name="boardCreateRulePopup")

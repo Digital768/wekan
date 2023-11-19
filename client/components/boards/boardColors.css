@@ -922,7 +922,7 @@
 .board-color-corteza.sk-spinner div,
 .board-backgrounds-list .board-color-corteza.background-box,
 .board-list .board-color-corteza a {
-  background-color: #568ba2;
+  background-color: #21354b;
 }
 .board-color-corteza .is-selected .minicard {
   border-left: 3px solid #568ba2;
@@ -948,7 +948,7 @@
   border-bottom: 2px solid #6597ad;
 }
 .board-color-corteza#header-quick-access {
-  background: #4d7d92;
+  background: #0b2239;
   color: #fff;
 }
 .board-color-corteza#header #header-main-bar .board-header-btn.emphasis {

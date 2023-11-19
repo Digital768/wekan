@@ -103,7 +103,7 @@ Utils = {
       window.localStorage.setItem('boardView', 'board-view-cal'); //true
       Utils.reload();
     } else {
-      window.localStorage.setItem('boardView', 'board-view-swimlanes'); //true
+      window.localStorage.setItem('boardView', 'board-view-lists'); //true
       Utils.reload();
     }
   },

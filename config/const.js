@@ -1,4 +1,5 @@
 export const ALLOWED_BOARD_COLORS = [
+  'midnight',
   'pomegranate',
   'belize',
   'nephritis',
@@ -7,8 +8,6 @@ export const ALLOWED_BOARD_COLORS = [
   'moderatepink',
   'strongcyan',
   'limegreen',
-  'midnight',
-  'dark',
   'relax',
   'corteza',
   'clearblue',
@@ -16,6 +15,7 @@ export const ALLOWED_BOARD_COLORS = [
   'modern',
   'moderndark',
   'exodark',
+  // 'dark', removed - 15.11
 ];
 export const ALLOWED_COLORS = [
   'white',
