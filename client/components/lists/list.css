@@ -8,17 +8,20 @@
   padding: 0;
   float: left;
   min-width: 100px; /* TODO(mark-i-m): hardcoded? */
-  /*max-width: 270px;*/
+  /* max-width: 270px; */
   /* Reverted incomplete change list width: */
   /* https://github.com/wekan/wekan/issues/4558 */
   /* Orinal width: 270px. Changes not saved yet: */
   /*resize: both;  - List width and height resizeable */
   /* overflow: auto; - List width and height resizeable */
+  /* added 19.11 */
+  height: fit-content;
 }
 .list:first-child {
   min-width: 200px; /*changed - 19.11*/
   margin-left: 5px;
   border-left: none;
+  background-color: #f6fff945;
 }
 .card-details + .list {
   border-left: none;
@@ -125,12 +128,14 @@
   overflow-y: auto;
   padding: 5px 11px;
   background-color: white; /*color change - 19.11*/
+  height: 200px;
 }
 .list-body .minicards {
   flex-grow: 1;
   flex-shrink: 0;
   /** get card drag/drop working for empty swimlanes */
   min-height: 32px;
+  height: 200px;
 }
 .list-body .minicards form {
   margin-bottom: 9px;
