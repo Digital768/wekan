@@ -126,14 +126,7 @@
   align-items: center;
   color: #fff;
   transition: background-color 0.4s;
-  /* background: #2573a7; */
-<<<<<<<<< Temporary merge branch 1
-  /* changed header background color */
-  background: #233e5b; 
-=========
-  /* background color changed - 13.11 */
-  background: #233e5b;
->>>>>>>>> Temporary merge branch 2
+  background-color: #21354b;
   height: 28px;
   font-size: 12px;
   display: flex;
