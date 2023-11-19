@@ -43,10 +43,11 @@
   left: 0;
 }
 .swimlane {
-  background: #dedede;
+  /* background: #dedede;  no-need*/
   display: flex;
   flex-direction: row;
-  overflow: 0;
+  overflow: 1;
+  /* background-color: #b8d7c045; no need */
 }
 .swimlane.placeholder {
   background-color: rgba(0,0,0,0.2);
@@ -66,7 +67,7 @@
   display: flex;
   flex-direction: row; /*rtl_changes + row change*/
   flex: 1 0 100%;
-  background-color: #ccc;
+  /* background-color: #ccc;  color change */
 }
 /* added */
 .swimlane.js-lists.js-swimlane.ui-sortable{

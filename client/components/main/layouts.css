@@ -77,6 +77,8 @@ body {
   position: relative;
   flex: 1;
   overflow-x: hidden;
+  background-color: #b8d7c045; 
+  /* add color - 15.11 */
 }
 #content .sk-spinner {
   margin-top: 30vh;
@@ -230,8 +232,8 @@ table,
 td,
 th {
   vertical-align: top;
-  border-top: 1px solid #ccc;
-  border-left: 1px solid #ccc;
+  border-top: 3px solid #ccc;
+  border-left: 3px solid #ccc;
 }
 td,
 th {
