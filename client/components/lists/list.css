@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  background-color: #f6fff945;  /*add color - 15.11*/
+  background-color: #f6fff945;
+  /*add color - 15.11*/
   padding: 0;
   float: left;
   min-width: 100px;
@@ -14,8 +15,10 @@
   /* Orinal width: 270px. Changes not saved yet: */
   /*resize: both;  - List width and height resizeable */
   /* overflow: auto; - List width and height resizeable */
-  height: fit-content;   /* added 19.11 */
-  margin-left: 10px; /*margin adding - 19.11*/
+  height: fit-content;
+  /* added 19.11 */
+  margin-left: 10px;
+  /*margin adding - 19.11*/
 }
 
 .list:first-child {
@@ -55,7 +58,13 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 5px; /*added 20.11*/
+  gap: 5px;
+  /*added 20.11*/
+}
+
+/*added 20.11*/
+.open-list-composer label {
+  cursor: pointer;
 }
 
 .list.list-composer .list-name-input,
@@ -75,13 +84,15 @@
   display: flex;
   /*rtl_changes*/
   flex: 0 0 auto;
-  padding: 10px 10px 7px; /*padding change - 20.11*/
+  padding: 10px 10px 7px;
+  /*padding change - 20.11*/
   position: relative;
   min-height: 20px;
   background-color: #e4e4e4;
   justify-content: space-between;
   /*rtl_changes*/
-  margin: 8px 0; /*added - 20.11*/
+  margin: 8px 0;
+  /*added - 20.11*/
   border-radius: 5px;
 }
 
@@ -196,7 +207,13 @@
   position: relative;
   text-decoration: none;
   animation: fadeIn 0.3s;
-  gap: 5px; /*added 20.11*/
+  gap: 5px;
+  /*added 20.11*/
+}
+
+/*added 20.11*/
+.list-body .open-minicard-composer label {
+  cursor: pointer;
 }
 
 @media print {
