@@ -16,7 +16,7 @@ table, tbody, td, tfoot, th, thread, tr, tt, ul, var {
   outline: 0;
   font-weight: inherit;
   font-style: inherit;
-  font-family: inherit;
+  font-family: 'Segoe UI Semibold';
   font-size: 100%;
   vertical-align: baseline;
 }
@@ -79,7 +79,6 @@ body {
   position: relative;
   flex: 1;
   overflow-x: hidden;
-  background-color: #f6fff945; /*add color - 15.11*/
 }
 #content .sk-spinner {
   margin-top: 30vh;
@@ -376,6 +375,7 @@ kbd {
 a.fa,
 a i.fa {
   color: #5d5c5c; /*color change - 16.11*/
+  font-size: larger; /*added - 21.11*/
 }
 a:not(.disabled):hover.fa,
 a:not(.disabled).is-active.fa,

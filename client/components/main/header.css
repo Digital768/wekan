@@ -2,7 +2,7 @@
   color: #fff;
   transition: background-color 0.4s;
   /* background color changed to T-Board color - 16.11*/
-  background: #21354b;
+  background: rgba(255, 255, 255, 0.24); /*changed - 21.11*/
   z-index: 17;
 }
 
