@@ -46,7 +46,7 @@ template(name="header")
           unless currentSetting.customTopLeftCornerLogoImageUrl
             div#headerIsSettingDatabaseCallDone
               img(src="{{pathFor '/T-BOARD_big.svg'}}" alt="{{currentSetting.productName}}" title="{{currentSetting.productName}}" width="130")
-        span.allBoards
+        span.allBoards.generaL-hover
           a(href="{{pathFor 'home'}}")
             span.fa.fa-home
             | {{_ 'all-boards'}}

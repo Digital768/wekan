@@ -229,3 +229,21 @@
   background: #4b0082 !important;
   color: #fff !important;
 }
+
+.add-button {
+  box-shadow: none;
+  border: none;
+  line-height: 20px;
+  text-decoration: none;
+  white-space: nowrap;
+  display: flex;
+  justify-content: space-between;
+  opacity: 0.8;
+  border-radius: 15px;
+}
+
+/* general hover class that can be added to anything, i think */
+.generaL-hover {
+  background-color: var(--dynamic-button-hovered);
+  color: var(--dynamic-text);
+}
