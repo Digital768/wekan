@@ -128,9 +128,9 @@ Utils = {
     } else if (window.localStorage.getItem('boardView') === 'board-view-cal') {
       return 'board-view-cal';
     } else {
-      window.localStorage.setItem('boardView', 'board-view-swimlanes'); //true
+      window.localStorage.setItem('boardView', 'board-view-lists'); //true
       Utils.reload();
-      return 'board-view-swimlanes';
+      return 'board-view-lists';
     }
   },
 
