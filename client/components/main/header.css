@@ -110,7 +110,8 @@
 #header #header-main-bar .board-header-btn.is-active,
 #header #header-main-bar h1.is-clickable.is-active,
 #header #header-main-bar .board-header-btn:hover:not(.is-disabled),
-#header #header-main-bar h1.is-clickable:hover:not(.is-disabled) {
+#header #header-main-bar h1.is-clickable:hover:not(.is-disabled),
+.current {
   background: rgba(0, 0, 0, 0.15);
 }
 
