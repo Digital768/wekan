@@ -111,10 +111,10 @@
 #header #header-main-bar h1.is-clickable.is-active,
 #header #header-main-bar .board-header-btn:hover:not(.is-disabled),
 #header #header-main-bar h1.is-clickable:hover:not(.is-disabled),
-.current,
-.header-quick-access-list,
-.sun-moon-container,
-.board-header-btns {
+.current:hover:not(.is-disabled),
+.header-quick-access-list:hover:not(.is-disabled),
+.sun-moon-container:hover:not(.is-disabled)
+{
   background: rgba(0, 0, 0, 0.15);
 }
 
