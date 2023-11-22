@@ -48,9 +48,6 @@ template(name="header")
               div#headerIsSettingDatabaseCallDone
                 img(src="{{pathFor '/T-BOARD_big.svg'}}" alt="{{currentSetting.productName}}" title="{{currentSetting.productName}}" width="130")
         span.allBoards.generaL-hover
-          a(href="{{pathFor 'home'}}")
-            span.fa.fa-home
-            | {{_ 'all-boards'}}
         ul.header-quick-access-list
           //li
           //  a(href="{{pathFor 'public'}}")
