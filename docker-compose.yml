@@ -717,9 +717,8 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - wekan-files:/data:rw
-      - /c/Users/user/Desktop/wekan-4/client:/build/programs/web.browser/app/client
-      - /c/Users/user/Desktop/wekan-4/public:/build/programs/web.browser/app
-
+      - /c/projects/wekan/client:/build/programs/web.browser/app/client
+      - /c/projects/wekan/public:/build/programs/web.browser/app
 
 #---------------------------------------------------------------------------------
 # ==== OPTIONAL: SHARE DATABASE TO OFFICE LAN AND REMOTE VPN ====

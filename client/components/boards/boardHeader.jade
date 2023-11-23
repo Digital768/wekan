@@ -264,10 +264,10 @@ template(name="boardChangeTitlePopup")
   form
     label
       | {{_ 'title'}}
-      input.js-board-name(type="text" value=title autofocus dir="rtl" spellcheck="false"/*added spellcheck false*/)
+      input.js-board-name(type="text" value=title autofocus dir="rtl" spellcheck="false")
     label
       | {{_ 'description'}}
-      textarea.js-board-desc(dir="rtl" spellcheck="false"/*added spellcheck false*/)= description
+      textarea.js-board-desc(dir="rtl" spellcheck="false")= description
     input.primary.wide(type="submit" value="{{_ 'rename'}}")
 
 template(name="boardCreateRulePopup")
