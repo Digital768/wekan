@@ -153,41 +153,67 @@ body {
   height: 100vh;
 }
 
+/*changing background colors - 23.11*/
+
 .board-color-clearblue.boardscolor-container {
-  background: linear-gradient(230deg, hsl(209, 79%, 60%) 0%, hsl(209, 79%, 80%) 100%);
+  /* background: linear-gradient(230deg, hsl(209, 79%, 60%) 0%, hsl(209, 79%, 80%) 100%); */
+  background-color: rgb(34, 140, 213);
+  background-image: url(/svg-etc/light-blue.svg);
 }
 
 .board-color-nephritis.boardscolor-container {
-  background: linear-gradient(230deg, hsl(145, 63%, 42%) 0%, hsl(145, 63%, 80%) 100%);
+  /* background: linear-gradient(230deg, hsl(145, 63%, 42%) 0%, hsl(145, 63%, 80%) 100%); */
+  background-color: rgb(63, 164, 149);
+  background-image: url(/svg-etc/green.svg);
 }
 
 .board-color-pomegranate.boardscolor-container {
-  background: linear-gradient(230deg, hsl(6, 63%, 46%) 0%, hsl(6, 63%, 65%) 100%);
+  /* background: linear-gradient(230deg, hsl(6, 63%, 46%) 0%, hsl(6, 63%, 65%) 100%); */
+  background-color: rgb(118, 42, 20);
+  background-image: url(/svg-etc/magma.svg);
 }
 
 .board-color-belize.boardscolor-container {
   /* background: linear-gradient(230deg, hsl(204, 64%, 44%) 0%, hsl(204, 64%, 80%) 100%); */
   background-color: rgb(11, 80, 175);
-  /* background-image: url(../../../public/svg-etc/dark-bluesvg.svg); */
   background-image: url(/svg-etc/dark-bluesvg.svg);
 }
 
 .board-color-wisteria.boardscolor-container {
   /* background: linear-gradient(230deg, hsl(282, 44%, 47%) 0%, hsl(282, 44%, 80%) 100%); */
-  background: linear-gradient(230deg, hsl(282, 44%, 47%) 0%, hsl(282, 44%, 80%) 100%);
+  background-color: rgb(103, 66, 132);
+  background-image: url(/svg-etc/dark-purplesvg.svg);
+
 }
 
 .board-color-midnight.boardscolor-container {
-  background: linear-gradient(230deg, hsl(210, 29%, 24%) 0%, hsl(210deg 29.41% 80%) 100%);
+  /* background: linear-gradient(230deg, hsl(210, 29%, 24%) 0%, hsl(210deg 29.41% 80%) 100%); */
+  background-color: rgb(55, 72, 102);
+  background-image: url(/svg-etc/dark.svg);
 }
 
 .board-color-pumpkin.boardscolor-container {
-  background: linear-gradient(230deg, hsl(28, 80%, 52%) 0%, hsl(28, 80%, 80%) 100%);
+  /* background: linear-gradient(230deg, hsl(28, 80%, 52%) 0%, hsl(28, 80%, 80%) 100%); */
+  background-color: rgb(239, 118, 58);
+  background-image: url(/svg-etc/peach.svg);
 }
 
 .board-color-moderatepink.boardscolor-container {
-  background: linear-gradient(230deg, hsl(331, 53%, 58%) 0%, hsl(331,53%, 80%) 100%);
+  /* background: linear-gradient(230deg, hsl(331, 53%, 58%) 0%, hsl(331,53%, 80%) 100%); */
+  background-color: rgb(244, 136, 166);
+  background-image: url(/svg-etc/flower.svg);
 }
+.board-color-modern.boardscolor-container {
+  /* background: linear-gradient(230deg, hsl(204, 63%, 44%) 0%, hsl(204,63%, 80%) 100%); */
+  background-color: rgb(168, 105, 193);
+  background-image: url(/svg-etc/purple.svg);
+}
+
+
+
+
+
+
 
 .board-color-strongcyan.boardscolor-container {
   background: linear-gradient(230deg, hsl(189, 100%, 40%) 0%, hsl(189,100%, 80%) 100%);
@@ -205,9 +231,7 @@ body {
   background: linear-gradient(230deg, hsl(0, 0%, 70%) 0%, hsl(0,0%, 100%) 100%);
 }
 
-.board-color-modern.boardscolor-container {
-  background: linear-gradient(230deg, hsl(204, 63%, 44%) 0%, hsl(204,63%, 80%) 100%);
-}
+
 
 
 

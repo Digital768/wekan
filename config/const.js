@@ -19,39 +19,36 @@ export const ALLOWED_BOARD_COLORS = [
 ];
 export const ALLOWED_COLORS = [
   'light-green',
-  'green',
-  'bold-green',
-
   'light-yellow',
-  'yellow',
-  'bold-yellow',
-
   'light-orange',
-  'orange',
-  'bold-orange',
-
   'light-red',
-  'red',
-  'bold-red',
-
   'light-purple',
-  'purple',
-  'bold-purple',
-
   'light-blue',
-  'blue',
-  'bold-blue',
-
   'light-sky',
-  'sky',
-  'bold-sky',
-
+  'light-lime',
   'light-pink',
-  'pink',
-  'bold-pink',
-
   'light-black',
+
+  'green',
+  'yellow',
+  'orange',
+  'red',
+  'purple',
+  'blue',
+  'sky',
+  'lime',
+  'pink',
   'black',
+
+  'bold-green',
+  'bold-yellow',
+  'bold-orange',
+  'bold-red',
+  'bold-purple',
+  'bold-blue',
+  'bold-sky',
+  'bold-lime',
+  'bold-pink',
   'bold-black',
 
   // 'white',
