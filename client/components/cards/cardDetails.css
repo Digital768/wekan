@@ -275,6 +275,7 @@ form.inlined-form>textarea {
   display: flex;
   flex-wrap: wrap;
   margin: 15px 0;
+  gap: 4px;
 }
 
 .card-details .card-details-items .card-details-item {
@@ -311,7 +312,10 @@ form.inlined-form>textarea {
   display: block;
   word-wrap: break-word;
   max-width: 28%;
-  border-left: 2px solid;
+  /* flex-grow: 0; */
+  flex-basis: 20%;
+  /* margin-left: 20px; */
+  /* border-left: 2px solid; */
   /*border adding - changed 12.11*/
 }
 

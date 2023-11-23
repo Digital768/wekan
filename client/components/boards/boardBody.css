@@ -16,6 +16,7 @@
   top: 0;
   bottom: 0;
   transition: margin 0.1s;
+  padding:12px;
   /*add color - 15.11*/
   /* removed 15.11.23 */
 }

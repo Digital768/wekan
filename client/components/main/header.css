@@ -1,9 +1,14 @@
 #header {
-  color: #fff;
+  color: #ffff;
   transition: background-color 0.4s;
   /* background color changed to T-Board color - 16.11*/
-  background: rgba(255, 255, 255, 0.24); /*changed - 21.11*/
+  background: rgba(0, 0, 0, 0.24);
+  /*changed - 21.11*/
   z-index: 17;
+}
+
+#header:not([class]):not() {
+  background-color: #0b2239;
 }
 
 #header #header-main-bar {

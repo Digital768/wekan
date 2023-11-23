@@ -57,34 +57,103 @@ label {
 .card-label-white:hover {
   color: #aaa;
 }
-.card-label-green {
-  background-color: #62EC4D ;
+.card-label-light-green {
+  background-color: #baf3db ;
 }
-.card-label-green:hover {
+.card-label-green {
+  background-color: #4bce97 ;
+}
+.card-label-bold-green {
+  background-color: #1f845a ;
+}
+.card-label-light-yellow {
+  background-color: #f8e6a0;
   color: #000;
 }
 .card-label-yellow {
-  background-color: #f7ff00;
+  background-color: #f5cd47;
+  color: #000;
+}
+.card-label-bold-yellow {
+  background-color: #946f00;
+  color: #000;
+}
+.card-label-light-orange {
+  background-color: #fedec8;
   color: #000;
 }
 .card-label-orange {
-  background-color: #ff4f00;
+  background-color: #fea362;
   color: #000;
+}
+.card-label-bold-orange {
+  background-color: #a54800;
+  color: #000;
+}
+.card-label-light-red {
+  background-color: #fd9891;
 }
 .card-label-red {
-  background-color: #ff0000;
+  background-color: #f87168;
+}
+.card-label-bold-red {
+  background-color: #c9372c;
+}
+.card-label-light-purple {
+  background-color: #dfd8fd;
 }
 .card-label-purple {
-  background-color: #E29AFC;
+  background-color: #9f8fef;
+}
+.card-label-bold-purple {
+  background-color: #6e5dc6;
+}
+.card-label-light-blue {
+  background-color: #cce0ff;
 }
 .card-label-blue {
-  background-color: #0079bf;
+  background-color: #579dff;
 }
-.card-label-pink {
-  background-color: #ff78cb;
-  color: #000;
+.card-label-bold-blue {
+  background-color: #0c66e4;
+}
+.card-label-light-sky {
+  background-color: #c1f0f5;
 }
 .card-label-sky {
+  background-color: #6cc3e0;
+}
+.card-label-bold-sky {
+  background-color: #206a83;
+}
+.card-label-light-lime {
+  background-color: #D3F1A7;
+}
+.card-label-lime {
+  background-color: #94c748;
+}
+.card-label-bold-lime {
+  background-color: #5b7f24;
+}
+.card-label-light-pink {
+  background-color: #fdd0ec;
+}
+.card-label-pink {
+  background-color: #e774bb;
+}
+.card-label-bold-pink {
+  background-color: #ae4787;
+}
+.card-label-light-black {
+  background-color: #dcdfe4;
+}
+.card-label-black {
+  background-color: #8590a2;
+}
+.card-label-bold-black {
+  background-color: #626f86;
+}
+/* .card-label-sky {
   background-color: #9AFCE2;
 }
 .card-label-black {
@@ -141,7 +210,7 @@ label {
 }
 .card-label-indigo {
   background-color: #4b0082;
-}
+} */
 .edit-label .card-label,
 .create-label .card-label {
   float: left;

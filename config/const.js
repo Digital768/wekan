@@ -18,31 +18,67 @@ export const ALLOWED_BOARD_COLORS = [
   // 'dark', removed - 15.11
 ];
 export const ALLOWED_COLORS = [
-  'white',
+  'light-green',
   'green',
+  'bold-green',
+
+  'light-yellow',
   'yellow',
+  'bold-yellow',
+
+  'light-orange',
   'orange',
+  'bold-orange',
+
+  'light-red',
   'red',
+  'bold-red',
+
+  'light-purple',
   'purple',
+  'bold-purple',
+
+  'light-blue',
   'blue',
+  'bold-blue',
+
+  'light-sky',
   'sky',
-  'lime',
+  'bold-sky',
+
+  'light-pink',
   'pink',
+  'bold-pink',
+
+  'light-black',
   'black',
-  'silver',
-  'peachpuff',
-  'crimson',
-  'plum',
-  'darkgreen',
-  'slateblue',
-  'magenta',
-  'gold',
-  'navy',
-  'gray',
-  'saddlebrown',
-  'paleturquoise',
-  'mistyrose',
-  'indigo',
+  'bold-black',
+
+  // 'white',
+  // 'green',
+  // 'yellow',
+  // 'orange',
+  // 'red',
+  // 'purple',
+  // 'blue',
+  // 'sky',
+  // 'lime',
+  // 'pink',
+  // 'black',
+  // 'silver',
+  // 'peachpuff',
+  // 'crimson',
+  // 'plum',
+  // 'darkgreen',
+  // 'slateblue',
+  // 'magenta',
+  // 'gold',
+  // 'navy',
+  // 'gray',
+  // 'saddlebrown',
+  // 'paleturquoise',
+  // 'mistyrose',
+  // 'indigo',
 ];
 export const TYPE_BOARD = 'board';
 export const TYPE_CARD = 'cardType-card';
