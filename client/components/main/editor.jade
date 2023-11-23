@@ -4,7 +4,7 @@ template(name="editor")
   a.fa.fa-copy(title="{{_ 'copy-text-to-clipboard'}}")
   span.copied-tooltip {{_ 'copied'}}
   textarea.editor(
-    dir="rtl"
+    dir="rtl" spellcheck="false"
     class="{{class}}"
     id=id
     autofocus=autofocus

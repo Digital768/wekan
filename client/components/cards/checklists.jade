@@ -70,7 +70,7 @@ template(name="addChecklistItemForm")
 template(name="editChecklistItemForm")
   a.fa.fa-copy(title="{{_ 'copy-text-to-clipboard'}}")
   span.copied-tooltip {{_ 'copied'}}
-  textarea.js-edit-checklist-item(rows='1' autofocus dir="rtl")
+  textarea.js-edit-checklist-item(rows='1' autofocus dir="rtl" spellcheck="false")
     if $eq type 'item'
       = item.title
     else
