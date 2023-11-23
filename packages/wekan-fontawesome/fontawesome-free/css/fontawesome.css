@@ -1765,7 +1765,9 @@ readers do not read off random characters that represent icons */
   content: "\f5d0"; }
 
 .fa-star::before {
-  content: "\f005"; }
+  content: "\f005";
+  color: gold; /*adding color - 23.11*/
+ }
 
 .fa-repeat::before {
   content: "\f363"; }

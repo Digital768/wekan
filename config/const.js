@@ -6,52 +6,56 @@ export const ALLOWED_BOARD_COLORS = [
   'pumpkin',
   'wisteria',
   'moderatepink',
+  'corteza',
+  'clearblue',
+  // 'modern', removed - 15.11
+  // 'moderndark', removed - 15.11
+  // 'dark', removed - 15.11
+  'exodark',
+  'natural',
   'strongcyan',
   'limegreen',
   'relax',
-  'corteza',
-  'clearblue',
-  'natural',
-  'modern',
-  'moderndark',
-  'exodark',
-  // 'dark', removed - 15.11
+  'mountain',
+  'pizza',
+  'pokemon',
+  'walkingman',
 ];
 export const ALLOWED_COLORS = [
   'light-green',
-  'green',
-  'bold-green',
-
   'light-yellow',
-  'yellow',
-  'bold-yellow',
-
   'light-orange',
-  'orange',
-  'bold-orange',
-
   'light-red',
-  'red',
-  'bold-red',
-
   'light-purple',
+
+  'green',
+  'yellow',
+  'orange',
+  'red',
   'purple',
+
+  'bold-green',
+  'bold-yellow',
+  'bold-orange',
+  'bold-red',
   'bold-purple',
 
   'light-blue',
-  'blue',
-  'bold-blue',
-
   'light-sky',
-  'sky',
-  'bold-sky',
-
+  'light-lime',
   'light-pink',
-  'pink',
-  'bold-pink',
-
   'light-black',
+
+  'blue',
+  'sky',
+  'lime',
+  'pink',
   'black',
+
+  'bold-blue',
+  'bold-sky',
+  'bold-lime',
+  'bold-pink',
   'bold-black',
 
   // 'white',

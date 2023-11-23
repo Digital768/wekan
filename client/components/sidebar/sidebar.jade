@@ -135,7 +135,7 @@ template(name="boardChangeColorPopup")
     each backgroundColors
       .board-background-select.js-select-background
         span.background-box(class="board-color-{{this}}")
-          span {{this}}
+          //- span {{this}} removed - 23.11
           if isSelected
             i.fa.fa-check
 

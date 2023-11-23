@@ -16,6 +16,9 @@
   will-change: transform;
   max-width: 180px;
 }
+.board-list li:hover{
+  scale: 1.1;
+}
 
 @keyframes hoverBoard{
   0% {
