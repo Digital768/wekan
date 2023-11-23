@@ -53,7 +53,7 @@ input,
 select,
 textarea,
 button {
-  font: 14px Roboto, Poppins, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font: 14px 'Segoe UI Semibold';
   line-height: 18px;
   color: #4d4d4d;
 }
