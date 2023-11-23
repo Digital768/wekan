@@ -35,7 +35,8 @@ template(name="userFormsLayout")
           img(src="{{currentSetting.customLoginLogoImageUrl}}" width="300" height="auto")
           br
       else
-        img(src="{{pathFor '/T-BOARD_big.svg'}}" alt="" width="300" height="auto")
+        //- changed t board color to black because its on white background - changed by Ben at 23.11
+        img(src="{{pathFor '/T-BOARD_big_Log_In.svg'}}" alt="" width="300" height="auto")
         br
       if currentSetting.textBelowCustomLoginLogo
         +viewer
