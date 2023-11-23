@@ -96,7 +96,7 @@ template(name="invitePeoplePopup")
         ul
           li
             .title {{_ 'invite-people'}}
-            textarea#email-to-invite.wekan-form-control(rows='5', placeholder="{{_ 'email-addresses'}}")
+            textarea#email-to-invite.wekan-form-control(rows='5', spellcheck="false"/*added spellcheck false*/, placeholder="{{_ 'email-addresses'}}")
           li
             .title {{_ 'to-boards'}}
             .bg-white

@@ -383,11 +383,13 @@
 }
 
 .board-color-midnight .minicard {
-  border-radius: 7px;
+  border-radius: 7px; /*border-radius from 7px to 13px */
   padding: 10px 10px 4px 10px;
   box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.15);
 }
-
+.minicard.minicard-composer.js-composer:hover{ /*add for hover border */
+  border: 2px black solid /*border on hover*/ 
+}
 .board-color-midnight button[type=submit].primary,
 .board-color-midnight input[type=submit].primary,
 .board-color-midnight .sidebar .sidebar-content .sidebar-btn {
