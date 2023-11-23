@@ -27,7 +27,8 @@
   /*changed - 19.11*/
   margin-left: 5px;
   border-left: none;
-  background-color: #f6fff945;
+  /* added transparent so "add list" div won't have a background color - 23.11 */
+  background-color: transparent;
 }
 
 .card-details+.list {

@@ -59,11 +59,12 @@ template(name="addListForm")
             .edit-controls.clearfix
               button.primary.confirm(type="submit") {{_ 'save'}}
               .fa.fa-times-thin.js-close-inlined-form
-              unless currentBoard.isTemplatesBoard
-                unless currentBoard.isTemplateBoard
-                  span.quiet
-                    | {{_ 'or'}}
-                    a.js-list-template {{_ 'template'}}
+              //- removed template - 23.11
+              //- unless currentBoard.isTemplatesBoard
+              //-   unless currentBoard.isTemplateBoard
+              //-     span.quiet
+              //-       | {{_ 'or'}}
+              //-       a.js-list-template {{_ 'template'}}
           else
             a.open-list-composer.js-open-inlined-form(title="{{_ 'add-list'}}")
               button.add-button

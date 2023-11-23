@@ -140,7 +140,7 @@ body {
   position: relative;
   flex: 1;
   overflow-x: hidden;
-  background-color: #f6fff945;
+  /* background-color: #f6fff945; */
 }
 
 .boardscolor-container {
