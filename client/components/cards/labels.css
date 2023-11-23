@@ -1,6 +1,4 @@
 .card-label {
-  border: 1px solid #000;
-  border-radius: 4px;
   color: #fff;
   display: inline-block;
   font-weight: 700;
@@ -15,7 +13,7 @@
   vertical-align: middle;
   white-space: initial;
   overflow: initial;
-  border-radius: 10px; /*changed 16.11*/
+  border-radius: 3px; /*changed 23.11*/
 }
 /* added at 19.11 */
 label {
@@ -41,6 +39,7 @@ label {
   margin: 0px;
 }
 .palette-colors {
+  margin-top: 10px; /*added - 23.11*/
   display: flex;
   flex-wrap: wrap;
 }

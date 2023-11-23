@@ -1,7 +1,8 @@
 .board-color-nephritis.sk-spinner div,
 .board-backgrounds-list .board-color-nephritis.background-box,
 .board-list .board-color-nephritis a {
-  background-color: rgb(63, 164, 149); /*changed - 23.11*/
+  background-color: rgb(63, 164, 149);
+  background-image: url(/svg-etc/green.svg);
 }
 
 /* .board-color-nephritis .board-canvas {
@@ -97,7 +98,7 @@
 .board-backgrounds-list .board-color-pomegranate.background-box,
 .board-list .board-color-pomegranate a {
   background-color: rgb(118, 42, 20); /*changing background colors - 23.11*/
-
+  background-image: url(/svg-etc/magma.svg);
 }
 
 /* .board-color-pomegranate .board-canvas {
@@ -190,6 +191,7 @@
 .board-backgrounds-list .board-color-belize.background-box,
 .board-list .board-color-belize a {
   background-color: rgb(11, 80, 175); /*changed - 23.11*/
+  background-image: url(/svg-etc/dark-bluesvg.svg);
 }
 
 /* .board-color-belize .board-canvas {
@@ -282,6 +284,7 @@
 .board-backgrounds-list .board-color-wisteria.background-box,
 .board-list .board-color-wisteria a {
   background-color: rgb(103, 66, 132); /*changed - 23.11*/
+  background-image: url(/svg-etc/dark-purplesvg.svg);
 }
 
 /* .board-color-wisteria .board-canvas {
@@ -374,6 +377,7 @@
 .board-backgrounds-list .board-color-midnight.background-box,
 .board-list .board-color-midnight a {
   background-color: rgb(55, 72, 102); /*changed - 23.11*/
+  background-image: url(/svg-etc/dark.svg);
 }
 
 /* .board-color-midnight .board-canvas {
@@ -466,6 +470,7 @@
 .board-backgrounds-list .board-color-pumpkin.background-box,
 .board-list .board-color-pumpkin a {
   background-color: rgb(239, 118, 58); /*changed - 23.11*/
+  background-image: url(/svg-etc/peach.svg);
 }
 
 .board-color-pumpkin .is-selected .minicard {
@@ -558,6 +563,7 @@
 .board-backgrounds-list .board-color-moderatepink.background-box,
 .board-list .board-color-moderatepink a {
   background-color: rgb(244, 136, 166); /*chnaged - 23.11*/
+  background-image: url(/svg-etc/flower.svg);
 }
 
 /* .board-color-moderatepink .board-canvas {
@@ -649,7 +655,7 @@
 .board-color-strongcyan.sk-spinner div,
 .board-backgrounds-list .board-color-strongcyan.background-box,
 .board-list .board-color-strongcyan a {
-  background-color: #00aecc;
+  background-image: url(/svg-etc/car.jpg);
 }
 
 /* .board-color-strongcyan .board-canvas {
@@ -684,7 +690,7 @@
 }
 
 .board-color-strongcyan#header-quick-access {
-  background: #009db8;
+  --dynamic-background: hsl(240,8.1%,30%);
   color: #fff;
 }
 
@@ -741,7 +747,7 @@
 .board-color-limegreen.sk-spinner div,
 .board-backgrounds-list .board-color-limegreen.background-box,
 .board-list .board-color-limegreen a {
-  background-color: #4bbf6b;
+  background-image: url(/svg-etc/city.jpg);
 }
 
 .board-color-limegreen .is-selected .minicard {
@@ -776,7 +782,7 @@
 }
 
 .board-color-limegreen#header-quick-access {
-  background: #3fb15e;
+  background: hsl(205,72.2%,60.4%);
   color: #fff;
 }
 
@@ -1040,7 +1046,7 @@
 .board-color-relax.sk-spinner div,
 .board-backgrounds-list .board-color-relax.background-box,
 .board-list .board-color-relax a {
-  background-color: hsl(89, 69%, 65%)
+  background-image: url(/svg-etc/eiffel.jpg);
 }
 
 .board-color-relax .is-selected .minicard {
@@ -1072,7 +1078,7 @@
 }
 
 .board-color-relax#header-quick-access {
-  background: #239d57;
+  background: hsl(191,37.3%,29%);
   color: #fff;
 }
 
@@ -1256,6 +1262,7 @@
 .board-backgrounds-list .board-color-clearblue.background-box,
 .board-list .board-color-clearblue a {
   background-color: rgb(34, 140, 213); /*changed - 23.11*/
+  background-image: url(/svg-etc/light-blue.svg);
 }
 
 .board-color-clearblue .is-selected .minicard {
@@ -1544,7 +1551,31 @@
 .board-color-natural.sk-spinner div,
 .board-backgrounds-list .board-color-natural.background-box,
 .board-list .board-color-natural a {
-  background-color: #596557;
+  background-image: url(/svg-etc/forest.jpg);
+}
+
+.board-color-natural.sk-spinner div,
+.board-backgrounds-list .board-color-pizza.background-box,
+.board-list .board-color-natural a {
+  background-image: url(/svg-etc/pizza.jpg);
+}
+
+.board-color-natural.sk-spinner div,
+.board-backgrounds-list .board-color-mountain.background-box,
+.board-list .board-color-natural a {
+  background-image: url(/svg-etc/mountain.jpg);
+}
+
+.board-color-natural.sk-spinner div,
+.board-backgrounds-list .board-color-pokemon.background-box,
+.board-list .board-color-natural a {
+  background-image: url(/svg-etc/pokemon.jpg);
+}
+
+.board-color-natural.sk-spinner div,
+.board-backgrounds-list .board-color-walkingman.background-box,
+.board-list .board-color-natural a {
+  background-image: url(/svg-etc/walkingman.jpg);
 }
 
 .board-color-natural .is-selected .minicard {
@@ -1631,11 +1662,28 @@
 }
 
 .board-color-natural#header-quick-access {
-  background-color: #2d392b;
+  background-color: hsl(67,8.9%,14.8%);
+}
+
+.board-color-mountain#header-quick-access {
+  background-color: hsl(207,58.9%,72.6%);
+}
+
+.board-color-pizza#header-quick-access {
+  background-color: hsl(33,57.4%,42.8%)
+}
+
+.board-color-pokemon#header-quick-access {
+  background-color: hsl(162,13.2%,9.9%);
+}
+
+.board-color-pokemon#header-quick-access {
+  background-color: hsl(33,57.4%,55.8%);
+
 }
 
 .board-color-natural .ui-sortable {
-  background: linear-gradient(20deg, hsl(0, 0%, 87%), transparent);
+  /* background: linear-gradient(20deg, hsl(0, 0%, 87%), transparent); */
 }
 
 .board-color-natural .swimlane .swimlane-header-wrap {
@@ -1649,6 +1697,7 @@
 .board-backgrounds-list .board-color-modern.background-box,
 .board-list .board-color-modern a {
   background-color: rgb(168, 105, 193); /*chnaged - 23.11*/
+  background-image: url(/svg-etc/light-purple.svg);
 }
 
 .board-color-modern .board-canvas {
@@ -1743,9 +1792,8 @@
 }
 
 .board-color-modern#header-quick-access {
-  padding: 10px;
-  font-size: 14px;
-  background: #333 !important;
+  background: hsl(250,47.9%,40.7%);  /*changed - 23.11*/
+  color: #fff;
 }
 
 .board-color-modern#header-quick-access ul {
@@ -2439,7 +2487,7 @@
 }
 
 .board-color-moderndark .card-details .checklist {
-  background-color: transparent;
+   background-color: transparent; 
   margin-bottom: 10px;
 }
 

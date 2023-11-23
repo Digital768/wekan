@@ -7,7 +7,7 @@
   z-index: 17;
 }
 
-#header:not([class]):not() {
+#header:not([class]), #header[class=""] {
   background-color: #0b2239;
 }
 
@@ -117,9 +117,7 @@
 #header #header-main-bar .board-header-btn:hover:not(.is-disabled),
 #header #header-main-bar h1.is-clickable:hover:not(.is-disabled),
 .current:hover:not(.is-disabled),
-.header-quick-access-list:hover:not(.is-disabled),
-.sun-moon-container:hover:not(.is-disabled)
-{
+.sun-moon-container:hover:not(.is-disabled) {
   background: rgba(0, 0, 0, 0.15);
 }
 
@@ -181,6 +179,7 @@
 #header-quick-access #header-new-board-icon a.is-active,
 #header-quick-access ul li a.is-active {
   color: #fff;
+  background-color: var(--dynamic-nav-button-background-color-hovered, hsla(0, 0%, 100%, 0.16));
 }
 
 #header-quick-access ul.header-quick-access-list {
