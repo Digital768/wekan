@@ -119,7 +119,8 @@
 #header #header-main-bar h1.is-clickable:hover:not(.is-disabled),
 .current:hover:not(.is-disabled),
 .sun-moon-container:hover:not(.is-disabled) {
-  background: rgba(0, 0, 0, 0.15);
+  /* background: rgba(0, 0, 0, 0.15); */
+  /*removed - 26.11*/
 }
 
 #header #header-main-bar .separator {
@@ -204,7 +205,8 @@
   padding: 12px 10px;
   margin: -10px 0px 0px 10px;
   background-color: hsla(0, 0%, 100%, 0.16);
-  border-radius: 5px; /*added - 26.11*/
+  border-radius: 5px;
+  /*added - 26.11*/
 }
 
 #header-quick-access ul.header-quick-access-list li a .viewer {
@@ -215,14 +217,18 @@
 #header-quick-access ul.header-quick-access-list li a .viewer p {
   display: inline;
   white-space: nowrap;
+  color: white;
 }
 
 #header-quick-access ul.header-quick-access-list li.current {
   color: #f2f2f2;
+  border-right: 4px solid white;
 }
 
 #header-quick-access ul.header-quick-access-list li.current.empty {
   padding: 12px 10px 12px 10px;
+  border-right: none;
+
 }
 
 #header-quick-access ul.header-quick-access-list li:first-child .fa-home,
