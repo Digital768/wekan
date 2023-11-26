@@ -1700,10 +1700,6 @@
   background-image: url(/svg-etc/light-purple.svg);
 }
 
-.board-color-modern .board-canvas {
-  background: linear-gradient(230deg, #2a80b8 0%, transparent 100%);
-}
-
 .board-color-modern .is-selected .minicard {
   border-left: 3px solid hsl(204, 63%, 44%);
 }
@@ -1849,10 +1845,6 @@
   background: #f7f7f7;
 }
 
-.board-color-modern .board-canvas {
-  background: #f5f5f5;
-}
-
 .board-color-modern .swimlane {
   background: none;
 }
@@ -1870,9 +1862,7 @@
 }
 
 .board-color-modern .list {
-  background: transparent;
   border-left: 0;
-  margin: 10px 0;
   padding: 0px;
   border-radius: 5px;
   min-width: 300px;

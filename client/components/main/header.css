@@ -7,7 +7,8 @@
   z-index: 17;
 }
 
-#header:not([class]), #header[class=""] {
+#header:not([class]),
+#header[class=""] {
   background-color: #0b2239;
 }
 
@@ -179,7 +180,7 @@
 #header-quick-access #header-new-board-icon a.is-active,
 #header-quick-access ul li a.is-active {
   color: #fff;
-  background-color: var(--dynamic-nav-button-background-color-hovered, hsla(0, 0%, 100%, 0.16));
+  font-size: medium;
 }
 
 #header-quick-access ul.header-quick-access-list {
@@ -201,7 +202,8 @@
 
 #header-quick-access ul.header-quick-access-list li a {
   padding: 12px 10px;
-  margin: -10px 0px;
+  margin: -10px 0px 0px 10px;
+  background-color: hsla((0), 0%, 100%, 0.16);
 }
 
 #header-quick-access ul.header-quick-access-list li a .viewer {
