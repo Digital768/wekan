@@ -203,7 +203,8 @@
 #header-quick-access ul.header-quick-access-list li a {
   padding: 12px 10px;
   margin: -10px 0px 0px 10px;
-  background-color: hsla((0), 0%, 100%, 0.16);
+  background-color: hsla(0, 0%, 100%, 0.16);
+  border-radius: 5px; /*added - 26.11*/
 }
 
 #header-quick-access ul.header-quick-access-list li a .viewer {
