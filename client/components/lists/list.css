@@ -30,6 +30,8 @@
   border-left: none;
   /* added transparent so "add list" div won't have a background color - 23.11 */
   background-color: transparent;
+  /* added order which placed "add-list" button to the left of the lists - added by ben at 26.11 */
+  order:1
 }
 
 .card-details+.list {
