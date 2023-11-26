@@ -172,7 +172,7 @@
   color: inherit;
 }
 
-#header-quick-access #header-user-bar a:hover,
+/* took away weird hover from user logo */
 #header-quick-access #header-new-board-icon a:hover,
 #header-quick-access ul li a:hover,
 #header-quick-access #header-user-bar a.is-active,
@@ -240,10 +240,11 @@
   margin: 2px 0;
 }
 
+/* deleted stupid ass margin for user logo 26.11.2023 */
 #header-quick-access #header-user-bar .header-user-bar-avatar {
   float: left;
   position: relative;
-  top: -5px;
+  /* top: -5px; */
   margin-right: 5px;
 }
 
@@ -255,9 +256,10 @@
   margin-top: 1px;
 }
 
+/* changed competing css for user logo 26.11.2023 */
 #header-quick-access #header-user-bar .header-user-bar-name,
 #header-quick-access #header-help {
-  margin: 4px 8px 0 0;
+  /* margin: 4px 8px 0 0; */
   float: left;
 }
 

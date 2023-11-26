@@ -243,7 +243,7 @@
 }
 
 /* general hover class that can be added to anything, i think */
-.generaL-hover {
+.general-hover {
   background-color: var(--dynamic-button-hovered);
   color: var(--dynamic-text);
 }
