@@ -63,13 +63,15 @@
   border-right: 2px solid #27ae60;
 }
 
-.board-color-nephritis .is-multiselection-active .multi-selection-checkbox.is-checked+.minicard {
+/* commented out at 26.11 */
+/* .board-color-nephritis .is-multiselection-active .multi-selection-checkbox.is-checked+.minicard {
   background: #e7faef;
-}
+} */
 
-.board-color-nephritis .is-multiselection-active .multi-selection-checkbox:not(.is-checked)+.minicard:hover:not(.minicard-composer) {
+/* commented out at 26.11 */
+/* .board-color-nephritis .is-multiselection-active .multi-selection-checkbox:not(.is-checked)+.minicard:hover:not(.minicard-composer) {
   background: #f8fdfa;
-}
+} */
 
 .board-color-nephritis .toggle-label:after {
   background-color: #1f8b4d;
