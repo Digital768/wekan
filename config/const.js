@@ -1,15 +1,15 @@
 export const ALLOWED_BOARD_COLORS = [
-  'midnight',
+  // 'midnight',
   'pomegranate',
   'belize',
   'nephritis',
   'pumpkin',
   'wisteria',
   'moderatepink',
-  'corteza',
   'clearblue',
-  // 'modern', removed - 15.11
-  // 'moderndark', removed - 15.11
+  //  'corteza', removed - 23.11
+  'modern',
+  // 'moderndark', removed - 23.11
   // 'dark', removed - 15.11
   'exodark',
   'natural',
