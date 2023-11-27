@@ -62,15 +62,7 @@ Template.memberMenuPopup.helpers({
 });
 
 Template.memberMenuPopup.events({
-  'click .js-my-cards'() {
-    Popup.back();
-  },
-  'click .js-due-cards'() {
-    Popup.back();
-  },
-  'click .js-open-archived-board'() {
-    Modal.open('archivedBoards');
-  },
+ 
   'click .js-invite-people': Popup.open('invitePeople'),
   'click .js-edit-profile': Popup.open('editProfile'),
   'click .js-change-settings': Popup.open('changeSettings'),

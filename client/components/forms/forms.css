@@ -205,10 +205,7 @@ button.negate:active {
   box-shadow: 0 1px 0 #4d4d4d;
   color: #fff;
 }
-input[type="submit"] i.fa,
-button i.fa {
-  margin-right: 10px;
-}
+
 input[type="submit"].disabled,
 input[type="submit"]:disabled,
 input[type="button"].disabled,

@@ -1,0 +1,9 @@
+#options{
+    position: relative;
+}
+
+.header-board-bar-name{
+    height: 28px;
+    width: 28px;
+    display: block;
+}

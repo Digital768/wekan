@@ -380,4 +380,5 @@
 
 #headerIsSettingDatabaseCallDone {
   display: none;
+  height: 43px;
 }
