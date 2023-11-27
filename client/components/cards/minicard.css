@@ -249,8 +249,8 @@
   flex-direction: row;
   flex-wrap: wrap;
 
-  /*margin + gap adding - change 12.11*/
-  /* margin-top: 12px; */
+  /*margin + gap adding - change 27.11*/
+  margin-top: 12px;
   gap: 0.3em
 }
 
@@ -355,6 +355,10 @@
 .minicard .minicard-assignees {
   /* border-bottom: 1px solid #f00; */
   /*remove red underline - 12.11*/
+
+  /*added - 27.11*/
+  display: flex;
+  gap: 0.3rem;
 }
 
 .minicard .minicard-creator {

@@ -64,11 +64,11 @@
 }
 
 .board-color-nephritis .is-multiselection-active .multi-selection-checkbox.is-checked+.minicard {
-  background: #e7faef;
+  /* background: #e7faef; */
 }
 
 .board-color-nephritis .is-multiselection-active .multi-selection-checkbox:not(.is-checked)+.minicard:hover:not(.minicard-composer) {
-  background: #f8fdfa;
+  /* background: #f8fdfa; */
 }
 
 .board-color-nephritis .toggle-label:after {

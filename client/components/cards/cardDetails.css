@@ -281,6 +281,7 @@ form.inlined-form>textarea {
 .card-details .card-details-items .card-details-item {
   margin-right: 0.5em;
   flex-grow: 1;
+  flex-shrink: 0; /*added - 26.11*/
 }
 
 .card-details .card-details-items .card-details-item:last-child {
@@ -300,8 +301,6 @@ form.inlined-form>textarea {
   display: block;
   word-wrap: break-word;
   max-width: 36%;
-  border-left: 2px solid;
-  /*border adding - changed 12.11*/
 }
 
 .card-details .card-details-items .card-details-item.card-details-item-creator,
@@ -313,7 +312,7 @@ form.inlined-form>textarea {
   word-wrap: break-word;
   max-width: 28%;
   /* flex-grow: 0; */
-  flex-basis: 20%;
+  flex-basis: 11% /*changed - 26.11*/;
   /* margin-left: 20px; */
   /* border-left: 2px solid; */
   /*border adding - changed 12.11*/
