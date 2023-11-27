@@ -965,7 +965,7 @@ NOTE: use percentage font sizes or else old IE chokes
   /*added 19.11*/
   /* margin-left: 5px; */
 }
-#calender-view h2{
+.fc-right h2{
   color: white;
 }
 
@@ -1027,7 +1027,6 @@ NOTE: use percentage font sizes or else old IE chokes
   position: relative;
   z-index: 1;
   /* added  height: 100vh; 15.11.23*/
-  height: 100vh;
 }
 
 /* BasicView
