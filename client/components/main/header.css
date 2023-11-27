@@ -180,8 +180,8 @@
 #header-quick-access #header-user-bar a.is-active,
 #header-quick-access #header-new-board-icon a.is-active,
 #header-quick-access ul li a.is-active {
-  color: #fff;
-  font-size: medium;
+  /* color: #fff;
+  font-size: medium; */
 }
 
 #header-quick-access ul.header-quick-access-list {
@@ -204,9 +204,15 @@
 #header-quick-access ul.header-quick-access-list li a {
   padding: 12px 10px;
   margin: -10px 0px 0px 10px;
-  background-color: hsla(0, 0%, 100%, 0.16);
   border-radius: 5px;
   /*added - 26.11*/
+}
+.current a {
+  background-color: hsla(0, 0%, 100%, 0.3);
+}
+
+#header-quick-access ul.header-quick-access-list li a:hover{
+  background-color: hsla(0, 0%, 100%, 0.16);
 }
 
 #header-quick-access ul.header-quick-access-list li a .viewer {
@@ -217,12 +223,11 @@
 #header-quick-access ul.header-quick-access-list li a .viewer p {
   display: inline;
   white-space: nowrap;
-  color: white;
 }
 
 #header-quick-access ul.header-quick-access-list li.current {
   color: #f2f2f2;
-  border-right: 4px solid white;
+  /* border-right: 4px solid white; */
 }
 
 #header-quick-access ul.header-quick-access-list li.current.empty {
