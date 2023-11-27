@@ -7,6 +7,7 @@ template(name="header")
   if currentUser
     #header-quick-access(class=currentBoard.colorClass)
       if isMiniScreen
+        +options
         span
               //- removed the fa.fa home icon and added the logo to the mini screen- changed by Ben at 23.11 
           a(href="{{pathFor 'home'}}")
@@ -38,6 +39,7 @@ template(name="header")
           On sandstorm, the logo shouldn't be clickable, because we only have one
           page/document on it, and we don't want to see the home page containing
           the list of all boards.
+        +options
         unless currentSetting.hideLogo
           if currentSetting.customTopLeftCornerLogoImageUrl
             if currentSetting.customTopLeftCornerLogoLinkUrl
@@ -77,6 +79,7 @@ template(name="header")
       //a#header-new-board-icon.js-create-board
       //  i.fa.fa-plus(title="Create a new board")
 
+      
       +notifications
 
       if currentSetting.customHelpLinkUrl
