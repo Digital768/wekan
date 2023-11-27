@@ -269,8 +269,8 @@
 
 @media screen and (max-width: 800px) {
   .board-list {
-    height: 100%;
-    overflow: scroll;
+    /* height: 100%; */
+    /* overflow: scroll; */
   }
 
   .board-list li {

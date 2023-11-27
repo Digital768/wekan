@@ -965,6 +965,9 @@ NOTE: use percentage font sizes or else old IE chokes
   /*added 19.11*/
   /* margin-left: 5px; */
 }
+#calender-view h2{
+  color: white;
+}
 
 /* the things within each left/right/center section */
 .fc .fc-toolbar>*>* {

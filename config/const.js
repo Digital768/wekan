@@ -1,13 +1,13 @@
 export const ALLOWED_BOARD_COLORS = [
-  // 'midnight',
-  'pomegranate',
   'belize',
+  'pomegranate',
   'nephritis',
   'pumpkin',
   'wisteria',
   'moderatepink',
   'clearblue',
   //  'corteza', removed - 23.11
+  // 'midnight', removed - 23.11
   'modern',
   // 'moderndark', removed - 23.11
   // 'dark', removed - 15.11
@@ -20,6 +20,7 @@ export const ALLOWED_BOARD_COLORS = [
   'pizza',
   'pokemon',
   'walkingman',
+  'sea'
 ];
 export const ALLOWED_COLORS = [
   'light-green',

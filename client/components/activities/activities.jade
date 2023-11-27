@@ -145,7 +145,7 @@ template(name="activity")
               +viewer
                 = activity.comment.text
             +commentReactions(reactions=activity.comment.reactions commentId=activity.comment._id)
-            span(title=activity.createdAt).activity-meta {{ moment activity.createdAt }}
+            span(title=activity.createdAt).activity-meta {{ moment activity.createdAt 'LLL' }}
               if($eq currentUser._id activity.comment.userId)
                 +editOrDeleteComment
               else if currentUser.isBoardAdmin
@@ -243,4 +243,4 @@ template(name="activity")
       else if(currentData.timeValue)
         | {{_ activity.activityType currentData.timeValue}}
 
-      span(title=activity.createdAt).activity-meta {{ moment activity.createdAt }}
+      span(title=activity.createdAt).activity-meta {{ moment activity.createdAt 'LLL' }}

@@ -8,11 +8,9 @@ template(name="header")
     #header-quick-access(class=currentBoard.colorClass)
       if isMiniScreen
         +options
-        span
-              //- removed the fa.fa home icon and added the logo to the mini screen- changed by Ben at 23.11 
-          a(href="{{pathFor 'home'}}")
-            div#headerIsSettingDatabaseCallDone
-                img(src="{{pathFor '/T-BOARD_big.svg'}}" alt="{{currentSetting.productName}}" title="{{currentSetting.productName}}" width="90")
+        a(href="{{pathFor 'home'}}")
+          div#headerIsSettingDatabaseCallDone
+            simg(src="{{pathFor '/T-BOARD_big.svg'}}" alt="{{currentSetting.productName}}" title="{{currentSetting.productName}}" width="90")
         ul.header-quick-access-list
           if currentList
             each currentBoard.lists

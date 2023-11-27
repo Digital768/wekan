@@ -253,6 +253,11 @@ body {
   background-image: url(/svg-etc/walkingman.jpg);
 }
 
+.board-color-sea.boardscolor-container {
+  /* background: linear-gradient(230deg, hsl(0, 0%, 70%) 0%, hsl(0,0%, 100%) 100%); */
+  background-image: url(/svg-etc/sea.jpg);
+}
+
 
 
 
