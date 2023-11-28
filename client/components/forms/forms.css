@@ -312,6 +312,9 @@ textarea::-moz-placeholder {
   margin: 0;
   cursor: pointer;
 }
+.materialCheckBox.multi-selection-checkbox.js-toggle-multi-selection{
+  margin-left:10px;
+}
 .materialCheckBox.is-checked {
   top: -4px;
   left: -3px;
