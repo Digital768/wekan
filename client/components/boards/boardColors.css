@@ -1930,6 +1930,7 @@
 .board-color-modern .list.list-composer.js-list-composer {
   transition: all 0.3s ease;
   min-width: 20px;
+  flex-shrink: 0;
 }
 
 .board-color-modern .open-list-composer.js-open-inlined-form:hover {

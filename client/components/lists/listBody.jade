@@ -56,20 +56,20 @@ template(name="addCardForm")
   .add-controls.clearfix
     button.primary.confirm(type="submit") {{_ 'add'}}
     a.fa.fa-times-thin.js-close-inlined-form
-  .add-controls.clearfix
-    unless currentBoard.isTemplatesBoard
-      unless currentBoard.isTemplateBoard
-        span.quiet
-          | {{_ 'or'}}
-          a.js-link {{_ 'link'}}
-        span.quiet
-          | &nbsp;
-          | /
-          a.js-search {{_ 'search'}}
-        span.quiet
-          | &nbsp;
-          | /
-          a.js-card-template {{_ 'template'}}
+  //- .add-controls.clearfix
+  //-   unless currentBoard.isTemplatesBoard
+  //-     unless currentBoard.isTemplateBoard
+  //-       span.quiet
+  //-         | {{_ 'or'}}
+  //-         a.js-link {{_ 'link'}}
+  //-       span.quiet
+  //-         | &nbsp;
+  //-         | /
+  //-         a.js-search {{_ 'search'}}
+  //-       span.quiet
+  //-         | &nbsp;
+  //-         | /
+  //-         a.js-card-template {{_ 'template'}}
 
 template(name="autocompleteLabelLine")
   .minicard-label(class="card-label-{{colorName}}" title=labelName)

@@ -390,6 +390,9 @@ a.is-disabled:hover {
 span a {
   text-decoration: underline;
 }
+a.fa.fa-navicon.js-open-swimlane-menu{
+  font-size:20px;
+}
 
 strong {
   font-weight: bold;

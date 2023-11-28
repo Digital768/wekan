@@ -45,7 +45,7 @@
 .swimlane {
   /* background: #dedede;  no-need*/
   display: flex;
-  
+  margin-bottom: 10px;  
 }
 .swimlane.placeholder {
   background-color: rgba(0,0,0,0.2);
@@ -71,6 +71,8 @@
 .swimlane.js-lists.js-swimlane.ui-sortable{
   overflow-x:auto;
   width:100%;
+  padding-bottom: 30px;
+  padding-right: 10px;
 }
 .swimlane .swimlane-header-wrap .swimlane-header {
   font-size: 14px;

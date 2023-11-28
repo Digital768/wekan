@@ -52,10 +52,11 @@ template(name="minicard")
       if getSpentTime
         .date
           +cardSpentTime
+    
     if cover
       if currentBoard.allowsCoverAttachmentOnMinicard
         .minicard-cover(style="background-image: url('{{cover.link 'original'}}?dummyReloadAfterSessionEstablished={{sess}}');")
-  hr
+    hr
     .minicard-title
       if $eq 'prefix-with-full-path' currentBoard.presentParentTask
         .parent-prefix
@@ -82,7 +83,7 @@ template(name="minicard")
       if $eq 'subtext-with-parent' currentBoard.presentParentTask
         .parent-subtext
           | {{ parentCardName }}
-  hr
+    hr
     if labels
       .minicard-labels(class="{{#if hiddenMinicardLabelText}}minicard-labels-no-text{{/if}}")
         each labels
