@@ -445,10 +445,11 @@ template(name="boardMenuPopup")
         a.js-change-board-color
           i.fa.fa-paint-brush
           | {{_ 'board-change-color'}}
-      li
-        a.js-change-background-image
-          i.fa.fa-picture-o
-          | {{_ 'board-change-background-image'}}
+      //- removed - 28.11    
+      //- li
+      //-   a.js-change-background-image
+      //-     i.fa.fa-picture-o
+      //-     | {{_ 'board-change-background-image'}}
     //Bug Board icons random dance https://github.com/wekan/wekan/issues/4214
     //if currentUser.isBoardAdmin
     //  unless currentSetting.hideBoardMemberList
@@ -465,10 +466,11 @@ template(name="boardMenuPopup")
           i.fa.fa-share-alt
           | {{_ 'export-board'}}
     if currentUser.isBoardAdmin
-      li
-        a.js-outgoing-webhooks
-          i.fa.fa-globe
-          | {{_ 'outgoing-webhooks'}}
+      //- removed - 28.11
+      //- li
+      //-   a.js-outgoing-webhooks
+      //-     i.fa.fa-globe
+      //-     | {{_ 'outgoing-webhooks'}}
       li
         a.js-card-settings
           i.fa.fa-id-card-o
@@ -477,10 +479,11 @@ template(name="boardMenuPopup")
         a.js-minicard-settings
           i.fa.fa-id-card-o
           | {{_ 'minicard-settings'}}
-      li
-        a.js-subtask-settings
-          i.fa.fa-sitemap
-          | {{_ 'subtask-settings'}}
+      //- removed - 28.11    
+      //- li
+      //-   a.js-subtask-settings
+      //-     i.fa.fa-sitemap
+      //-     | {{_ 'subtask-settings'}}
   unless currentBoard.isTemplatesBoard
     if currentUser.isBoardAdmin
       hr
@@ -493,30 +496,31 @@ template(name="boardMenuPopup")
 
 template(name="exportBoard")
   ul.pop-over-list
-    li
-      a.download-json-link(href="{{exportUrl}}", download="{{exportJsonFilename}}")
-        i.fa.fa-share-alt
-        | {{_ 'export-board-json'}}
+    //- removed - 28.11
+    //- li
+    //-   a.download-json-link(href="{{exportUrl}}", download="{{exportJsonFilename}}")
+    //-     i.fa.fa-share-alt
+    //-     | {{_ 'export-board-json'}}
     li
       a(href="{{exportUrlExcel}}", download="{{exportFilenameExcel}}")
         i.fa.fa-share-alt
         | {{_ 'export-board-excel'}}
-    li
-      a(href="{{exportCsvUrl}}", download="{{exportCsvFilename}}")
-        i.fa.fa-share-alt
-        | {{_ 'export-board-csv'}} ,
-    li
-      a(href="{{exportScsvUrl}}", download="{{exportCsvFilename}}")
-        i.fa.fa-share-alt
-        | {{_ 'export-board-csv'}} ;
-    li
-      a(href="{{exportTsvUrl}}", download="{{exportTsvFilename}}")
-        i.fa.fa-share-alt
-        | {{_ 'export-board-tsv'}}
-    li
-      a.html-export-board
-        i.fa.fa-archive
-        | {{_ 'export-board-html'}}
+    //- li
+    //-   a(href="{{exportCsvUrl}}", download="{{exportCsvFilename}}")
+    //-     i.fa.fa-share-alt
+    //-     | {{_ 'export-board-csv'}} ,
+    //- li
+    //-   a(href="{{exportScsvUrl}}", download="{{exportCsvFilename}}")
+    //-     i.fa.fa-share-alt
+    //-     | {{_ 'export-board-csv'}} ;
+    //- li
+    //-   a(href="{{exportTsvUrl}}", download="{{exportTsvFilename}}")
+    //-     i.fa.fa-share-alt
+    //-     | {{_ 'export-board-tsv'}}
+    //- li
+    //-   a.html-export-board
+    //-     i.fa.fa-archive
+    //-     | {{_ 'export-board-html'}}
 
 template(name="labelsWidget")
   .board-widget.board-widget-labels

@@ -13,7 +13,7 @@
 .rules-lists-item p {
   display: inline-block;
   float: left;
-  margin: revert;
+  margin-left: 40px; /*changed - 28.11*/
 }
 .hide-element {
   display: none !important;
@@ -131,7 +131,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: 10px;
+  /* left: 10px; removed - 28.11 */
 }
 .triggers-content .triggers-body .triggers-main-body .trigger-item .trigger-content .trigger-text {
   font-size: 16px;
@@ -165,7 +165,7 @@
 }
 .triggers-content .triggers-body .triggers-main-body .trigger-item .trigger-content .trigger-dropdown input {
   display: inline-block;
-  width: 80px;
+  width: 95px; /*changed - 28.11*/
   margin: 0;
 }
 .triggers-content .triggers-body .triggers-main-body .trigger-item .trigger-content-mail {
@@ -183,7 +183,7 @@
   box-shadow: inset -1px -1px 3px rgba(0,0,0,0.05);
   text-align: center;
   font-size: 20px;
-  right: 10px;
+  left: 10px; /*changed - 28.11*/
 }
 .triggers-content .triggers-body .triggers-main-body .trigger-item .trigger-button i {
   position: absolute;
