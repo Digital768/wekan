@@ -33,6 +33,7 @@ template(name="minicard")
           .minicard-creator
             +userAvatar(userId=this.usesrId noRemove=true)
     
+    //- added hr to cars component 28.11.2023
     .dates
       if getReceived
         unless getStart
@@ -54,6 +55,7 @@ template(name="minicard")
     if cover
       if currentBoard.allowsCoverAttachmentOnMinicard
         .minicard-cover(style="background-image: url('{{cover.link 'original'}}?dummyReloadAfterSessionEstablished={{sess}}');")
+  hr
     .minicard-title
       if $eq 'prefix-with-full-path' currentBoard.presentParentTask
         .parent-prefix
@@ -80,6 +82,7 @@ template(name="minicard")
       if $eq 'subtext-with-parent' currentBoard.presentParentTask
         .parent-subtext
           | {{ parentCardName }}
+  hr
     if labels
       .minicard-labels(class="{{#if hiddenMinicardLabelText}}minicard-labels-no-text{{/if}}")
         each labels
