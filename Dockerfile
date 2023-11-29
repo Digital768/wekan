@@ -172,6 +172,7 @@ ENV BUILD_DEPS="apt-utils libarchive-tools gnupg gosu wget curl bzip2 g++ build-
 # https://github.com/wekan/wekan/wiki/autologin
 #- OIDC_REDIRECTION_ENABLED=true
 #---------------------------------------------------------------------
+WORKDIR /App
 
 # Copy the app to the image
 COPY ${SRC_PATH} /home/wekan/app
