@@ -34,7 +34,7 @@ BlazeComponent.extendComponent({
           }
           const board = this.currentData();
           board.restore();
-          Utils.goBoardId(board._id);
+          // Utils.goBoardId(board._id);  removed - 29.11
         },
         'click .js-delete-board': Popup.afterConfirm('boardDelete', function() {
           Popup.back();

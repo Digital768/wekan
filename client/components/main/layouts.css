@@ -299,7 +299,7 @@ body {
 
 #modal .modal-content .modal-close-btn {
   display: block;
-  float: right;
+  float: left; /*changed - 29.11*/
   font-size: 24px;
 }
 

@@ -6,7 +6,7 @@
   /*add color - 15.11*/
   padding: 0;
   float: left;
-  min-width: 180px;
+  min-width: 220px;
   /* TODO(mark-i-m): hardcoded? */
   /* max-width: 270px; */
   /* Reverted incomplete change list width: */
@@ -15,6 +15,8 @@
   /*resize: both;  - List width and height resizeable */
   /* overflow: auto; - List width and height resizeable */
   height: fit-content;
+  /* added max height - 29.11 */
+  max-height: 82vh;
   /* added 19.11 */
   border-radius: 10px; /*added 22.11*/
   margin-left: 10px;
@@ -31,7 +33,8 @@
   /* added transparent so "add list" div won't have a background color - 23.11 */
   background-color: transparent;
   /* added order which placed "add-list" button to the left of the lists - added by ben at 26.11 */
-  order:1
+  order:1;
+  flex-shrink: 0;
 }
 
 .card-details+.list {

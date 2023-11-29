@@ -16,10 +16,11 @@
   top: 0;
   bottom: 0;
   transition: margin 0.1s;
-  /*add color - 15.11*/
-  /* removed 15.11.23 */
+  /* added padding - 29.11 */
+  padding: 12px;
+  padding-bottom: 0;
   overflow-y: auto;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
 }
 
 .board-wrapper .board-canvas.is-sibling-sidebar-open {

@@ -33,6 +33,10 @@
 
 // Minimize swimlanes end https://www.w3schools.com/howto/howto_js_accordion.asp
 */
+.swimlane.list-group.js-lists.ui-sortable{
+  overflow-x: auto;
+  width: 100%;
+}
 @media screen and (min-width: 801px) {
   .swimlane.ui-sortable {
     width: max-content;
@@ -44,8 +48,7 @@
 }
 .swimlane {
   /* background: #dedede;  no-need*/
-  display: flex;
-  margin-bottom: 10px;  
+  display: flex;  
 }
 .swimlane.placeholder {
   background-color: rgba(0,0,0,0.2);
@@ -71,8 +74,9 @@
 .swimlane.js-lists.js-swimlane.ui-sortable{
   overflow-x:auto;
   width:100%;
-  padding-bottom: 30px;
-  padding-right: 10px;
+  /* added padding top */
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .swimlane .swimlane-header-wrap .swimlane-header {
   font-size: 14px;
@@ -238,7 +242,7 @@
   text-decoration: none;
   display: flex;
   justify-content: space-between;
-  opacity: 0.6;
+  opacity: 0.8;
   border-radius: 15px;
   gap: 8px;
   align-items: center;
