@@ -9,7 +9,7 @@
 
 #header:not([class]),
 #header[class=""] {
-  background-color: #0b2239;
+  background-color: #21354b;
 }
 
 #header #header-main-bar {
@@ -135,7 +135,7 @@
   align-items: center;
   color: #fff;
   transition: background-color 0.4s;
-  background-color: #21354b;
+  background-color: #0b2239;
   height: 28px;
   font-size: 12px;
   display: flex;
@@ -383,7 +383,7 @@
   padding: 0;
 }
 
+/* fixed T-Board logo disappearing bug 29.11.2023 */
 #headerIsSettingDatabaseCallDone {
-  display: none;
   height: 43px;
 }
