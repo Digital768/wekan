@@ -121,7 +121,7 @@ services:
     # image: wekanteam/wekan:v6.89
     # b) GitHub Container registry.
     # b1) Latest release tag:
-    image: tboard:final4
+    image: wekan
     # b2) Newest git commit automatic build:
     #image: ghcr.io/wekan/wekan:main
     # c) Quay:
@@ -180,7 +180,7 @@ services:
       #  - http://example.com
       #  - http://boards.example.com
       #  - http://192.168.1.100    <=== using at local LAN
-      - ROOT_URL=http://192.168.1.218:83  #   <=== using only at same laptop/desktop where Wekan is installed
+      - ROOT_URL=http://localhost:83  #   <=== using only at same laptop/desktop where Wekan is installed
       #---------------------------------------------------------------
       # ==== EMAIL SETTINGS ====
       # Email settings are only at MAIL_URL and MAIL_FROM.
@@ -717,8 +717,8 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - wekan-files:/data:rw
-      - /c/Users/user/Desktop/wekan-4/client:/build/programs/web.browser/app/client
-      - /c/Users/user/Desktop/wekan-4/public:/build/programs/web.browser/app
+      - /c/Projects/wekan/client:/build/programs/web.browser/app/client
+      - /c/Projects/wekan/public:/build/programs/web.browser/app
 #---------------------------------------------------------------------------------
 # ==== OPTIONAL: SHARE DATABASE TO OFFICE LAN AND REMOTE VPN ====
 #  When using Wekan both at office LAN and remote VPN:
