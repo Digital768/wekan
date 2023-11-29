@@ -58,6 +58,7 @@ label {
 }
 .card-label-light-green {
   background-color: #baf3db ;
+  color: #000;
 }
 .card-label-green {
   background-color: #4bce97 ;
@@ -71,11 +72,9 @@ label {
 }
 .card-label-yellow {
   background-color: #f5cd47;
-  color: #000;
 }
 .card-label-bold-yellow {
   background-color: #946f00;
-  color: #000;
 }
 .card-label-light-orange {
   background-color: #fedec8;
@@ -83,14 +82,13 @@ label {
 }
 .card-label-orange {
   background-color: #fea362;
-  color: #000;
 }
 .card-label-bold-orange {
   background-color: #a54800;
-  color: #000;
 }
 .card-label-light-red {
   background-color: #fd9891;
+  color: #000;
 }
 .card-label-red {
   background-color: #f87168;
@@ -100,6 +98,7 @@ label {
 }
 .card-label-light-purple {
   background-color: #dfd8fd;
+  color: #000;
 }
 .card-label-purple {
   background-color: #9f8fef;
@@ -109,6 +108,7 @@ label {
 }
 .card-label-light-blue {
   background-color: #cce0ff;
+  color: #000;
 }
 .card-label-blue {
   background-color: #579dff;
@@ -118,6 +118,7 @@ label {
 }
 .card-label-light-sky {
   background-color: #c1f0f5;
+  color: #000;
 }
 .card-label-sky {
   background-color: #6cc3e0;
@@ -127,6 +128,7 @@ label {
 }
 .card-label-light-lime {
   background-color: #D3F1A7;
+  color: #000;
 }
 .card-label-lime {
   background-color: #94c748;
@@ -136,6 +138,7 @@ label {
 }
 .card-label-light-pink {
   background-color: #fdd0ec;
+  color: #000;
 }
 .card-label-pink {
   background-color: #e774bb;
@@ -145,6 +148,7 @@ label {
 }
 .card-label-light-black {
   background-color: #dcdfe4;
+  color: #000;
 }
 .card-label-black {
   background-color: #8590a2;
