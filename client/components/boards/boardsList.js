@@ -269,7 +269,7 @@ BlazeComponent.extendComponent({
         // added pop up when archiving board - added by ben 29.11
         'click .js-archive-board': Popup.afterConfirm('boardArchived', function (evt) {
           Popup.back();
-          const boardId = this.currentData()._id;
+          const boardId = this._id;
           Meteor.call('archiveBoard', boardId);
           evt.preventDefault();
         }),
