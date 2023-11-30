@@ -121,7 +121,7 @@ services:
     # image: wekanteam/wekan:v6.89
     # b) GitHub Container registry.
     # b1) Latest release tag:
-    image: archivepopup
+    image: changes
     # b2) Newest git commit automatic build:
     #image: ghcr.io/wekan/wekan:main
     # c) Quay:
@@ -717,8 +717,8 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - wekan-files:/data:rw
-      - /c/Projects/wekan/client:/build/programs/web.browser/app/client
-      - /c/Projects/wekan/public:/build/programs/web.browser/app
+      - /c/Users/user/Desktop/wekan-4/client:/build/programs/web.browser/app/client
+      - /c/Users/user/Desktop/wekan-4/public:/build/programs/web.browser/app
 #---------------------------------------------------------------------------------
 # ==== OPTIONAL: SHARE DATABASE TO OFFICE LAN AND REMOTE VPN ====
 #  When using Wekan both at office LAN and remote VPN:
