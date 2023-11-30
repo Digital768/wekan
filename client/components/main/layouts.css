@@ -964,3 +964,9 @@ a:not(.disabled).is-active i.fa {
     transform: rotate(360deg);
   }
 }
+
+/* added styling for pegasus logo 30.11.2023 */
+.pegasusImage{
+  margin-top: 22px;
+  width: 328px;
+}
