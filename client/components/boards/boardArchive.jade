@@ -21,3 +21,7 @@ template(name="archivedBoards")
 template(name="boardDeletePopup")
   p {{_ 'delete-board-confirm-popup'}}
   button.js-confirm.negate.full(type="submit") {{_ 'delete'}}
+
+template(name="boardArchivedPopup")
+  p {{_ 'send-to-archive'}}
+  button.js-confirm.negate.full(type="submit") {{_ 'toArchive'}}

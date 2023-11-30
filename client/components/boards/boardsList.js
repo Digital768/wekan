@@ -266,11 +266,13 @@ BlazeComponent.extendComponent({
           );
           evt.preventDefault();
         },
-        'click .js-archive-board'(evt) {
-          const boardId = this.currentData()._id;
+        // added pop up when archiving board - added by ben 29.11
+        'click .js-archive-board': Popup.afterConfirm('boardArchived', function (evt) {
+          Popup.back();
+          const boardId = this._id;
           Meteor.call('archiveBoard', boardId);
           evt.preventDefault();
-        },
+        }),
         'click .js-accept-invite'() {
           const boardId = this.currentData()._id;
           Meteor.call('acceptInvite', boardId);

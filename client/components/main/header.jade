@@ -10,7 +10,7 @@ template(name="header")
         +options
         a(href="{{pathFor 'home'}}")
           div#headerIsSettingDatabaseCallDone
-            simg(src="{{pathFor '/T-BOARD_big.svg'}}" alt="{{currentSetting.productName}}" title="{{currentSetting.productName}}" width="90")
+            img(src="{{pathFor '/T-BOARD_big.svg'}}" alt="{{currentSetting.productName}}" title="{{currentSetting.productName}}" width="90")
         ul.header-quick-access-list
           if currentList
             each currentBoard.lists
