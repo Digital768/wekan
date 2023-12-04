@@ -1156,6 +1156,15 @@ Users.mutations({
     };
   },
 
+  hasSeenFeatureTour: {
+    /**
+     * Indicates whether the user has seen the feature tour - added by ben at 4.12
+     */
+    type: Boolean,
+    optional: true,
+    defaultValue: false, // Set the default value to false
+  },
+
   setShowCardsCountAt(limit) {
     return {
       $set: {
@@ -1495,6 +1504,19 @@ if (Meteor.isServer) {
         Users.update(userId, {
           $set: {
             'profile.initials': initials,
+          },
+        });
+      }
+    },
+    // updateHasSeenFeatureTour method is called to set the hasSeenFeatureTour field to true for the current user. - added by ben at 4.12
+    updateHasSeenFeatureTour(status) {
+      check(status, Boolean);
+      const user = ReactiveCache.getCurrentUser();
+      
+      if (user) {
+        Users.update(user._id, {
+          $set: {
+            hasSeenFeatureTour: status,
           },
         });
       }

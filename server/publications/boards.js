@@ -368,3 +368,34 @@ Meteor.methods({
     return ret;
   },
 });
+
+const initializeFeatureTour = () => {
+  const intro = introJs();
+
+  intro.setOptions({
+    steps: [
+      {
+        element: '#add-board',
+        intro: 'Click here to add a new board.',
+      },
+      // Add more steps as needed
+    ],
+  });
+
+  intro.oncomplete(() => {
+    // Update the hasSeenFeatureTour field in the user's profile
+    Meteor.call('updateHasSeenFeatureTour', true, (error) => {
+      if (error) {
+        console.error(error);
+      }
+    });
+  });
+
+  intro.start();
+};
+
+// Call the initializeFeatureTour function on first login
+const user = Meteor.user();
+if (user && !user.hasSeenFeatureTour) {
+  initializeFeatureTour();
+}
