@@ -27,11 +27,11 @@ template(name="boardBody")
         if currentBoard.isTemplatesBoard
           each currentBoard.swimlanes
             +swimlane(this)
+        else if isViewLists
+          +listsGroup(currentBoard)
         else if isViewSwimlanes
           each currentBoard.swimlanes
             +swimlane(this)
-        else if isViewLists
-          +listsGroup(currentBoard)
         else if isViewCalendar
           +calendarView
         else
