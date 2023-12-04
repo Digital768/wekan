@@ -143,28 +143,28 @@ template(name="boardHeaderBar")
       a.board-header-btn.js-toggle-sidebar(title="{{_ 'sidebar-open'}} {{_ 'or'}} {{_ 'sidebar-close'}}")
         i.fa.fa-navicon
 
-template(name="boardVisibilityList")
-  ul.pop-over-list
-    li
-      with "private"
-        a.js-select-visibility
-          i.fa.fa-lock.colorful
-          | {{_ 'private'}}
-          if visibilityCheck
-            i.fa.fa-check
-          span.sub-name {{_ 'private-desc'}}
-    if notAllowPrivateVisibilityOnly
-      li
-        with "public"
-          a.js-select-visibility
-            i.fa.fa-globe.colorful
-            | {{_ 'public'}}
-            if visibilityCheck
-              i.fa.fa-check
-            span.sub-name {{_ 'public-desc'}}
+//- template(name="boardVisibilityList")
+//-   ul.pop-over-list
+//-     li
+//-       with "private"
+//-         a.js-select-visibility
+//-           i.fa.fa-lock.colorful
+//-           | {{_ 'private'}}
+//-           if visibilityCheck
+//-             i.fa.fa-check
+//-           span.sub-name {{_ 'private-desc'}}
+//-     if notAllowPrivateVisibilityOnly
+//-       li
+//-         with "public"
+//-           a.js-select-visibility
+//-             i.fa.fa-globe.colorful
+//-             | {{_ 'public'}}
+//-             if visibilityCheck
+//-               i.fa.fa-check
+//-             span.sub-name {{_ 'public-desc'}}
 
-template(name="boardChangeVisibilityPopup")
-  +boardVisibilityList
+//- template(name="boardChangeVisibilityPopup")
+//-   +boardVisibilityList
 
 template(name="boardChangeWatchPopup")
   ul.pop-over-list
@@ -196,19 +196,19 @@ template(name="boardChangeWatchPopup")
 template(name="boardChangeViewPopup")
   ul.pop-over-list
     li
-      with "board-view-swimlanes"
-        a.js-open-swimlanes-view
-          i.fa.fa-th-large.colorful
-          | {{_ 'board-view-swimlanes'}}
-          if $eq Utils.boardView "board-view-swimlanes"
-            i.fa.fa-check
-    li
       with "board-view-lists"
         a.js-open-lists-view
           i.fa.fa-trello.colorful
           | {{_ 'board-view-lists'}}
           if $eq Utils.boardView "board-view-lists"
             i.fa.fa-check
+    li
+      with "board-view-swimlanes"
+        a.js-open-swimlanes-view
+          i.fa.fa-th-large.colorful
+          | {{_ 'board-view-swimlanes'}}
+          if $eq Utils.boardView "board-view-swimlanes"
+            i.fa.fa-check        
     li
       with "board-view-cal"
         a.js-open-cal-view
@@ -222,29 +222,30 @@ template(name="createBoard")
     label
       | {{_ 'title'}}
       input.js-new-board-title(type="text" placeholder="{{_ 'bucket-example'}}" autofocus required)
-    if visibilityMenuIsOpen.get
-      +boardVisibilityList
-    else
-      p.quiet
-        if $eq visibility.get 'public'
-          span.fa.fa-globe.colorful
-          = " "
-          | {{{_ 'board-public-info'}}}
-        else
-          span.fa.fa-lock.colorful
-          = " "
-          | {{{_ 'board-private-info'}}}
-        a.js-change-visibility {{_ 'change'}}.
-    a.flex.js-toggle-add-template-container
-      .materialCheckBox#add-template-container
-      span {{_ 'add-template-container'}}
+    //- commented out -4.12
+    //- if visibilityMenuIsOpen.get
+    //-   +boardVisibilityList
+    //- else
+    //-   p.quiet
+    //-     if $eq visibility.get 'public'
+    //-       span.fa.fa-globe.colorful
+    //-       = " "
+    //-       | {{{_ 'board-public-info'}}}
+    //-     else
+    //-       span.fa.fa-lock.colorful
+    //-       = " "
+    //-       | {{{_ 'board-private-info'}}}
+    //-     a.js-change-visibility {{_ 'change'}}.
+    //- a.flex.js-toggle-add-template-container
+    //-   .materialCheckBox#add-template-container
+    //-   span {{_ 'add-template-container'}}
     input.primary.wide(type="submit" value="{{_ 'create'}}")
-    span.quiet
-      | {{_ 'or'}}
-      a.js-import-board {{_ 'import'}}
-    span.quiet
-      | /
-      a.js-board-template {{_ 'template'}}
+    //- span.quiet
+    //-   | {{_ 'or'}}
+    //-   a.js-import-board {{_ 'import'}}
+    //- span.quiet
+    //-   | /
+    //-   a.js-board-template {{_ 'template'}}
 
 //template(name="listsortPopup")
 //  h2

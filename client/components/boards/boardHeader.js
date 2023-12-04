@@ -103,7 +103,7 @@ BlazeComponent.extendComponent({
           ReactiveCache.getCurrentUser().toggleBoardStar(Session.get('currentBoard'));
         },
         'click .js-open-board-menu': Popup.open('boardMenu'),
-        'click .js-change-visibility': Popup.open('boardChangeVisibility'),
+        // 'click .js-change-visibility': Popup.open('boardChangeVisibility'),
         'click .js-watch-board': Popup.open('boardChangeWatch'),
         'click .js-open-archived-board'() {
           Modal.open('archivedBoards');
