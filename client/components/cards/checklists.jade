@@ -20,7 +20,8 @@ template(name="checklists")
     +inlinedForm(autoclose=false classNames="js-add-checklist" cardId = cardId)
       +addChecklistItemForm(checklist=checklist showNewlineBecomesNewChecklistItem=false)
     else
-      a.add-checklist.js-open-inlined-form(title="{{_ 'add-checklist'}}" text = "{{_ 'add-checklist2'}}")
+      a.add-checklist.js-open-inlined-form(title="{{_ 'add-checklist'}}")
+        | {{_ 'add-checklist2'}}
         i.fa.fa-plus
 
 template(name="checklistDetail")
@@ -91,7 +92,8 @@ template(name="checklistItems")
       +inlinedForm(autoclose=false classNames="js-add-checklist-item" checklist = checklist position="top")
         +addChecklistItemForm(checklist=checklist showNewlineBecomesNewChecklistItem=true)
       else
-        a.add-checklist-item.js-open-inlined-form(title="{{_ 'add-checklist-item'}}" text="{{_ 'add_checklist-mission'}}")
+        a.add-checklist-item.js-open-inlined-form(title="{{_ 'add-checklist-item'}}")
+          |{{_ 'add_checklist-mission'}}
           i.fa.fa-plus
   .checklist-items.js-checklist-items
     each item in checklist.items
