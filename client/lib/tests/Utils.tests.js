@@ -34,8 +34,8 @@ describe('Utils', function () {
 
     it('sets a specific view if no user exists but a view is defined', function () {
       const views = [
-        'board-view-swimlanes',
         'board-view-lists',
+        'board-view-swimlanes',
         'board-view-cal'
       ];
 
@@ -50,7 +50,7 @@ describe('Utils', function () {
     it('sets a default view if no user and no view are given', function () {
       sinon.stub(Meteor, 'user').callsFake(() => { });
       Utils.setBoardView();
-      expect(window.localStorage.getItem(boardView)).to.equal('board-view-swimlanes');
+      expect(window.localStorage.getItem(boardView)).to.equal('board-view-lists');
     });
   });
 
@@ -80,8 +80,8 @@ describe('Utils', function () {
     });
     it('returns the current defined view', function () {
       const views = [
-        'board-view-swimlanes',
         'board-view-lists',
+        'board-view-swimlanes',
         'board-view-cal'
       ];
 
@@ -94,8 +94,8 @@ describe('Utils', function () {
     });
     it('returns a default if nothing is set', function () {
       sinon.stub(Meteor, 'user').callsFake(() => { });
-      expect(Utils.boardView()).to.equal('board-view-swimlanes');
-      expect(window.localStorage.getItem(boardView)).to.equal('board-view-swimlanes');
+      expect(Utils.boardView()).to.equal('board-view-lists');
+      expect(window.localStorage.getItem(boardView)).to.equal('board-view-lists');
     });
   });
 
