@@ -47,9 +47,10 @@ template(name="swimlaneActionPopup")
          li: a.js-set-swimlane-color
           i.fa.fa-paint-brush
           | {{_ 'select-color'}}
-       li: a.js-set-swimlane-height
-        i.fa.fa-arrows-v
-        |  {{_ 'set-swimlane-height'}}
+      //- swimlane height removed - 12.5
+      //-  li: a.js-set-swimlane-height
+      //-   i.fa.fa-arrows-v
+      //-   |  {{_ 'set-swimlane-height'}}
     if currentUser.isBoardAdmin
       unless this.isTemplateContainer
         hr
@@ -74,11 +75,12 @@ template(name="swimlaneAddPopup")
         autocomplete="off" autofocus)
       .edit-controls.clearfix
         button.primary.confirm(type="submit") {{_ 'add'}}
-        unless currentBoard.isTemplatesBoard
-          unless currentBoard.isTemplateBoard
-            span.quiet
-              | {{_ 'or'}}
-              a.js-swimlane-template {{_ 'template'}}
+        //- removed templates until fix - 12.5
+        //- unless currentBoard.isTemplatesBoard
+        //-   unless currentBoard.isTemplateBoard
+        //-     span.quiet
+        //-       | {{_ 'or'}}
+        //-       a.js-swimlane-template {{_ 'template'}}
 
 template(name="setSwimlaneColorPopup")
   form.edit-label

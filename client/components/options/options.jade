@@ -32,12 +32,13 @@ template(name="boardOptionsPopup")
         a.board-header-btn.js-open-archived-board
           i.fa.fa-archive
           span {{_ 'archives'}}
-      unless currentUser.isWorker
-        ul.pop-over-list
-          li
-            a(href="{{pathFor 'board' id=templatesBoardId slug=templatesBoardSlug}}")
-              i.fa.fa-clone
-              | {{_ 'templates'}}
+      //- removed templates from options menu untill we fix it - 12.5
+      //- unless currentUser.isWorker
+      //-   ul.pop-over-list
+      //-     li
+      //-       a(href="{{pathFor 'board' id=templatesBoardId slug=templatesBoardSlug}}")
+      //-         i.fa.fa-clone
+      //-         | {{_ 'templates'}}
       if currentUser.isAdmin
         li
           a.js-go-setting(href="{{pathFor 'setting'}}")

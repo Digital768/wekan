@@ -50,6 +50,10 @@ input[type="email"] {
   direction: rtl;
   text-align: right
 }
+
+.js-new-board-title{
+    margin-top: 6px;
+}
 input[type="text"].inline-input,
 input[type="password"].inline-input,
 input[type="email"].inline-input {
