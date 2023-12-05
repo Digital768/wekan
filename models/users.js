@@ -462,6 +462,16 @@ Users.attachSchema(
       type: Boolean,
       optional: true,
     },
+
+    hasSeenFeatureTour: {
+      /**
+       * Indicates whether the user has seen the feature tour - added by ben at 4.12
+       */
+      type: Boolean,
+      optional: true,
+      defaultValue: false, // Set the default value to false
+    },
+    
     createdThroughApi: {
       /**
        * was the user created through the API?
@@ -1156,15 +1166,6 @@ Users.mutations({
     };
   },
 
-  hasSeenFeatureTour: {
-    /**
-     * Indicates whether the user has seen the feature tour - added by ben at 4.12
-     */
-    type: Boolean,
-    optional: true,
-    defaultValue: false, // Set the default value to false
-  },
-
   setShowCardsCountAt(limit) {
     return {
       $set: {
@@ -1675,6 +1676,7 @@ if (Meteor.isServer) {
       check(userId, String);
 
       if (!ReactiveCache.getUser(userId))
+
         throw new Meteor.Error(404, 'User not found');
       if (!ReactiveCache.getCurrentUser().isAdmin)
         throw new Meteor.Error(403, 'Permission denied');

@@ -375,7 +375,7 @@ Meteor.methods({
       intro.setOptions({
         steps: [
           {
-            element: document.querySelector('#add-board'),
+            element: '#add-board',
             intro: "Click here to add a new board.",
             position:"left"
           },
