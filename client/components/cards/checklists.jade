@@ -94,7 +94,7 @@ template(name="checklistItems")
       else
         a.add-checklist-item.js-open-inlined-form(title="{{_ 'add-checklist-item'}}")
           i.fa.fa-plus
-          span{{_ 'add_checklist-mission'}}
+          span{{_ 'add_checklist-mission-top'}}
   .checklist-items.js-checklist-items
     each item in checklist.items
       +inlinedForm(classNames="js-edit-checklist-item" item = item checklist = checklist)
@@ -107,7 +107,7 @@ template(name="checklistItems")
       else
         a.add-checklist-item.js-open-inlined-form(title="{{_ 'add-checklist-item'}}")
           i.fa.fa-plus
-          span{{_ 'add_checklist-mission'}}
+          span{{_ 'add_checklist-mission-bottom'}}
 
 template(name='checklistItemDetail')
   .js-checklist-item.checklist-item(class="{{#if item.isFinished }}is-checked{{#if hideCheckedItems}} invisible{{/if}}{{/if}}"
