@@ -965,8 +965,11 @@ a:not(.disabled).is-active i.fa {
   }
 }
 
-/* added styling for pegasus logo 30.11.2023 */
-.pegasusImage{
-  margin-top: 22px;
-  width: 328px;
+/* added styling for mador logo 6.12.2023 */
+.madorWaterMark {
+  width: 200px;
+  z-index: -1;
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
 }
