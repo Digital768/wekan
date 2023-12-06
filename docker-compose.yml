@@ -121,7 +121,7 @@ services:
     # image: wekanteam/wekan:v6.89
     # b) GitHub Container registry.
     # b1) Latest release tag:
-    image: wecant
+    image: d
     # b2) Newest git commit automatic build:
     #image: ghcr.io/wekan/wekan:main
     # c) Quay:
@@ -244,6 +244,10 @@ services:
       #
       # There is Feature Request: Logging date and time of all activity with summary reports,
       # and requesting reason for changing card to other column https://github.com/wekan/wekan/issues/1598
+      #---------------------------------------------------------------
+       # ==== AFTER OIDC LOGIN, ADD USERS AUTOMATICALLY TO THIS BOARD ID ====
+      # https://github.com/wekan/wekan/pull/5098
+      #- DEFAULT_BOARD_ID=abcd1234
       #---------------------------------------------------------------
       # ==== NUMBER OF SEARCH RESULTS PER PAGE BY DEFAULT ====
       #- RESULTS_PER_PAGE=20

@@ -36,8 +36,8 @@ template(name="boardBody")
           +calendarView
         else
           +listsGroup(currentBoard)
-      img.madorWaterMark(src="{{pathFor '/svg-etc/createdByDigital.png'}}, alt=""team logo")
-//- added water mark of mador 6.12.2023
+      img.madorWaterMark(src="{{pathFor '/svg-etc/createdByDigital.png'}}" alt="team logo")
+
 
 template(name="calendarView")
   if isViewCalendar
