@@ -378,6 +378,8 @@ Users.attachSchema(
        * boardView field of the user
        */
       type: String,
+      // sets the default board view to lists -6.12
+      defaultValue: 'board-view-lists',
       optional: true,
       allowedValues: [
         'board-view-swimlanes',

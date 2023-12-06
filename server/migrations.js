@@ -1135,7 +1135,7 @@ Migrations.add('add-default-profile-view', () => {
       // Set default view
       Users.direct.update(
         { _id: user._id },
-        { $set: { 'profile.boardView': 'board-view-swimlanes' } },
+        { $set: { 'profile.boardView': 'board-view-lists' } },
         noValidate,
       );
     }
