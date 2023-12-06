@@ -444,12 +444,11 @@ template(name="boardMenuPopup")
       li
         a.js-change-board-color
           i.fa.fa-paint-brush
-          | {{_ 'board-change-color'}}
-      //- removed - 28.11    
-      //- li
-      //-   a.js-change-background-image
-      //-     i.fa.fa-picture-o
-      //-     | {{_ 'board-change-background-image'}}
+          | {{_ 'board-change-color'}}    
+      li
+        a.js-change-background-image
+          i.fa.fa-picture-o
+          | {{_ 'board-change-background-image'}}
     //Bug Board icons random dance https://github.com/wekan/wekan/issues/4214
     //if currentUser.isBoardAdmin
     //  unless currentSetting.hideBoardMemberList
