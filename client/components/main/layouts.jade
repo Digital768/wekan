@@ -66,6 +66,7 @@ template(name="userFormsLayout")
 
 template(name="defaultLayout")
   div.boardscolor-container(class=currentBoard.colorClass)
+    img.madorWaterMark(src="{{pathFor '/svg-etc/createdByDigital.png'}}" alt="team logo")
     +header
     #content
       | {{{afterBodyStart}}}

@@ -745,13 +745,13 @@ export default {
   //   name: "isiXhosa",
   //   load: () => import('./data/xh.i18n.json'),
   // }
-  ,
-  "yi": {
-    code: "yi",
-    tag: "yi",
-    name: "ייִדיש, יידיש",
-    load: () => import('./data/yi.i18n.json'),
-   }
+  // ,
+  // "yi": {
+  //   code: "yi",
+  //   tag: "yi",
+  //   name: "ייִדיש, יידיש",
+  //   load: () => import('./data/yi.i18n.json'),
+  //  }
   // "yo": {
   //   code: "yo",
   //   tag: "yo",

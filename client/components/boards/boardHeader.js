@@ -281,7 +281,8 @@ const CreateBoard = BlazeComponent.extendComponent({
         title: 'Default',
         boardId: this.boardId.get(),
       });
-
+      // when creating a board, it will open as lists mode.
+      Utils.setBoardView('board-view-lists')
       Utils.goBoardId(this.boardId.get());
     }
   },

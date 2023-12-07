@@ -226,6 +226,7 @@ Users.attachSchema(
        * language of the user
        */
       type: String,
+      defaultValue: 'he',
       optional: true,
     },
     'profile.moveAndCopyDialog': {
@@ -382,8 +383,8 @@ Users.attachSchema(
       defaultValue: 'board-view-lists',
       optional: true,
       allowedValues: [
-        'board-view-swimlanes',
         'board-view-lists',
+        'board-view-swimlanes',
         'board-view-cal',
       ],
     },
@@ -1830,7 +1831,7 @@ if (Meteor.isServer) {
       user.profile = {
         icode: options.profile.invitationcode,
       };
-      user.profile.boardView = 'board-view-swimlanes';
+      user.profile.boardView = 'board-view-lists';
 
       // Deletes the invitation code after the user was created successfully.
       setTimeout(

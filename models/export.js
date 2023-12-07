@@ -176,8 +176,8 @@ if (Meteor.isServer) {
           reason: exportType,
         });
       }
-      
-      let userLanguage = 'en';
+      // set default languange to hebrew
+      let userLanguage = 'he';
       if (user && user.profile) {
         userLanguage = user.profile.language
       }
