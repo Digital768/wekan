@@ -4,6 +4,9 @@
   background-color: rgb(63, 164, 149);
   background-image: url(/svg-etc/green.svg);
 }
+.minicard.ui-sortable-handle{
+  background-color: #ffffff;
+}
 
 /* .board-color-nephritis .board-canvas {
   background: linear-gradient(230deg, #27ae60 0%, transparent 100%);
