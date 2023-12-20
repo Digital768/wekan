@@ -967,7 +967,7 @@ a:not(.disabled).is-active i.fa {
 
 /* added styling for mador logo 6.12.2023 */
 .madorWaterMark {
-  width: 200px;
+  width: 300px;
   z-index: -1;
   position: absolute;
   bottom: 25px;
