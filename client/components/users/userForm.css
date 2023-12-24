@@ -4,6 +4,9 @@
   margin-top: 50px;
   margin-bottom: 20px;
 }
+.at-error{
+  display: none;
+}
 .auth-layout .auth-dialog {
   width: 275px;
   padding: 25px;
