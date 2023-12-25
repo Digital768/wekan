@@ -970,6 +970,6 @@ a:not(.disabled).is-active i.fa {
   width: 300px;
   z-index: -1;
   position: absolute;
-  bottom: 25px;
-  right: 25px;
+  bottom: 15px;
+  right: -15px;
 }
