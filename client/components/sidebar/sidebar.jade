@@ -540,7 +540,8 @@ template(name="labelsWidget")
 template(name="memberPopup")
   .board-member-menu
     .miniprofile-header
-      +userAvatar(userId=user._id showEdit=true)
+      //- +userAvatar(userId=user._id showEdit=true)
+      +AnomAvatar
       .info
         h3
           .js-profile= user.profile.fullname
