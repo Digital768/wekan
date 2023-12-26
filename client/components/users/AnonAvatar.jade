@@ -5,10 +5,9 @@ template(name ="anonAvatar")
     else
       img.avatar.avatar-image(src="{{pathFor '/svg-etc/anon.png'}}")
 
-
-if showStatus
-      span.member-presence-status(class=presenceStatusClassName)
-      span.member-type(class=memberType)
+    if showStatus
+          span.member-presence-status(class=presenceStatusClassName)
+          span.member-type(class=memberType)
 
 
 template(name="memberName")
