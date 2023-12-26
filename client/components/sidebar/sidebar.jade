@@ -620,7 +620,7 @@ template(name="addMemberPopup")
       +EasySearch.Each(index=searchIndex)
         li.item.js-member-item(class="{{#if isBoardMember}}disabled{{/if}}")
           a.name.js-select-member(title="{{profile.fullname}} ({{username}})")
-            +userAvatar(userId=__originalId)
+            +anonAvatar(userId=__originalId)
             span.full-name
               = profile.fullname
               | (<span class="username">{{username}}</span>)

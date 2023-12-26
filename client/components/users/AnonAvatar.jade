@@ -1,2 +1,21 @@
 template(name ="anonAvatar")
-  img.avatar.avatar-image(src="{{pathFor '/svg-etc/anon.png'}}")
+  a.member(class="js-{{#if assignee}}assignee{{else}}member{{/if}}" title="{{userData.profile.fullname}} ({{userData.username}}) {{_ memberType}}")
+    if userData.profile.avatarUrl
+      img.avatar.avatar-image(src="{{userData.profile.avatarUrl}}")
+    else
+      img.avatar.avatar-image(src="{{pathFor '/svg-etc/anon.png'}}")
+
+
+if showStatus
+      span.member-presence-status(class=presenceStatusClassName)
+      span.member-type(class=memberType)
+
+
+template(name="memberName")
+  if showBoth
+    = user.profile.fullname
+    | ({{ user.username }})
+  else if user.profile.fullname
+    = user.profile.fullname
+  else
+    = user.username
