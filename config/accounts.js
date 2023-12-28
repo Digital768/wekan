@@ -2,8 +2,8 @@ import { TAPi18n } from '/imports/i18n';
 
 const passwordField = AccountsTemplates.removeField('password');
 const emailField = AccountsTemplates.removeField('email');
-let disableRegistration = true;
-let disableForgotPassword = false;
+let disableRegistration = false;
+let disableForgotPassword = true;
 let passwordLoginEnabled = false;
 let oidcRedirectionEnabled = false;
 let oauthServerUrl = "home";

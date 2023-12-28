@@ -73,6 +73,8 @@ Template.userFormsLayout.onRendered(() => {
       }
     });
 
+    $('.at-signup-link').hide();
+
     if (enabledAuthenticationMethods.indexOf('oauth2') !== -1) {
       // TODO find better way to run this code once the oauth2 UI is injected in the DOM
       (function waitForElementAndShow() {

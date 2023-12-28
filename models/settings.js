@@ -14,7 +14,7 @@ Settings.attachSchema(
     disableRegistration: {
       type: Boolean,
       optional: true,
-      defaultValue: true,
+      defaultValue: false,
     },
     disableForgotPassword: {
       type: Boolean,
@@ -176,7 +176,7 @@ if (Meteor.isServer) {
       )[1];
       const from = `Boards Support <support@${domain}>`;
       const defaultSetting = {
-        disableRegistration: true,
+        disableRegistration: false,
         mailServer: {
           username: '',
           password: '',
