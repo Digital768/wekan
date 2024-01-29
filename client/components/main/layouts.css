@@ -871,11 +871,6 @@ a:not(.disabled).is-active i.fa {
   text-decoration-color: #17683a;
 }
 
-.at-pwd-form,
-.at-sep,
-.at-oauth {
-  display: none;
-}
 
 @-moz-keyframes fadeIn {
   from {

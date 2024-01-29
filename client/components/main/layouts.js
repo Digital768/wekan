@@ -73,9 +73,9 @@ Template.userFormsLayout.onRendered(() => {
       }
     });
 
-    $('.at-pwd-link').hide();
-    $('.at-signup-link').hide();
-    $('.at-pwd-form').hide();
+    // $('.at-pwd-link').hide();
+    // $('.at-signup-link').hide();
+    // $('.at-pwd-form').hide();
 
     if (enabledAuthenticationMethods.indexOf('oauth2') !== -1) {
       // TODO find better way to run this code once the oauth2 UI is injected in the DOM
