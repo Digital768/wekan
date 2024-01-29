@@ -28,7 +28,7 @@ jobs:
 
       # Login to Docker Hub
       - name: Log into Docker Hub
-        uses: docker/login-action@v1
+        uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
           username: digitalmnz001@gmail.com
