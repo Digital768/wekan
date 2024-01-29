@@ -12,7 +12,7 @@ on:
 
 env:
   REGISTRY: docker.io
-  IMAGE_NAME: digitalmnz001/my-docker-image
+  IMAGE_NAME: digitalmnz001/Tboard
 
 jobs:
   build:
