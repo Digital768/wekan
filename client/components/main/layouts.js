@@ -55,11 +55,11 @@ Template.userFormsLayout.onRendered(() => {
       });
     }
 
-    Meteor.call('isPasswordLoginEnabled', (_, result) => {
-      if (result) {
-        $('.at-pwd-form').show();
-      }
-    });
+    // Meteor.call('isPasswordLoginEnabled', (_, result) => {
+    //   if (result) {
+    //     $('.at-pwd-form').show();
+    //   }
+    // });
 
     Meteor.call('isDisableRegistration', (_, result) => {
       if (result) {
@@ -73,9 +73,8 @@ Template.userFormsLayout.onRendered(() => {
       }
     });
 
-    // $('.at-pwd-link').hide();
-    // $('.at-signup-link').hide();
-    // $('.at-pwd-form').hide();
+    $('.at-pwd-link').hide();
+    $('.at-signup-link').hide();
 
     if (enabledAuthenticationMethods.indexOf('oauth2') !== -1) {
       // TODO find better way to run this code once the oauth2 UI is injected in the DOM
