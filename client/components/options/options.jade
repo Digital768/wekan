@@ -1,7 +1,7 @@
 template(name="options")
   #options.js-open-header-board-menu
     a.header-board-bar-name(title="{{_ 'boardOptionsMenu-title'}}")
-        img(src="{{pathFor '/svg-etc/grid.svg'}}" alt="{{currentSetting.productName}}" title="{{currentSetting.productName}}" width="28")
+        img(src="{{pathFor '/svg-etc/grid.svg'}}" title="{{currentSetting.productName}}" alt="{{currentSetting.productName}}" width="28")
 
 template(name="boardOptionsPopup")
   ul.pop-over-list
@@ -33,7 +33,8 @@ template(name="boardOptionsPopup")
           i.fa.fa-archive
           span {{_ 'archives'}}
       li
-        a(href="public/tutorial.pdf" download="tutorial.pdf") 
+        a(href="{{pathFor '/tutorial.pdf'}}" download="tutorial.pdf") 
+          i.fa.fa-file
           span {{_ 'tutorial'}}
       //- removed templates from options menu untill we fix it - 12.5
       //- unless currentUser.isWorker
@@ -42,8 +43,8 @@ template(name="boardOptionsPopup")
       //-       a(href="{{pathFor 'board' id=templatesBoardId slug=templatesBoardSlug}}")
       //-         i.fa.fa-clone
       //-         | {{_ 'templates'}}
-      if currentUser.isAdmin
-        li
-          a.js-go-setting(href="{{pathFor 'setting'}}")
-            i.fa.fa-lock
-            | {{_ 'admin-panel'}}
+      //- if currentUser.isAdmin
+      //-   li
+      //-     a.js-go-setting(href="{{pathFor 'setting'}}")
+      //-       i.fa.fa-lock
+      //-       | {{_ 'admin-panel'}}
