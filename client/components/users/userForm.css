@@ -4,18 +4,10 @@
   margin-top: 50px;
   margin-bottom: 20px;
 }
+
 .at-error {
   display: none;
 }
-/* .at-pwd-link{
-  display: none;
-}
-.at-pwd-form{
-  display: none;
-}
-.at-signup-link{
-  display: none;
-} */
 
 .auth-layout .auth-dialog {
   width: 275px;

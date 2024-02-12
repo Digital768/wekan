@@ -43,8 +43,8 @@ template(name="boardOptionsPopup")
       //-       a(href="{{pathFor 'board' id=templatesBoardId slug=templatesBoardSlug}}")
       //-         i.fa.fa-clone
       //-         | {{_ 'templates'}}
-      //- if currentUser.isAdmin
-      //-   li
-      //-     a.js-go-setting(href="{{pathFor 'setting'}}")
-      //-       i.fa.fa-lock
-      //-       | {{_ 'admin-panel'}}
+      if currentUser.isAdmin
+        li
+          a.js-go-setting(href="{{pathFor 'setting'}}")
+            i.fa.fa-lock
+            | {{_ 'admin-panel'}}
