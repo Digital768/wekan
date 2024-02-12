@@ -711,7 +711,7 @@ template(name="cardDetailsActionsPopup")
           a.js-archive
             i.fa.fa-arrow-right
             i.fa.fa-archive
-            | {{_ 'archive-card'}}
+            | {{_ 'delete-card'}}
     hr
     ul.pop-over-list
       li
@@ -879,10 +879,7 @@ template(name="cardDeletePopup")
   button.js-confirm.negate.full(type="submit") {{_ 'delete'}}
 
 template(name="cardArchivePopup")
-  p {{_ "card-archive-pop"}}
-  unless archived
-    p {{_ "card-archive-suggest-cancel"}}
-  button.js-confirm.negate.full(type="submit") {{_ 'archive'}}
+  button.js-confirm.negate.full(type="submit") {{_ 'delete'}}
 
 template(name="deleteVotePopup")
   p {{_ "vote-delete-pop"}}

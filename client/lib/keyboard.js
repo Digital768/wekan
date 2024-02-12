@@ -211,7 +211,7 @@ Template.keyboardShortcuts.helpers({
     },
     {
       keys: ['c'],
-      action: 'archive-card',
+      action: 'delete-card',
     },
     {
       keys: ['number keys 1-9'],
