@@ -47,6 +47,8 @@
   margin-bottom: 10px;
 }
 .global-search-results-list-wrapper {
+  /* centered the h2 - 14.2 by ben */
+  text-align: center;
   max-width: 500px;
   margin-right: auto;
   margin-left: auto;

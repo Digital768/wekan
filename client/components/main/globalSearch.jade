@@ -14,7 +14,8 @@ template(name="resultsPaged")
   if resultsHeading.get
     h1
       = resultsHeading.get
-      a.fa.fa-link(title="{{_ 'link-to-search' }}" href="{{ getSearchHref }}")
+      //- disabled copy icon  - 14.2 by ben
+      //- a.fa.fa-link(title="{{_ 'link-to-search' }}" href="{{ getSearchHref }}")
   each card in results.get
     +resultCard(card)
   table.global-search-footer

@@ -3,16 +3,16 @@ template(name="dueCardsHeaderBar")
     h1
       i.fa.fa-calendar
       | {{_ 'dueCards-title'}}
-
-    .board-header-btns.left
-      a.board-header-btn.js-due-cards-view-change(title="{{_ 'dueCardsViewChange-title'}}")
-        i.fa.fa-caret-down
-        if $eq dueCardsView 'me'
-          i.fa.fa-user
-          | {{_ 'dueCardsViewChange-choice-me'}}
-        if $eq dueCardsView 'all'
-          i.fa.fa-users
-          | {{_ 'dueCardsViewChange-choice-all'}}
+    //- disabled the option to choose which overdue cards displayed - crashing the website - 14.2 by ben
+    //- .board-header-btns.left
+    //-   a.board-header-btn.js-due-cards-view-change(title="{{_ 'dueCardsViewChange-title'}}")
+    //-     i.fa.fa-caret-down
+    //-     if $eq dueCardsView 'me'
+    //-       i.fa.fa-user
+    //-       | {{_ 'dueCardsViewChange-choice-me'}}
+    //-     if $eq dueCardsView 'all'
+    //-       i.fa.fa-users
+    //-       | {{_ 'dueCardsViewChange-choice-all'}}
 
 template(name="dueCardsModalTitle")
   if currentUser

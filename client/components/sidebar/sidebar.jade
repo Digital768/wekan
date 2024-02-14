@@ -71,22 +71,23 @@ template(name="membersWidget")
               | {{_ 'just-invited'}}
             button.js-member-invite-accept.primary {{_ 'accept'}}
             button.js-member-invite-decline {{_ 'decline'}}
-      +tabContent(slug='organizations')
-        unless currentUser.isWorker
-          p.quiet
-        if AtLeastOneOrgWasCreated
-          .board-widget.board-widget-members
-            .board-widget-content
-              +boardOrgGeneral
-              .clearfix
-      +tabContent(slug="teams")
-        unless currentUser.isWorker
-          p.quiet
-        if AtLeastOneTeamWasCreated
-          .board-widget.board-widget-members
-            .board-widget-content
-              +boardTeamGeneral
-              .clearfix
+      //- removed organizations and teams from sidebar - 14.2 by ben
+      //- +tabContent(slug='organizations')
+      //-   unless currentUser.isWorker
+      //-     p.quiet
+      //-   if AtLeastOneOrgWasCreated
+      //-     .board-widget.board-widget-members
+      //-       .board-widget-content
+      //-         +boardOrgGeneral
+      //-         .clearfix
+      //- +tabContent(slug="teams")
+      //-   unless currentUser.isWorker
+      //-     p.quiet
+      //-   if AtLeastOneTeamWasCreated
+      //-     .board-widget.board-widget-members
+      //-       .board-widget-content
+      //-         +boardTeamGeneral
+      //-         .clearfix
 
 template(name="boardOrgGeneral")
   table
