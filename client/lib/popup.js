@@ -36,7 +36,7 @@ window.Popup = new (class {
      * @param evt the current event
      * @param options options (dataContextIfCurrentDataIsUndefined use this dataContext if this.currentData() is undefined)
      */
-    return function(evt, options) {
+    return function (evt, options) {
       // If a popup is already opened, clicking again on the opener element
       // should close it -- and interrupt the current `open` function.
       if (self.isOpen()) {
@@ -73,10 +73,13 @@ window.Popup = new (class {
         title: self._getTitle(popupName),
         depth: self._stack.length,
         offset: self._getOffset(openerElement),
-        dataContext: (this && this.currentData && this.currentData()) || (options && options.dataContextIfCurrentDataIsUndefined) || this,
+        dataContext:
+          (this && this.currentData && this.currentData()) ||
+          (options && options.dataContextIfCurrentDataIsUndefined) ||
+          this,
       });
 
-      const $contentWrapper = $('.content-wrapper')
+      const $contentWrapper = $('.content-wrapper');
       if ($contentWrapper.length > 0) {
         const contentWrapper = $contentWrapper[0];
         self._getTopStack().scrollTop = contentWrapper.scrollTop;
@@ -117,7 +120,7 @@ window.Popup = new (class {
   afterConfirm(name, action) {
     const self = this;
 
-    return function(evt, tpl) {
+    return function (evt, tpl) {
       const context = (this.currentData && this.currentData()) || this;
       context.__afterConfirmAction = action;
       self.open(name).call(context, evt, tpl);
@@ -137,12 +140,14 @@ window.Popup = new (class {
   /// steps back is greater than the popup stack size, the popup will be closed.
   back(n = 1) {
     if (this._stack.length > n) {
-      const $contentWrapper = $('.content-wrapper')
+      const $contentWrapper = $('.content-wrapper');
       if ($contentWrapper.length > 0) {
         const contentWrapper = $contentWrapper[0];
         const stack = this._stack[this._stack.length - n];
         // scrollTopMax and scrollLeftMax only available at Firefox (https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTopMax)
-        const scrollTopMax = contentWrapper.scrollTopMax || contentWrapper.scrollHeight - contentWrapper.clientHeight;
+        const scrollTopMax =
+          contentWrapper.scrollTopMax ||
+          contentWrapper.scrollHeight - contentWrapper.clientHeight;
         if (scrollTopMax && stack.scrollTop > scrollTopMax) {
           // sometimes scrollTopMax is lower than scrollTop, so i need this dirty hack
           setTimeout(() => {
@@ -172,7 +177,7 @@ window.Popup = new (class {
     }
   }
 
-  getOpenerComponent(n=4) {
+  getOpenerComponent(n = 4) {
     const { openerElement } = Template.parentData(n);
     return BlazeComponent.getComponentForElement(openerElement);
   }
@@ -196,7 +201,10 @@ window.Popup = new (class {
       const popupWidth = 300 + 15;
       return {
         left: Math.min(offset.left, $(window).width() - popupWidth),
-        top: offset.top + $element.outerHeight(),
+        top: Math.min(
+          offset.top + $element.outerHeight(),
+          window.innerHeight() - $element.outerHeight(),
+        ),
       };
     };
   }
@@ -224,13 +232,14 @@ window.Popup = new (class {
 // We close a potential opened popup on any left click on the document, or go
 // one step back by pressing escape.
 const escapeActions = ['back', 'close'];
-escapeActions.forEach(actionName => {
+escapeActions.forEach((actionName) => {
   EscapeActions.register(
     `popup-${actionName}`,
     () => Popup[actionName](),
     () => Popup.isOpen(),
     {
-      noClickEscapeOn: '.js-pop-over,.js-open-card-title-popup,.js-open-inlined-form',
+      noClickEscapeOn:
+        '.js-pop-over,.js-open-card-title-popup,.js-open-inlined-form',
       enabledOnClick: actionName === 'close',
     },
   );
