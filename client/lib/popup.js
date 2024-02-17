@@ -203,7 +203,7 @@ window.Popup = new (class {
         left: Math.min(offset.left, $(window).width() - popupWidth),
         top: Math.min(
           offset.top + $element.outerHeight(),
-          window.innerHeight() - $element.outerHeight(),
+          $(window).height() - $element.outerHeight(),
         ),
       };
     };
