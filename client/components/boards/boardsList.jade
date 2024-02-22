@@ -32,7 +32,7 @@ template(name="boardList")
             input#resetBtn(type="button" value="{{_ 'filter-clear'}}")
 
     ul.board-list.clearfix.js-boards
-      li.js-add-board
+      li.js-add-board#add-board-button
         a.board-list-item.label(title="{{_ 'add-board'}}")
           | {{_ 'add-board'}}
       each boards

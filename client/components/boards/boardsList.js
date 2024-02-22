@@ -1,7 +1,19 @@
 import { ReactiveCache } from '/imports/reactiveCache';
 import { TAPi18n } from '/imports/i18n';
+import { driver } from "driver.js";
 
 const subManager = new SubsManager();
+
+const driverObj = driver({
+  showProgress: true,
+  steps: [
+    { element: '.js-add-board', popover: { title: 'Test', description: 'BenBen' } }
+    // { element: '.top-nav', popover: { title: 'Title', description: 'Description' } },
+    // { element: '.sidebar', popover: { title: 'Title', description: 'Description' } },
+    // { element: '.footer', popover: { title: 'Title', description: 'Description' } },
+  ]
+});
+
 
 Template.boardList.helpers({
   hideCardCounterList() {
@@ -14,6 +26,7 @@ Template.boardList.helpers({
        return Utils.isMiniScreen() && Session.get('currentBoard'); */
     return true;
   },
+    
 })
 
 Template.boardListHeaderBar.events({
@@ -90,6 +103,7 @@ BlazeComponent.extendComponent({
       },
     });
 
+
     // Disable drag-dropping if the current user is not a board member or is comment only
     this.autorun(() => {
       if (Utils.isTouchScreenOrShowDesktopDragHandles()) {
@@ -98,6 +112,9 @@ BlazeComponent.extendComponent({
         });
       }
     });
+    
+    driverObj.drive();
+    
   },
   userHasTeams() {
     if (ReactiveCache.getCurrentUser()?.teams?.length > 0)
