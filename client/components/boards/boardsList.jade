@@ -33,7 +33,7 @@ template(name="boardList")
 
     ul.board-list.clearfix.js-boards
       li.js-add-board
-        a.board-list-item.label(title="{{_ 'add-board'}}")
+        a.board-list-item.label#add-board-btn(title="{{_ 'add-board'}}")
           | {{_ 'add-board'}}
       each boards
         li(class="{{_id}}" class="{{#if isStarred}}starred{{/if}}" class=colorClass).js-board

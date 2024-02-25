@@ -5,6 +5,7 @@ import '/node_modules/intro.js/minified/introjs.min.css';
 import '/node_modules/intro.js/introjs-rtl.css'; // If you need RTL support
 
 const subManager = new SubsManager();
+const intro = introJs();
 
 Template.boardList.helpers({
   hideCardCounterList() {
@@ -56,17 +57,21 @@ BlazeComponent.extendComponent({
   },
 
   onRendered() {
-    introJs()
+    intro
     .setOptions({
       nextLabel: 'הבא',
         prevLabel:'הקודם',
         doneLabel: 'סיים',
         exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
-        disableInteraction: false,
         showButtons: false,
+        showSkip: false,
+        showBullets: false,
+        showStepNumbers: true,
+        disableInteraction: false,
+        showProgress: true,
       steps: [
         {
-          element: document.querySelector('.js-add-board'), // Focus on the add board button
+          element: document.querySelector('.add-board-btn'), // Focus on the add board button
           intro: "ברוך הבא לתיור! לחץ כאן בכדי ליצור לוח חדש",
           position: 'left'
         },
@@ -76,8 +81,7 @@ BlazeComponent.extendComponent({
           position: 'left'
         },
         // Add more steps as needed
-      ],
-      exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
+      ]
     })
     .start();
 
@@ -263,7 +267,10 @@ BlazeComponent.extendComponent({
   events() {
     return [
       {
-        'click .js-add-board': Popup.open('createBoard'),
+        'click .js-add-board': function() {
+          Popup.open('createBoard');
+          intro.nextStep(); // Add this line to move to the next step
+      },
         'click .js-star-board'(evt) {
           const boardId = this.currentData()._id;
           ReactiveCache.getCurrentUser().toggleBoardStar(boardId);
