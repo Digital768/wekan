@@ -7,6 +7,25 @@ import '/node_modules/intro.js/introjs-rtl.css'; // If you need RTL support
 const subManager = new SubsManager();
 const intro = introJs();
 
+intro
+  .setOptions({
+    nextLabel: 'הבא',
+    prevLabel: 'הקודם',
+    doneLabel: 'סיים',
+    exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
+    exitOnEsc: false,
+    showButtons: true,
+    showBullets: false,
+    steps: [
+      {
+        element: document.querySelector('.add-board-btn'), // Focus on the add board button
+        intro: "ברוך הבא לתיור! לחץ כאן בכדי ליצור לוח חדש",
+        position: 'left'
+      }
+      // Add more steps as needed
+    ]
+  })
+
 Template.boardList.helpers({
   hideCardCounterList() {
     /* Bug Board icons random dance https://github.com/wekan/wekan/issues/4214
@@ -57,32 +76,7 @@ BlazeComponent.extendComponent({
   },
 
   onRendered() {
-    intro
-    .setOptions({
-      nextLabel: 'הבא',
-        prevLabel:'הקודם',
-        doneLabel: 'סיים',
-        exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
-        showButtons: false,
-        showSkip: false,
-        showBullets: false,
-        disableInteraction: false,
-        showProgress: true,
-      steps: [
-        {
-          element: document.querySelector('.add-board-btn'), // Focus on the add board button
-          intro: "ברוך הבא לתיור! לחץ כאן בכדי ליצור לוח חדש",
-          position: 'left'
-        },
-        {
-          element: document.querySelector('#create-board-btn'), // Focus on the add board link
-          intro: "אנא הכנס שם לוח ולחץ על כפתור 'יצירה'"
-        },
-        // Add more steps as needed
-      ]
-    })
-    .start();
-
+    intro.start();
     const itemsSelector = '.js-board:not(.placeholder)';
 
     const $boards = this.$('.js-boards');
@@ -266,7 +260,17 @@ BlazeComponent.extendComponent({
     return [
       {
         'click .js-add-board': Popup.open('createBoard'),
-        'click #add-board-btn': intro.nextStep(),
+        'click #add-board-btn'() {
+          intro.addStep({
+             element: document.querySelector('#create-board-btn'),
+             intro: "אנא הכנס שם לוח ולחץ על כפתור 'יצירה'"
+          })
+          // Get the index of the last added step
+          const lastStepIndex = intro._options.steps.length - 1;
+    
+          // Start the tour from the last added step
+          intro.start().goToStep(lastStepIndex);
+       },
         'click .js-star-board'(evt) {
           const boardId = this.currentData()._id;
           ReactiveCache.getCurrentUser().toggleBoardStar(boardId);
