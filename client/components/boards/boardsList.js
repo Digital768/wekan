@@ -66,7 +66,6 @@ BlazeComponent.extendComponent({
         showButtons: false,
         showSkip: false,
         showBullets: false,
-        showStepNumbers: true,
         disableInteraction: false,
         showProgress: true,
       steps: [
@@ -77,8 +76,7 @@ BlazeComponent.extendComponent({
         },
         {
           element: document.querySelector('#create-board-btn'), // Focus on the add board link
-          intro: "אנא הכנס שם לוח ולחץ על כפתור 'יצירה'",
-          position: 'left'
+          intro: "אנא הכנס שם לוח ולחץ על כפתור 'יצירה'"
         },
         // Add more steps as needed
       ]
@@ -267,10 +265,8 @@ BlazeComponent.extendComponent({
   events() {
     return [
       {
-        'click .js-add-board': function() {
-          Popup.open('createBoard');
-          intro.nextStep(); // Add this line to move to the next step
-      },
+        'click .js-add-board': Popup.open('createBoard'),
+        'click #add-board-btn': intro.nextStep(),
         'click .js-star-board'(evt) {
           const boardId = this.currentData()._id;
           ReactiveCache.getCurrentUser().toggleBoardStar(boardId);
