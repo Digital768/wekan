@@ -1,5 +1,8 @@
 import { ReactiveCache } from '/imports/reactiveCache';
 import { TAPi18n } from '/imports/i18n';
+import introJs from 'intro.js';
+import '/node_modules/intro.js/minified/introjs.min.css';
+import '/node_modules/intro.js/introjs-rtl.css'; // If you need RTL support
 
 const subManager = new SubsManager();
 
@@ -53,6 +56,31 @@ BlazeComponent.extendComponent({
   },
 
   onRendered() {
+    introJs()
+    .setOptions({
+      nextLabel: 'הבא',
+        prevLabel:'הקודם',
+        doneLabel: 'סיים',
+        exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
+        disableInteraction: false,
+        showButtons: false,
+      steps: [
+        {
+          element: document.querySelector('.js-add-board'), // Focus on the add board button
+          intro: "ברוך הבא לתיור! לחץ כאן בכדי ליצור לוח חדש",
+          position: 'left'
+        },
+        {
+          element: document.querySelector('#create-board-btn'), // Focus on the add board link
+          intro: "אנא הכנס שם לוח ולחץ על כפתור 'יצירה'",
+          position: 'left'
+        },
+        // Add more steps as needed
+      ],
+      exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
+    })
+    .start();
+
     const itemsSelector = '.js-board:not(.placeholder)';
 
     const $boards = this.$('.js-boards');
