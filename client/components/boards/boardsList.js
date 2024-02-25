@@ -14,11 +14,11 @@ intro
     doneLabel: 'סיים',
     exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
     exitOnEsc: false,
-    showButtons: true,
+    showButtons: false,
     showBullets: false,
     steps: [
       {
-        element: document.querySelector('.add-board-btn'), // Focus on the add board button
+        element: document.querySelector('#add-board-btn'), // Focus on the add board button
         intro: "ברוך הבא לתיור! לחץ כאן בכדי ליצור לוח חדש",
         position: 'left'
       }
@@ -269,7 +269,7 @@ BlazeComponent.extendComponent({
           const lastStepIndex = intro._options.steps.length - 1;
     
           // Start the tour from the last added step
-          intro.start().goToStep(lastStepIndex);
+          intro.goToStep(lastStepIndex).start();
        },
         'click .js-star-board'(evt) {
           const boardId = this.currentData()._id;
