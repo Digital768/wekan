@@ -7,24 +7,25 @@ import '/node_modules/intro.js/introjs-rtl.css'; // If you need RTL support
 const subManager = new SubsManager();
 const intro = introJs();
 
-intro
-  .setOptions({
-    nextLabel: 'הבא',
-    prevLabel: 'הקודם',
-    doneLabel: 'סיים',
-    exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
-    exitOnEsc: false,
-    showButtons: false,
-    showBullets: false,
-    steps: [
+intro.setOptions({
+  steps: [
       {
-        element: document.querySelector('#add-board-btn'), // Focus on the add board button
-        intro: "ברוך הבא לתיור! לחץ כאן בכדי ליצור לוח חדש",
-        position: 'left'
+          intro: "ברןך הבא.",
+          element: document.querySelector('#add-board-btn'),
+          position: 'left'
+      },
+      {
+          intro: "Welcome to Step 2.",
+          element: document.querySelector('.js-pop-over'),
+          position: 'left'
       }
-      // Add more steps as needed
-    ]
-  })
+  ],
+  showStepNumbers: false, // Hide step numbers
+  showButtons: false, // Hide navigation buttons
+  exitOnOverlayClick: false, // Do not exit on overlay click
+  exitOnEsc: false // Do not exit on ESC key press
+});
+
 
 Template.boardList.helpers({
   hideCardCounterList() {
@@ -261,15 +262,9 @@ BlazeComponent.extendComponent({
       {
         'click .js-add-board': Popup.open('createBoard'),
         'click #add-board-btn'() {
-          intro.addStep({
-             element: document.querySelector('#create-board-btn'),
-             intro: "אנא הכנס שם לוח ולחץ על כפתור 'יצירה'"
-          })
-          // Get the index of the last added step
-          const lastStepIndex = intro._options.steps.length - 1;
-    
-          // Start the tour from the last added step
-          intro.goToStep(lastStepIndex).start();
+          setTimeout(() => {
+            intro.goToStep(2).start();
+        }, 1000); // Delay of 1000 milliseconds (1 second)
        },
         'click .js-star-board'(evt) {
           const boardId = this.currentData()._id;
