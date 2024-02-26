@@ -7,24 +7,26 @@ import '/node_modules/intro.js/introjs-rtl.css'; // If you need RTL support
 const subManager = new SubsManager();
 const intro = introJs();
 
-intro
-  .setOptions({
-    nextLabel: 'הבא',
-    prevLabel: 'הקודם',
-    doneLabel: 'סיים',
-    exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
-    exitOnEsc: false,
-    showButtons: false,
-    showBullets: false,
-    steps: [
-      {
-        element: document.querySelector('#add-board-btn'), // Focus on the add board button
-        intro: "ברוך הבא לתיור! לחץ כאן בכדי ליצור לוח חדש",
-        position: 'left'
-      }
-      // Add more steps as needed
-    ]
-  })
+intro.setOptions({
+  nextLabel: 'הבא',
+  prevLabel: 'הקודם',
+  doneLabel: 'סיים',
+  exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
+  exitOnEsc: false,
+  showButtons: false,
+  showBullets: false,
+  steps: [
+    {
+      element: document.querySelector('.js-add-board'), // Focus on the add board button
+      intro: 'ברוך הבא לתיור! לחץ כאן בכדי ליצור לוח חדש',
+    },
+    {
+      element: document.querySelector('#create-board-btn'),
+      intro: "אנא הכנס שם לוח ולחץ על כפתור 'יצירה'",
+    },
+    // Add more steps as needed
+  ],
+});
 
 Template.boardList.helpers({
   hideCardCounterList() {
@@ -37,7 +39,7 @@ Template.boardList.helpers({
        return Utils.isMiniScreen() && Session.get('currentBoard'); */
     return true;
   },
-})
+});
 
 Template.boardListHeaderBar.events({
   'click .js-open-archived-board'() {
@@ -68,7 +70,7 @@ BlazeComponent.extendComponent({
     let currUser = ReactiveCache.getCurrentUser();
     let userLanguage;
     if (currUser && currUser.profile) {
-      userLanguage = currUser.profile.language
+      userLanguage = currUser.profile.language;
     }
     if (userLanguage) {
       TAPi18n.setLanguage(userLanguage);
@@ -124,30 +126,28 @@ BlazeComponent.extendComponent({
     });
   },
   userHasTeams() {
-    if (ReactiveCache.getCurrentUser()?.teams?.length > 0)
-      return true;
-    else
-      return false;
+    if (ReactiveCache.getCurrentUser()?.teams?.length > 0) return true;
+    else return false;
   },
   teamsDatas() {
-    const teams = ReactiveCache.getCurrentUser()?.teams
+    const teams = ReactiveCache.getCurrentUser()?.teams;
     if (teams)
-      return teams.sort((a, b) => a.teamDisplayName.localeCompare(b.teamDisplayName));
-    else
-      return [];
+      return teams.sort((a, b) =>
+        a.teamDisplayName.localeCompare(b.teamDisplayName),
+      );
+    else return [];
   },
   userHasOrgs() {
-    if (ReactiveCache.getCurrentUser()?.orgs?.length > 0)
-      return true;
-    else
-      return false;
+    if (ReactiveCache.getCurrentUser()?.orgs?.length > 0) return true;
+    else return false;
   },
   orgsDatas() {
     const orgs = ReactiveCache.getCurrentUser()?.orgs;
     if (orgs)
-      return orgs.sort((a, b) => a.orgDisplayName.localeCompare(b.orgDisplayName));
-    else
-      return [];
+      return orgs.sort((a, b) =>
+        a.orgDisplayName.localeCompare(b.orgDisplayName),
+      );
+    else return [];
   },
   userHasOrgsOrTeams() {
     const ret = this.userHasOrgs() || this.userHasTeams();
@@ -161,21 +161,29 @@ BlazeComponent.extendComponent({
         { archived: false },
         { type: { $in: ['board', 'template-container'] } },
         { $or: [] },
-        { title: { $not: { $regex: /^\^.*\^$/ } } }
-      ]
+        { title: { $not: { $regex: /^\^.*\^$/ } } },
+      ],
     };
 
-    let allowPrivateVisibilityOnly = TableVisibilityModeSettings.findOne('tableVisibilityMode-allowPrivateOnly');
+    let allowPrivateVisibilityOnly = TableVisibilityModeSettings.findOne(
+      'tableVisibilityMode-allowPrivateOnly',
+    );
 
     if (FlowRouter.getRouteName() === 'home') {
       query.$and[2].$or.push({ 'members.userId': Meteor.userId() });
 
-      if (allowPrivateVisibilityOnly !== undefined && allowPrivateVisibilityOnly.booleanValue) {
-        query.$and.push({ 'permission': 'private' });
+      if (
+        allowPrivateVisibilityOnly !== undefined &&
+        allowPrivateVisibilityOnly.booleanValue
+      ) {
+        query.$and.push({ permission: 'private' });
       }
       const currUser = ReactiveCache.getCurrentUser();
 
-      let orgIdsUserBelongs = currUser !== undefined && currUser.teams !== 'undefined' ? currUser.orgIdsUserBelongs() : '';
+      let orgIdsUserBelongs =
+        currUser !== undefined && currUser.teams !== 'undefined'
+          ? currUser.orgIdsUserBelongs()
+          : '';
       if (orgIdsUserBelongs && orgIdsUserBelongs != '') {
         let orgsIds = orgIdsUserBelongs.split(',');
         // for(let i = 0; i < orgsIds.length; i++){
@@ -186,7 +194,10 @@ BlazeComponent.extendComponent({
         query.$and[2].$or.push({ 'orgs.orgId': { $in: orgsIds } });
       }
 
-      let teamIdsUserBelongs = currUser !== undefined && currUser.teams !== 'undefined' ? currUser.teamIdsUserBelongs() : '';
+      let teamIdsUserBelongs =
+        currUser !== undefined && currUser.teams !== 'undefined'
+          ? currUser.teamIdsUserBelongs()
+          : '';
       if (teamIdsUserBelongs && teamIdsUserBelongs != '') {
         let teamsIds = teamIdsUserBelongs.split(',');
         // for(let i = 0; i < teamsIds.length; i++){
@@ -195,8 +206,10 @@ BlazeComponent.extendComponent({
         //query.$and[2].$or.push({'teams': { $elemMatch : {teamId: teamsIds[0]}}});
         query.$and[2].$or.push({ 'teams.teamId': { $in: teamsIds } });
       }
-    }
-    else if (allowPrivateVisibilityOnly !== undefined && !allowPrivateVisibilityOnly.booleanValue) {
+    } else if (
+      allowPrivateVisibilityOnly !== undefined &&
+      !allowPrivateVisibilityOnly.booleanValue
+    ) {
       query = {
         archived: false,
         //type: { $in: ['board','template-container'] },
@@ -260,24 +273,22 @@ BlazeComponent.extendComponent({
     return [
       {
         'click .js-add-board': Popup.open('createBoard'),
-        'click #add-board-btn'() {
-          intro.addStep({
-             element: document.querySelector('#create-board-btn'),
-             intro: "אנא הכנס שם לוח ולחץ על כפתור 'יצירה'"
-          })
-          // Get the index of the last added step
-          const lastStepIndex = intro._options.steps.length - 1;
-    
-          // Start the tour from the last added step
-          intro.goToStep(lastStepIndex).start();
-       },
+        'click #add-board-btn'()  {
+          setTimeout(() => {
+              // Start the tour from the last added step
+              intro.goToStep(2).start();
+          }, 1000); // Delay of 1000 milliseconds (1 second)
+      },
+        // 'click #add-board-btn': intro.goToStep(1).start(),
         'click .js-star-board'(evt) {
           const boardId = this.currentData()._id;
           ReactiveCache.getCurrentUser().toggleBoardStar(boardId);
           evt.preventDefault();
         },
         'click .js-clone-board'(evt) {
-          let title = getSlug(ReactiveCache.getBoard(this.currentData()._id).title) || 'cloned-board';
+          let title =
+            getSlug(ReactiveCache.getBoard(this.currentData()._id).title) ||
+            'cloned-board';
           Meteor.call(
             'copyBoard',
             this.currentData()._id,
@@ -302,12 +313,15 @@ BlazeComponent.extendComponent({
           evt.preventDefault();
         },
         // added pop up when archiving board - added by ben 29.11
-        'click .js-archive-board': Popup.afterConfirm('boardArchived', function (evt) {
-          Popup.back();
-          const boardId = this._id;
-          Meteor.call('archiveBoard', boardId);
-          evt.preventDefault();
-        }),
+        'click .js-archive-board': Popup.afterConfirm(
+          'boardArchived',
+          function (evt) {
+            Popup.back();
+            const boardId = this._id;
+            Meteor.call('archiveBoard', boardId);
+            evt.preventDefault();
+          },
+        ),
         'click .js-accept-invite'() {
           const boardId = this.currentData()._id;
           Meteor.call('acceptInvite', boardId);
@@ -322,46 +336,56 @@ BlazeComponent.extendComponent({
           });
         },
         'click #resetBtn'(event) {
-          let allBoards = document.getElementsByClassName("js-board");
+          let allBoards = document.getElementsByClassName('js-board');
           let currBoard;
           for (let i = 0; i < allBoards.length; i++) {
             currBoard = allBoards[i];
-            currBoard.style.display = "block";
+            currBoard.style.display = 'block';
           }
         },
         'click #filterBtn'(event) {
           event.preventDefault();
-          let selectedTeams = document.querySelectorAll('#jsAllBoardTeams option:checked');
-          let selectedTeamsValues = Array.from(selectedTeams).map(function (elt) { return elt.value });
-          let index = selectedTeamsValues.indexOf("-1");
+          let selectedTeams = document.querySelectorAll(
+            '#jsAllBoardTeams option:checked',
+          );
+          let selectedTeamsValues = Array.from(selectedTeams).map(function (
+            elt,
+          ) {
+            return elt.value;
+          });
+          let index = selectedTeamsValues.indexOf('-1');
           if (index > -1) {
             selectedTeamsValues.splice(index, 1);
           }
 
-          let selectedOrgs = document.querySelectorAll('#jsAllBoardOrgs option:checked');
-          let selectedOrgsValues = Array.from(selectedOrgs).map(function (elt) { return elt.value });
-          index = selectedOrgsValues.indexOf("-1");
+          let selectedOrgs = document.querySelectorAll(
+            '#jsAllBoardOrgs option:checked',
+          );
+          let selectedOrgsValues = Array.from(selectedOrgs).map(function (elt) {
+            return elt.value;
+          });
+          index = selectedOrgsValues.indexOf('-1');
           if (index > -1) {
             selectedOrgsValues.splice(index, 1);
           }
 
           if (selectedTeamsValues.length > 0 || selectedOrgsValues.length > 0) {
             const query = {
-              $and: [
-                { archived: false },
-                { type: 'board' },
-                { $or: [] }
-              ]
+              $and: [{ archived: false }, { type: 'board' }, { $or: [] }],
             };
             if (selectedTeamsValues.length > 0) {
-              query.$and[2].$or.push({ 'teams.teamId': { $in: selectedTeamsValues } });
+              query.$and[2].$or.push({
+                'teams.teamId': { $in: selectedTeamsValues },
+              });
             }
             if (selectedOrgsValues.length > 0) {
-              query.$and[2].$or.push({ 'orgs.orgId': { $in: selectedOrgsValues } });
+              query.$and[2].$or.push({
+                'orgs.orgId': { $in: selectedOrgsValues },
+              });
             }
 
             let filteredBoards = ReactiveCache.getBoards(query, {});
-            let allBoards = document.getElementsByClassName("js-board");
+            let allBoards = document.getElementsByClassName('js-board');
             let currBoard;
             if (filteredBoards.length > 0) {
               let currBoardId;
@@ -373,16 +397,13 @@ BlazeComponent.extendComponent({
                   return board._id == currBoardId;
                 });
 
-                if (found !== undefined)
-                  currBoard.style.display = "block";
-                else
-                  currBoard.style.display = "none";
+                if (found !== undefined) currBoard.style.display = 'block';
+                else currBoard.style.display = 'none';
               }
-            }
-            else {
+            } else {
               for (let i = 0; i < allBoards.length; i++) {
                 currBoard = allBoards[i];
-                currBoard.style.display = "none";
+                currBoard.style.display = 'none';
               }
             }
           }
