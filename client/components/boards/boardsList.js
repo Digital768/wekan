@@ -21,7 +21,7 @@ intro.setOptions({
       intro: 'ברוך הבא לתיור! לחץ כאן בכדי ליצור לוח חדש',
     },
     {
-      element: document.querySelector('#create-board-btn'),
+      element: document.querySelector('.js-pop-over'),
       intro: "אנא הכנס שם לוח ולחץ על כפתור 'יצירה'",
     },
     // Add more steps as needed

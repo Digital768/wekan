@@ -1,5 +1,10 @@
 import { ReactiveCache } from '/imports/reactiveCache';
 import { TAPi18n } from '/imports/i18n';
+import introJs from 'intro.js';
+import '/node_modules/intro.js/minified/introjs.min.css';
+import '/node_modules/intro.js/introjs-rtl.css'; // If you need RTL support
+
+const intro = introJs();
 
 const subManager = new SubsManager();
 const { calculateIndex } = Utils;
@@ -36,6 +41,8 @@ BlazeComponent.extendComponent({
 
 BlazeComponent.extendComponent({
   onCreated() {
+    // reset introJs
+    introJs().exit()
     Meteor.subscribe('tableVisibilityModeSettings');
     this.showOverlay = new ReactiveVar(false);
     this.draggingActive = new ReactiveVar(false);
