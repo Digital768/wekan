@@ -8,25 +8,24 @@ const subManager = new SubsManager();
 const intro = introJs();
 
 intro.setOptions({
-  nextLabel: 'הבא',
-  prevLabel: 'הקודם',
-  doneLabel: 'סיים',
-  exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
-  exitOnEsc: false,
-  showButtons: false,
-  showBullets: false,
   steps: [
-    {
-      element: document.querySelector('.js-add-board'), // Focus on the add board button
-      intro: 'ברוך הבא לתיור! לחץ כאן בכדי ליצור לוח חדש',
-    },
-    {
-      element: document.querySelector('.js-pop-over'),
-      intro: "אנא הכנס שם לוח ולחץ על כפתור 'יצירה'",
-    },
-    // Add more steps as needed
+      {
+          intro: "ברןך הבא.",
+          element: document.querySelector('#add-board-btn'),
+          position: 'left'
+      },
+      {
+          intro: "Welcome to Step 2.",
+          element: document.querySelector('.js-pop-over'),
+          position: 'left'
+      }
   ],
+  showStepNumbers: false, // Hide step numbers
+  showButtons: false, // Hide navigation buttons
+  exitOnOverlayClick: false, // Do not exit on overlay click
+  exitOnEsc: false // Do not exit on ESC key press
 });
+
 
 Template.boardList.helpers({
   hideCardCounterList() {
@@ -273,13 +272,11 @@ BlazeComponent.extendComponent({
     return [
       {
         'click .js-add-board': Popup.open('createBoard'),
-        'click #add-board-btn'()  {
+        'click #add-board-btn'() {
           setTimeout(() => {
-              // Start the tour from the last added step
-              intro.goToStep(2).start();
-          }, 1000); // Delay of 1000 milliseconds (1 second)
-      },
-        // 'click #add-board-btn': intro.goToStep(1).start(),
+            intro.goToStep(2).start();
+        }, 1000); // Delay of 1000 milliseconds (1 second)
+       },
         'click .js-star-board'(evt) {
           const boardId = this.currentData()._id;
           ReactiveCache.getCurrentUser().toggleBoardStar(boardId);
