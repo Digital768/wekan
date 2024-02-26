@@ -1,31 +1,36 @@
 import { ReactiveCache } from '/imports/reactiveCache';
 import { TAPi18n } from '/imports/i18n';
-import introJs from 'intro.js';
-import '/node_modules/intro.js/minified/introjs.min.css';
-import '/node_modules/intro.js/introjs-rtl.css'; // If you need RTL support
+import Shepherd from 'shepherd.js';
+import '/node_modules/shepherd.js/dist/css/shepherd.css';
+
 
 const subManager = new SubsManager();
-const intro = introJs();
 
-intro.setOptions({
-  nextLabel: 'הבא',
-  prevLabel: 'הקודם',
-  doneLabel: 'סיים',
-  exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
-  exitOnEsc: false,
-  showButtons: false,
-  showBullets: false,
-  steps: [
-    {
-      element: document.querySelector('.js-add-board'), // Focus on the add board button
-      intro: 'ברוך הבא לתיור! לחץ כאן בכדי ליצור לוח חדש',
-    },
-    {
-      element: document.querySelector('#create-board-btn'),
-      intro: "אנא הכנס שם לוח ולחץ על כפתור 'יצירה'",
-    },
-    // Add more steps as needed
-  ],
+const tour = new Shepherd.Tour({
+  defaultStepOptions: {
+      buttons: false, // Disable default buttons
+      cancelIcon: {
+          enabled: true // Enable cancel icon
+      }
+  }
+});
+
+tour.addStep({
+  id: 'step-1',
+  text: 'בן ארוגאס שונא את וויקן',
+  attachTo: {
+      element: '.js-add-board',
+      on: 'left'
+  }
+});
+
+tour.addStep({
+  id: 'step-2',
+  text: 'אלוהיי או אלוהיי עשה שזה יעבוד',
+  attachTo: {
+      element: '.js-pop-over',
+      on: 'left'
+  }
 });
 
 Template.boardList.helpers({
@@ -78,7 +83,9 @@ BlazeComponent.extendComponent({
   },
 
   onRendered() {
-    intro.start();
+   
+    tour.start();
+
     const itemsSelector = '.js-board:not(.placeholder)';
 
     const $boards = this.$('.js-boards');
@@ -272,13 +279,13 @@ BlazeComponent.extendComponent({
   events() {
     return [
       {
-        'click .js-add-board': Popup.open('createBoard'),
-        'click #add-board-btn'()  {
+        'click .js-add-board'(){
+          Popup.open('createBoard');
           setTimeout(() => {
-              // Start the tour from the last added step
-              intro.goToStep(2).start();
-          }, 1000); // Delay of 1000 milliseconds (1 second)
-      },
+            // Start the tour from the last added step
+            tour.show('step-2');
+          }, 300);
+        },
         // 'click #add-board-btn': intro.goToStep(1).start(),
         'click .js-star-board'(evt) {
           const boardId = this.currentData()._id;

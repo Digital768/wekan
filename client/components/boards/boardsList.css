@@ -1,6 +1,7 @@
 @import url("../../../css/reset.css") print, screen;
 @import url('intro.js/minified/introjs.min.css');
 @import url('intro.js/introjs-rtl.css'); /* If you need RTL support */
+@import url('shepherd.js/dist/css/shepherd.css');
 
 .board-list {
   /* added display: flex; */
