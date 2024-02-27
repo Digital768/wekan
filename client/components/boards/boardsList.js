@@ -8,22 +8,19 @@ const subManager = new SubsManager();
 const intro = introJs();
 
 intro.setOptions({
+  nextLabel: "הבא",
+  prevLabel: "הקודם",
+  doneLabel: "סיים",
+  exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
+  showProgress: true,
+  showButtons: false,
   steps: [
-      {
-          intro: "ברןך הבא.",
-          element: document.querySelector('#add-board-btn'),
-          position: 'left'
-      },
-      {
-          intro: "Welcome to Step 2.",
-          element: document.querySelector('.js-pop-over'),
-          position: 'left'
-      }
-  ],
-  showStepNumbers: false, // Hide step numbers
-  showButtons: false, // Hide navigation buttons
-  exitOnOverlayClick: false, // Do not exit on overlay click
-  exitOnEsc: false // Do not exit on ESC key press
+    {
+      element: document.getElementById("js-add-board"),
+      title: "שלום",
+      intro: "ברוך הבא ל-TBOARD, מערכת ייעודית לניהול משימות. לחץ על צור לוח, בחר שם ללוח ובוא נתחיל את המסע!",
+    }
+  ]
 });
 
 
@@ -271,12 +268,12 @@ BlazeComponent.extendComponent({
   events() {
     return [
       {
-        'click .js-add-board': Popup.open('createBoard'),
-        'click #add-board-btn'() {
-          setTimeout(() => {
-            intro.goToStep(2).start();
-        }, 1000); // Delay of 1000 milliseconds (1 second)
-       },
+        'click .js-add-board'(){
+          intro.exit();
+          setTimeout(function() {
+            Popup.open('createBoard');
+          }, 100); // Adjust the delay as needed
+        },
         'click .js-star-board'(evt) {
           const boardId = this.currentData()._id;
           ReactiveCache.getCurrentUser().toggleBoardStar(boardId);
