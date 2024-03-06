@@ -1,7 +1,34 @@
 import { ReactiveCache } from '/imports/reactiveCache';
 import { TAPi18n } from '/imports/i18n';
+import introJs from 'intro.js';
+import '/node_modules/intro.js/minified/introjs.min.css';
+import '/node_modules/intro.js/introjs-rtl.css'; // If you need RTL support
+
 
 Sidebar = null;
+
+const sidebarIntro = introJs();
+
+sidebarIntro.setOptions({
+  nextLabel: "הבא",
+  prevLabel: "הקודם",
+  doneLabel: "סיים",
+  exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
+  showProgress: true,
+  showButtons: true,
+  showBullets: false,
+  disableInteraction:false,
+  steps: [
+    {
+      element: '.js-manage-board-members',
+      intro: "על מנת להוסיף חברים ללוח לחץ על כפתור הפלוס וחפש את שמם"
+    },
+    {
+      element: '.js-open-board-menu',
+      intro: "על מנת לשנות את עיצוב הלוח או להציג את ארכיון הלוח לחץ על 'הגדרות הלוח'"
+    }
+  ]
+});
 
 const defaultView = 'home';
 const MCB = '.materialCheckBox';
@@ -27,7 +54,6 @@ BlazeComponent.extendComponent({
     this._hideBoardMemberList = new ReactiveVar(false);
     Sidebar = this;
   },
-
   onDestroyed() {
     Sidebar = null;
   },
@@ -51,7 +77,10 @@ BlazeComponent.extendComponent({
 
   toggle() {
     this._isOpen.set(!this._isOpen.get());
-  },
+    if(this._isOpen.get() === true) {
+      sidebarIntro.start();
+  }
+},
 
   calculateNextPeak() {
     const sidebarElement = this.find('.js-board-sidebar-content');

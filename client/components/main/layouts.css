@@ -144,7 +144,8 @@ body {
 .boardscolor-container {
   margin: 0;
   position: relative;
-  z-index: 0;
+  /* z-index blocking introjs - removed by ben at 5.3.24 */
+  /* z-index: 0; */
   overflow-y: auto;
   display: flex;
   flex-direction: column;

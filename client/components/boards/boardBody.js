@@ -4,7 +4,56 @@ import introJs from 'intro.js';
 import '/node_modules/intro.js/minified/introjs.min.css';
 import '/node_modules/intro.js/introjs-rtl.css'; // If you need RTL support
 
-const intro = introJs();
+const boardintro = introJs();
+boardintro.setOptions({
+  hintButtonLabel: 'הבנתי',
+  nextLabel: "הבא",
+  prevLabel: "הקודם",
+  doneLabel: "סיים",
+  exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
+  showProgress: true,
+  showBullets: false,
+  disableInteraction:false,
+  steps: [
+    {
+      element: '.list-header-add',
+      intro:
+      "שמות הרשימות יכולים להיות פשוטים כמו שלבים של 'משימות חדשות', 'משימות בתהליך'ו-'משימות סגורות' או מפורטים לפי הצורך עבור התהליך עבודה שהצוות שלכם עושה. ניתן להוסיף כמה רשימות שתרצו כדי לבנות תהליך עבודה שיתאים לצרכים היחודיים שלכם."
+      ,
+      position: 'left',
+    },
+    {
+      element: '.js-list',
+      title:  'לכל רשימה הוסיפו כרטיסיות',
+      intro: 'כרטיסיות משמות לייצוג משימות ורעיונות. ניתן להתאים את הכרטיסיות כך שיכילו מגוון רחב של מידע שימושי על ידי לחיצה עליהם.',
+    },
+    {
+      element: '.minicard',
+      intro: 'ניתן לגרור ולשחרר כרטיסיות בין הרשימות בכדי להציג התקדמות. כמו כן ניתן לגרור רשימות בכדי לסדר מחדש את הלוח.'
+    },
+    {
+      element: '.minicard',
+      title: 'פתיחת הכרטיס',
+      intro: 'אתם יכולים ללחוץ על הכרטיסייה בכדי להרחיב אותה על מנת להוסיף ולגשת לפרטים נוספים.'
+    },
+    {
+      element: '.js-toggle-sidebar',
+      intro: 'לחצו על אייקון התפריט על מנת לפתוח את הגדרות הלוח. שם תוכלו להזמין חברים ללוח ולעצב את הלוח.'
+    }
+  ],
+  hints: [
+    {
+      hint: 'לחצו על הכוכב על מנת להוסיף את הלוח למועדפים. לוחות מועדפים יופיעו בשורת הכותרת',
+      element: '.js-star-board',
+      hintPosition: 'middle-middle',
+    },
+    {
+      hint: 'לחצו על המסנן על מנת לסנן את הלוחות שיוצגו בלוח. יעיל למקרה ואתם רוצים להציג לוחות ספציפיים',
+      element: '.js-open-filter-view',
+      hintPosition: 'middle-middle',
+    },
+  ],
+});
 
 const subManager = new SubsManager();
 const { calculateIndex } = Utils;
@@ -41,8 +90,6 @@ BlazeComponent.extendComponent({
 
 BlazeComponent.extendComponent({
   onCreated() {
-    // reset introJs
-    introJs().exit()
     Meteor.subscribe('tableVisibilityModeSettings');
     this.showOverlay = new ReactiveVar(false);
     this.draggingActive = new ReactiveVar(false);
@@ -56,7 +103,7 @@ BlazeComponent.extendComponent({
     if (nullSortSwimlanes.length > 0) {
       const swimlanes = currentBoardData.swimlanes();
       let count = 0;
-      swimlanes.forEach(s => {
+      swimlanes.forEach((s) => {
         Swimlanes.update(s._id, {
           $set: {
             sort: count,
@@ -71,7 +118,7 @@ BlazeComponent.extendComponent({
     if (nullSortLists.length > 0) {
       const lists = currentBoardData.lists();
       let count = 0;
-      lists.forEach(l => {
+      lists.forEach((l) => {
         Lists.update(l._id, {
           $set: {
             sort: count,
@@ -82,6 +129,8 @@ BlazeComponent.extendComponent({
     }
   },
   onRendered() {
+    boardintro.addHints();
+    boardintro.start();
     const boardComponent = this;
     const $swimlanesDom = boardComponent.$('.js-swimlanes');
 
@@ -230,9 +279,15 @@ BlazeComponent.extendComponent({
   },
 
   notDisplayThisBoard() {
-    let allowPrivateVisibilityOnly = TableVisibilityModeSettings.findOne('tableVisibilityMode-allowPrivateOnly');
+    let allowPrivateVisibilityOnly = TableVisibilityModeSettings.findOne(
+      'tableVisibilityMode-allowPrivateOnly',
+    );
     let currentBoard = Utils.getCurrentBoard();
-    if (allowPrivateVisibilityOnly !== undefined && allowPrivateVisibilityOnly.booleanValue && currentBoard.permission == 'public') {
+    if (
+      allowPrivateVisibilityOnly !== undefined &&
+      allowPrivateVisibilityOnly.booleanValue &&
+      currentBoard.permission == 'public'
+    ) {
       return true;
     }
 
@@ -259,7 +314,6 @@ BlazeComponent.extendComponent({
     }
     // return true; // Set this to always return true for the default view as lists
   },
-  
 
   isViewCalendar() {
     const currentUser = ReactiveCache.getCurrentUser();
@@ -339,7 +393,7 @@ BlazeComponent.extendComponent({
         left: '',
         center:
           //changed at 15.11 -  'agendaDay,listDay,timelineDay agendaWeek,listWeek,timelineWeek month,listMonth',
-        'timelineWeek month,listMonth',
+          'timelineWeek month,listMonth',
         // changed between the next and prev
         right: 'title   today next,prev',
       },
@@ -449,38 +503,52 @@ BlazeComponent.extendComponent({
               <input type="text" class="form-control" id="card-title-input" placeholder="">
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" id="create-card-button">${TAPi18n.__('add-card')}</button>
+              <button type="button" class="btn btn-primary" id="create-card-button">${TAPi18n.__(
+                'add-card',
+              )}</button>
             </div>
           </div>
         </div>
         `;
-        const createCardButton = modalElement.querySelector('#create-card-button');
+        const createCardButton = modalElement.querySelector(
+          '#create-card-button',
+        );
         createCardButton.addEventListener('click', function () {
           const myTitle = modalElement.querySelector('#card-title-input').value;
           if (myTitle) {
             const firstList = currentBoard.draggableLists()[0];
             const firstSwimlane = currentBoard.swimlanes()[0];
-            Meteor.call('createCardWithDueDate', currentBoard._id, firstList._id, myTitle, startDate.toDate(), firstSwimlane._id, function(error, result) {
-              if (error) {
-                console.log(error);
-              } else {
-                console.log("Card Created", result);
-              }
-            });
+            Meteor.call(
+              'createCardWithDueDate',
+              currentBoard._id,
+              firstList._id,
+              myTitle,
+              startDate.toDate(),
+              firstSwimlane._id,
+              function (error, result) {
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log('Card Created', result);
+                }
+              },
+            );
             closeModal();
           }
         });
         document.body.appendChild(modalElement);
-        const openModal = function() {
+        const openModal = function () {
           modalElement.style.display = 'flex';
         };
-        const closeModal = function() {
+        const closeModal = function () {
           modalElement.style.display = 'none';
         };
-        const closeButton = modalElement.querySelector('[data-dismiss="modal"]');
+        const closeButton = modalElement.querySelector(
+          '[data-dismiss="modal"]',
+        );
         closeButton.addEventListener('click', closeModal);
         openModal();
-      }
+      },
     };
   },
   isViewCalendar() {

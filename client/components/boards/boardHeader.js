@@ -1,5 +1,31 @@
 import { ReactiveCache } from '/imports/reactiveCache';
 import { TAPi18n } from '/imports/i18n';
+import introJs from 'intro.js';
+import '/node_modules/intro.js/minified/introjs.min.css';
+import '/node_modules/intro.js/introjs-rtl.css'; // If you need RTL support
+
+const sidebarIntro = introJs();
+
+sidebarIntro.setOptions({
+  nextLabel: "הבא",
+  prevLabel: "הקודם",
+  doneLabel: "סיים",
+  exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
+  showProgress: true,
+  showButtons: true,
+  showBullets: false,
+  disableInteraction:false,
+  steps: [
+    {
+      element: '.js-manage-board-members',
+      intro: "על מנת להוסיף חברים ללוח לחץ על כפתור הפלוס וחפש את שמם"
+    },
+    {
+      element: '.js-open-board-menu',
+      intro: "על מנת לשנות את עיצוב הלוח או להציג את ארכיון הלוח לחץ על 'הגדרות הלוח'"
+    }
+  ]
+});
 
 /*
 const DOWNCLS = 'fa-sort-down';

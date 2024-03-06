@@ -4,7 +4,8 @@
   /* background color changed to T-Board color - 16.11*/
   background: rgba(0, 0, 0, 0.24);
   /*changed - 21.11*/
-  z-index: 17;
+  /* removed z-index - its disabling introjs */
+  /* z-index: 17; */
 }
 
 #header:not([class]),

@@ -5,20 +5,23 @@ import '/node_modules/intro.js/minified/introjs.min.css';
 import '/node_modules/intro.js/introjs-rtl.css'; // If you need RTL support
 
 const subManager = new SubsManager();
-const intro = introJs();
+const startIntro = introJs();
 
-intro.setOptions({
+startIntro.setOptions({
   nextLabel: "הבא",
   prevLabel: "הקודם",
   doneLabel: "סיים",
   exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
   showProgress: true,
   showButtons: false,
+  showBullets: false,
+  disableInteraction:false,
   steps: [
     {
-      element: document.getElementById("js-add-board"),
+      element: '#js-add-board',
       title: "שלום",
-      intro: "ברוך הבא ל-TBOARD, מערכת ייעודית לניהול משימות. לחץ על צור לוח, בחר שם ללוח ובוא נתחיל את המסע!",
+      intro: "ברוך הבא ל-TBOARD, מערכת ייעודית לניהול משימות. לחץ על הוספת לוח, בחר שם ללוח ובוא נתחיל את המסע!",
+      position:'left'
     }
   ]
 });
@@ -74,7 +77,7 @@ BlazeComponent.extendComponent({
   },
 
   onRendered() {
-    intro.start();
+    startIntro.start();
     const itemsSelector = '.js-board:not(.placeholder)';
 
     const $boards = this.$('.js-boards');
@@ -268,12 +271,7 @@ BlazeComponent.extendComponent({
   events() {
     return [
       {
-        'click .js-add-board'(){
-          intro.exit();
-          setTimeout(function() {
-            Popup.open('createBoard');
-          }, 100); // Adjust the delay as needed
-        },
+        'click .js-add-board':Popup.open('createBoard'),
         'click .js-star-board'(evt) {
           const boardId = this.currentData()._id;
           ReactiveCache.getCurrentUser().toggleBoardStar(boardId);
