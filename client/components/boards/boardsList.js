@@ -13,14 +13,19 @@ startIntro.setOptions({
   doneLabel: "סיים",
   exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
   showProgress: true,
-  showButtons: false,
+  showButtons: true,
   showBullets: false,
   disableInteraction:false,
   steps: [
     {
+      title:"ברוך הבא ל- Tboard",
+      intro: "T-BOARD הינה מערכת ייחודית לניהול משימות. בוא נתחיל לסדר את הפרויקטים שלך על מנת שתוכל לעבוד ביעילות ובצורה פרודקטיבית."
+    },
+    {
       element: '#js-add-board',
-      title: "שלום",
-      intro: "ברוך הבא ל-TBOARD, מערכת ייעודית לניהול משימות. לחץ על הוספת לוח, בחר שם ללוח ובוא נתחיל את המסע!",
+      title: "הכל מסתכם ללוח",
+      intro: 
+      "הלוחות הן היכן שהעבודה מתבצעת בT-BOARD. שם תמצא את הרשימות, הכרטיסים, תאריכי היעד ועוד על מנת להישאר מאורגנים ולעמוד בזמנים.",
       position:'left'
     }
   ]

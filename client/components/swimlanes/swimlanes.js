@@ -1,4 +1,8 @@
 import { ReactiveCache } from '/imports/reactiveCache';
+import introJs from 'intro.js';
+import '/node_modules/intro.js/minified/introjs.min.css';
+import '/node_modules/intro.js/introjs-rtl.css'; // If you need RTL support
+
 const { calculateIndex } = Utils;
 
 function currentListIsInThisSwimlane(swimlaneId) {
@@ -27,10 +31,7 @@ function currentCardIsInThisList(listId, swimlaneId) {
     //currentUser.profile &&
     Utils.boardView() === 'board-view-lists'
   )
-    return (
-      currentCard &&
-      currentCard.listId === listId
-    );
+    return currentCard && currentCard.listId === listId;
 
   // https://github.com/wekan/wekan/issues/1623
   // https://github.com/ChronikEwok/wekan/commit/cad9b20451bb6149bfb527a99b5001873b06c3de
@@ -166,9 +167,7 @@ BlazeComponent.extendComponent({
       }
     }
     if (Filter.hideEmpty.isSelected()) {
-      const swimlaneId = this.parentComponent()
-        .parentComponent()
-        .data()._id;
+      const swimlaneId = this.parentComponent().parentComponent().data()._id;
       const cards = list.cards(swimlaneId);
       if (cards.length === 0) {
         return false;
@@ -228,7 +227,7 @@ BlazeComponent.extendComponent({
     const user = Meteor.user();
     const swimlane = Template.currentData();
     const height = user.getSwimlaneHeight(swimlane.boardId, swimlane._id);
-    return height == -1 ? "auto" : (height + "px");
+    return height == -1 ? 'auto' : height + 'px';
   },
 }).register('swimlane');
 
@@ -254,13 +253,17 @@ BlazeComponent.extendComponent({
           const lastList = this.currentBoard.getLastList();
           const titleInput = this.find('.list-name-input');
           const title = titleInput.value.trim();
-          let sortIndex = 0
+          let sortIndex = 0;
           if (lastList) {
             const positionInput = this.find('.list-position-input');
             const position = positionInput.value.trim();
-            const ret = ReactiveCache.getList({ boardId: Utils.getCurrentBoardId(), _id: position, archived: false })
-            sortIndex = parseInt(JSON.stringify(ret['sort']))
-            sortIndex = sortIndex+1
+            const ret = ReactiveCache.getList({
+              boardId: Utils.getCurrentBoardId(),
+              _id: position,
+              archived: false,
+            });
+            sortIndex = parseInt(JSON.stringify(ret['sort']));
+            sortIndex = sortIndex + 1;
           } else {
             sortIndex = Utils.calculateIndexData(lastList, null).base;
           }
@@ -278,6 +281,33 @@ BlazeComponent.extendComponent({
 
             titleInput.value = '';
             titleInput.focus();
+
+            // Wait for a short delay to allow the DOM to update, then start the tour
+            setTimeout(() => {
+              window.listintro = introJs();
+              window.listintro.setOptions({
+                hintButtonLabel: 'הבנתי',
+                nextLabel: 'הבא',
+                prevLabel: 'הקודם',
+                doneLabel: 'סיים',
+                exitOnOverlayClick: false,
+                showProgress: false,
+                showBullets: false,
+                showButtons: false,
+                disableInteraction: false,
+                steps: [
+                  {
+                    element: '.js-list',
+                    title: 'לכל רשימה הוסיפו כרטיסיות',
+                    intro:
+                      'כרטיסיות משמשות לייצוג משימות ורעיונות. ניתן להתאים את הכרטיסיות כך שיכילו מגוון רחב של מידע שימושי על ידי לחיצה עליהם.',
+                    position: 'left',
+                  },
+                ],
+              });
+              window.listintro.start();
+              console.log('list added');
+            }, 100); // Adjust the delay time as needed
           }
         },
         'click .js-list-template': Popup.open('searchElement'),
@@ -309,9 +339,7 @@ BlazeComponent.extendComponent({
       }
     }
     if (Filter.hideEmpty.isSelected()) {
-      const swimlaneId = this.parentComponent()
-        .parentComponent()
-        .data()._id;
+      const swimlaneId = this.parentComponent().parentComponent().data()._id;
       const cards = list.cards(swimlaneId);
       if (cards.length === 0) {
         return false;
@@ -352,7 +380,9 @@ class MoveSwimlaneComponent extends BlazeComponent {
   }
 
   toBoards() {
-    const ret = ReactiveCache.getBoards(this.toBoardsSelector(), { sort: { title: 1 } });
+    const ret = ReactiveCache.getBoards(this.toBoardsSelector(), {
+      sort: { title: 1 },
+    });
     return ret;
   }
 
@@ -381,4 +411,4 @@ MoveSwimlaneComponent.register('moveSwimlanePopup');
     delete selector._id;
     return selector;
   }
-}.register('copySwimlanePopup'));
+}).register('copySwimlanePopup');

@@ -4,53 +4,23 @@ import introJs from 'intro.js';
 import '/node_modules/intro.js/minified/introjs.min.css';
 import '/node_modules/intro.js/introjs-rtl.css'; // If you need RTL support
 
-const boardintro = introJs();
-boardintro.setOptions({
+window.boardintro = introJs();
+window.boardintro.setOptions({
   hintButtonLabel: 'הבנתי',
-  nextLabel: "הבא",
-  prevLabel: "הקודם",
-  doneLabel: "סיים",
+  nextLabel: 'הבא',
+  prevLabel: 'הקודם',
+  doneLabel: 'סיים',
   exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
   showProgress: true,
   showBullets: false,
-  disableInteraction:false,
+  disableInteraction: false,
+  showButtons: false,
   steps: [
     {
       element: '.list-header-add',
       intro:
-      "שמות הרשימות יכולים להיות פשוטים כמו שלבים של 'משימות חדשות', 'משימות בתהליך'ו-'משימות סגורות' או מפורטים לפי הצורך עבור התהליך עבודה שהצוות שלכם עושה. ניתן להוסיף כמה רשימות שתרצו כדי לבנות תהליך עבודה שיתאים לצרכים היחודיים שלכם."
-      ,
+        "שמות הרשימות יכולים להיות פשוטים כמו שלבים של 'משימות חדשות', 'משימות בתהליך'ו-'משימות סגורות' או מפורטים לפי הצורך עבור התהליך עבודה שהצוות שלכם עושה. ניתן להוסיף כמה רשימות שתרצו כדי לבנות תהליך עבודה שיתאים לצרכים היחודיים שלכם.",
       position: 'left',
-    },
-    {
-      element: '.js-list',
-      title:  'לכל רשימה הוסיפו כרטיסיות',
-      intro: 'כרטיסיות משמות לייצוג משימות ורעיונות. ניתן להתאים את הכרטיסיות כך שיכילו מגוון רחב של מידע שימושי על ידי לחיצה עליהם.',
-    },
-    {
-      element: '.minicard',
-      intro: 'ניתן לגרור ולשחרר כרטיסיות בין הרשימות בכדי להציג התקדמות. כמו כן ניתן לגרור רשימות בכדי לסדר מחדש את הלוח.'
-    },
-    {
-      element: '.minicard',
-      title: 'פתיחת הכרטיס',
-      intro: 'אתם יכולים ללחוץ על הכרטיסייה בכדי להרחיב אותה על מנת להוסיף ולגשת לפרטים נוספים.'
-    },
-    {
-      element: '.js-toggle-sidebar',
-      intro: 'לחצו על אייקון התפריט על מנת לפתוח את הגדרות הלוח. שם תוכלו להזמין חברים ללוח ולעצב את הלוח.'
-    }
-  ],
-  hints: [
-    {
-      hint: 'לחצו על הכוכב על מנת להוסיף את הלוח למועדפים. לוחות מועדפים יופיעו בשורת הכותרת',
-      element: '.js-star-board',
-      hintPosition: 'middle-middle',
-    },
-    {
-      hint: 'לחצו על המסנן על מנת לסנן את הלוחות שיוצגו בלוח. יעיל למקרה ואתם רוצים להציג לוחות ספציפיים',
-      element: '.js-open-filter-view',
-      hintPosition: 'middle-middle',
     },
   ],
 });
@@ -129,8 +99,8 @@ BlazeComponent.extendComponent({
     }
   },
   onRendered() {
-    boardintro.addHints();
-    boardintro.start();
+    window.boardintro.addHints();
+    window.boardintro.start();
     const boardComponent = this;
     const $swimlanesDom = boardComponent.$('.js-swimlanes');
 

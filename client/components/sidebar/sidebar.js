@@ -7,9 +7,9 @@ import '/node_modules/intro.js/introjs-rtl.css'; // If you need RTL support
 
 Sidebar = null;
 
-const sidebarIntro = introJs();
+window.sidebarIntro = introJs();
 
-sidebarIntro.setOptions({
+window.sidebarIntro.setOptions({
   nextLabel: "הבא",
   prevLabel: "הקודם",
   doneLabel: "סיים",
@@ -17,7 +17,7 @@ sidebarIntro.setOptions({
   showProgress: true,
   showButtons: true,
   showBullets: false,
-  disableInteraction:false,
+  disableInteraction:true,
   steps: [
     {
       element: '.js-manage-board-members',
@@ -29,6 +29,7 @@ sidebarIntro.setOptions({
     }
   ]
 });
+
 
 const defaultView = 'home';
 const MCB = '.materialCheckBox';
@@ -77,8 +78,10 @@ BlazeComponent.extendComponent({
 
   toggle() {
     this._isOpen.set(!this._isOpen.get());
-    if(this._isOpen.get() === true) {
-      sidebarIntro.start();
+    if(this._isOpen.get() === true){
+    setTimeout(() => {
+      window.sidebarIntro.start();
+    }, "100");
   }
 },
 

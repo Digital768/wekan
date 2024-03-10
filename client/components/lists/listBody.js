@@ -1,6 +1,9 @@
 import { ReactiveCache } from '/imports/reactiveCache';
 import { TAPi18n } from '/imports/i18n';
 import { Spinner } from '/client/lib/spinner';
+import introJs from 'intro.js';
+import '/node_modules/intro.js/minified/introjs.min.css';
+import '/node_modules/intro.js/introjs-rtl.css'; // If you need RTL support
 
 const subManager = new SubsManager();
 const InfiniteScrollIter = 10;
@@ -28,7 +31,7 @@ BlazeComponent.extendComponent({
     options.position = options.position || 'top';
 
     const forms = this.childComponents('inlinedForm');
-    let form = forms.find(component => {
+    let form = forms.find((component) => {
       return component.data().position === options.position;
     });
     if (!form && forms.length > 0) {
@@ -63,9 +66,7 @@ BlazeComponent.extendComponent({
     let cardType = 'cardType-card';
     if (title) {
       if (board.isTemplatesBoard()) {
-        swimlaneId = this.parentComponent()
-          .parentComponent()
-          .data()._id; // Always swimlanes view
+        swimlaneId = this.parentComponent().parentComponent().data()._id; // Always swimlanes view
         const swimlane = ReactiveCache.getSwimlane(swimlaneId);
         // If this is the card templates swimlane, insert a card template
         if (swimlane.isCardTemplatesSwimlane()) cardType = 'template-card';
@@ -83,15 +84,13 @@ BlazeComponent.extendComponent({
           cardType = 'cardType-linkedBoard';
         }
       } else if (Utils.boardView() === 'board-view-swimlanes')
-        swimlaneId = this.parentComponent()
-          .parentComponent()
-          .data()._id;
+        swimlaneId = this.parentComponent().parentComponent().data()._id;
       else if (
         Utils.boardView() === 'board-view-lists' ||
         Utils.boardView() === 'board-view-cal' ||
         !Utils.boardView()
       )
-      swimlaneId = board.getDefaultSwimline()._id;
+        swimlaneId = board.getDefaultSwimline()._id;
 
       const nextCardNumber = board.getNextCardNumber();
 
@@ -112,9 +111,7 @@ BlazeComponent.extendComponent({
       // if the displayed card count is less than the total cards in the list,
       // we need to increment the displayed card count to prevent the spinner
       // to appear
-      const cardCount = this.data()
-        .cards(this.idOrNull(swimlaneId))
-        .length;
+      const cardCount = this.data().cards(this.idOrNull(swimlaneId)).length;
       if (this.cardlimit.get() < cardCount) {
         this.cardlimit.set(this.cardlimit.get() + InfiniteScrollIter);
       }
@@ -131,6 +128,39 @@ BlazeComponent.extendComponent({
       if (position === 'bottom') {
         this.scrollToBottom();
       }
+      window.cardsintro = introJs();
+      window.cardsintro.setOptions({
+        hintButtonLabel: 'הבנתי',
+        nextLabel: 'הבא',
+        prevLabel: 'הקודם',
+        doneLabel: 'סיים',
+        exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
+        showProgress: true,
+        showBullets: true,
+        showButtons: true,
+        disableInteraction: false,
+        steps: [
+          {
+            element: '.minicard',
+            title: 'פתיחת הכרטיס',
+            intro:
+              'אתם יכולים ללחוץ על הכרטיסייה בכדי להרחיב אותה על מנת להוסיף ולגשת לפרטים נוספים.',
+          },
+          {
+            element: '.minicard',
+            intro:
+              'ניתן לגרור ולשחרר כרטיסיות בין הרשימות בכדי להציג התקדמות. כמו כן ניתן לגרור רשימות בכדי לסדר מחדש את הלוח.',
+              position:'left'
+          },
+          {
+            element: '.js-toggle-sidebar',
+            intro:
+              'לחצו על אייקון התפריט על מנת לפתוח את הגדרות הלוח. שם תוכלו להזמין חברים ללוח ולעצב את הלוח.',
+              disableInteraction: true,
+          },
+        ],
+      });
+      window.cardsintro.start();
     }
   },
 
@@ -185,9 +215,7 @@ BlazeComponent.extendComponent({
   idOrNull(swimlaneId) {
     if (
       Utils.boardView() === 'board-view-swimlanes' ||
-      this.data()
-        .board()
-        .isTemplatesBoard()
+      this.data().board().isTemplatesBoard()
     )
       return swimlaneId;
     return undefined;
@@ -202,11 +230,15 @@ BlazeComponent.extendComponent({
       archived: false,
     };
     if (swimlaneId) selector.swimlaneId = swimlaneId;
-    const ret = ReactiveCache.getCards(Filter.mongoSelector(selector), {
-      // sort: ['sort'],
-      sort: sortBy,
-      limit,
-    }, true);
+    const ret = ReactiveCache.getCards(
+      Filter.mongoSelector(selector),
+      {
+        // sort: ['sort'],
+        sort: sortBy,
+        limit,
+      },
+      true,
+    );
     return ret;
   },
 
@@ -216,10 +248,7 @@ BlazeComponent.extendComponent({
   },
 
   canSeeAddCard() {
-    return (
-      !this.reachedWipLimit() &&
-      Utils.canModifyCard()
-    );
+    return !this.reachedWipLimit() && Utils.canModifyCard();
   },
 
   reachedWipLimit() {
@@ -233,7 +262,7 @@ BlazeComponent.extendComponent({
 
   cardDetailsPopup(event) {
     if (!Popup.isOpen()) {
-      Popup.open("cardDetails")(event);
+      Popup.open('cardDetails')(event);
     }
   },
 
@@ -269,8 +298,7 @@ BlazeComponent.extendComponent({
     const currentBoardId = Session.get('currentBoard');
     arr = [];
     _.forEach(
-      ReactiveCache.getBoard(currentBoardId)
-        .customFields(),
+      ReactiveCache.getBoard(currentBoardId).customFields(),
       function (field) {
         if (field.automaticallyOnCard || field.alwaysOnCard)
           arr.push({ _id: field._id, value: null });
@@ -288,7 +316,7 @@ BlazeComponent.extendComponent({
   getLabels() {
     const currentBoardId = Session.get('currentBoard');
     if (ReactiveCache.getBoard(currentBoardId).labels) {
-      return ReactiveCache.getBoard(currentBoardId).labels.filter(label => {
+      return ReactiveCache.getBoard(currentBoardId).labels.filter((label) => {
         return this.labels.get().indexOf(label._id) > -1;
       });
     }
@@ -350,7 +378,7 @@ BlazeComponent.extendComponent({
           search(term, callback) {
             const currentBoard = Utils.getCurrentBoard();
             callback(
-              $.map(currentBoard.activeMembers(), member => {
+              $.map(currentBoard.activeMembers(), (member) => {
                 const user = ReactiveCache.getUser(member.userId);
                 return user.username.indexOf(term) === 0 ? user : null;
               }),
@@ -358,7 +386,7 @@ BlazeComponent.extendComponent({
           },
           template(user) {
             if (user.profile && user.profile.fullname) {
-              return (user.username + " (" + user.profile.fullname + ")");
+              return user.username + ' (' + user.profile.fullname + ')';
             }
             return user.username;
           },
@@ -375,9 +403,9 @@ BlazeComponent.extendComponent({
           search(term, callback) {
             const currentBoard = Utils.getCurrentBoard();
             callback(
-              $.map(currentBoard.labels, label => {
+              $.map(currentBoard.labels, (label) => {
                 if (label.name == undefined) {
-                  label.name = "";
+                  label.name = '';
                 }
                 if (
                   label.name.indexOf(term) > -1 ||
@@ -441,7 +469,9 @@ BlazeComponent.extendComponent({
     if (Utils.boardView() === 'board-view-swimlanes')
       this.swimlaneId = Blaze.getData(swimlane[0])._id;
     else if (Utils.boardView() === 'board-view-lists' || !Utils.boardView)
-      this.swimlaneId = ReactiveCache.getSwimlane({ boardId: this.boardId })._id;
+      this.swimlaneId = ReactiveCache.getSwimlane({
+        boardId: this.boardId,
+      })._id;
   },
 
   boards() {
@@ -464,14 +494,14 @@ BlazeComponent.extendComponent({
       return [];
     }
     const swimlanes = ReactiveCache.getSwimlanes(
-    {
-      boardId: this.selectedBoardId.get()
-    },
-    {
-      sort: { sort: 1 },
-    });
-    if (swimlanes.length)
-      this.selectedSwimlaneId.set(swimlanes[0]._id);
+      {
+        boardId: this.selectedBoardId.get(),
+      },
+      {
+        sort: { sort: 1 },
+      },
+    );
+    if (swimlanes.length) this.selectedSwimlaneId.set(swimlanes[0]._id);
     return swimlanes;
   },
 
@@ -480,12 +510,13 @@ BlazeComponent.extendComponent({
       return [];
     }
     const lists = ReactiveCache.getLists(
-    {
-      boardId: this.selectedBoardId.get()
-    },
-    {
-      sort: { sort: 1 },
-    });
+      {
+        boardId: this.selectedBoardId.get(),
+      },
+      {
+        sort: { sort: 1 },
+      },
+    );
     if (lists.length) this.selectedListId.set(lists[0]._id);
     return lists;
   },
@@ -494,20 +525,21 @@ BlazeComponent.extendComponent({
     if (!this.board) {
       return [];
     }
-    const ownCardsIds = this.board.cards().map(card => card.getRealId());
+    const ownCardsIds = this.board.cards().map((card) => card.getRealId());
     const ret = ReactiveCache.getCards(
-    {
-      boardId: this.selectedBoardId.get(),
-      swimlaneId: this.selectedSwimlaneId.get(),
-      listId: this.selectedListId.get(),
-      archived: false,
-      linkedId: { $nin: ownCardsIds },
-      _id: { $nin: ownCardsIds },
-      type: { $nin: ['template-card'] },
-    },
-    {
-      sort: { sort: 1 },
-    });
+      {
+        boardId: this.selectedBoardId.get(),
+        swimlaneId: this.selectedSwimlaneId.get(),
+        listId: this.selectedListId.get(),
+        archived: false,
+        linkedId: { $nin: ownCardsIds },
+        _id: { $nin: ownCardsIds },
+        type: { $nin: ['template-card'] },
+      },
+      {
+        sort: { sort: 1 },
+      },
+    );
     return ret;
   },
 
@@ -604,15 +636,23 @@ Template.linkCardPopup.helpers({
     // instead of fixing the problem (Add Swimlane title when creating swimlane)
     // because there could be thousands of swimlanes, adding name Default to all of them
     // would be very slow.
-    if (title.startsWith("key 'default") && title.endsWith('returned an object instead of string.')) {
-      if (`${TAPi18n.__('defaultdefault')}`.startsWith("key 'default") && `${TAPi18n.__('defaultdefault')}`.endsWith('returned an object instead of string.')) {
+    if (
+      title.startsWith("key 'default") &&
+      title.endsWith('returned an object instead of string.')
+    ) {
+      if (
+        `${TAPi18n.__('defaultdefault')}`.startsWith("key 'default") &&
+        `${TAPi18n.__('defaultdefault')}`.endsWith(
+          'returned an object instead of string.',
+        )
+      ) {
         return 'Default';
-      } else  {
+      } else {
         return `${TAPi18n.__('defaultdefault')}`;
       }
     } else if (title === 'Default') {
       return `${TAPi18n.__('defaultdefault')}`;
-    } else  {
+    } else {
       return title;
     }
   },
@@ -644,7 +684,8 @@ BlazeComponent.extendComponent({
 
     this.board = {};
     if (this.isTemplateSearch) {
-      const boardId = (ReactiveCache.getCurrentUser().profile || {}).templatesBoardId;
+      const boardId = (ReactiveCache.getCurrentUser().profile || {})
+        .templatesBoardId;
       if (boardId) {
         subManager.subscribe('board', boardId, false);
         this.board = ReactiveCache.getBoard(boardId);
@@ -670,7 +711,10 @@ BlazeComponent.extendComponent({
       );
       if (Utils.boardView() === 'board-view-swimlanes')
         this.swimlaneId = Blaze.getData(swimlane[0])._id;
-      else this.swimlaneId = ReactiveCache.getSwimlane({ boardId: this.boardId })._id;
+      else
+        this.swimlaneId = ReactiveCache.getSwimlane({
+          boardId: this.boardId,
+        })._id;
       // List where to insert card
       this.listId = Blaze.getData(this.list[0])._id;
     }
@@ -705,7 +749,7 @@ BlazeComponent.extendComponent({
       return board.searchSwimlanes(this.term.get());
     } else if (this.isBoardTemplateSearch) {
       const boards = board.searchBoards(this.term.get());
-      boards.forEach(board => {
+      boards.forEach((board) => {
         subManager.subscribe('board', board.linkedId, false);
       });
       return boards;
@@ -740,9 +784,7 @@ BlazeComponent.extendComponent({
         },
         'click .js-minicard'(evt) {
           // 0. Common
-          const title = $('.js-element-title')
-            .val()
-            .trim();
+          const title = $('.js-element-title').val().trim();
           if (!title) return;
           const element = Blaze.getData(evt.currentTarget);
           element.title = title;
@@ -764,15 +806,15 @@ BlazeComponent.extendComponent({
             Filter.addException(_id);
             // List insertion
           } else if (this.isListTemplateSearch) {
-            element.sort = ReactiveCache.getSwimlane(this.swimlaneId)
-              .lists()
-              .length;
+            element.sort = ReactiveCache.getSwimlane(
+              this.swimlaneId,
+            ).lists().length;
             element.type = 'list';
             _id = element.copy(this.boardId, this.swimlaneId);
           } else if (this.isSwimlaneTemplateSearch) {
-            element.sort = ReactiveCache.getBoard(this.boardId)
-              .swimlanes()
-              .length;
+            element.sort = ReactiveCache.getBoard(
+              this.boardId,
+            ).swimlanes().length;
             element.type = 'swimlane';
             _id = element.copy(this.boardId);
           } else if (this.isBoardTemplateSearch) {
@@ -852,7 +894,8 @@ BlazeComponent.extendComponent({
   }
 
   checkIdleTime() {
-    return window.requestIdleCallback ||
+    return (
+      window.requestIdleCallback ||
       function (handler) {
         const startTime = Date.now();
         return setTimeout(function () {
@@ -863,7 +906,8 @@ BlazeComponent.extendComponent({
             },
           });
         }, 1);
-      };
+      }
+    );
   }
 
   updateList() {
@@ -882,7 +926,10 @@ BlazeComponent.extendComponent({
       return false;
     }
 
-    const spinnerViewPosition = this.spinner.offsetTop - this.container.offsetTop + this.spinner.clientHeight;
+    const spinnerViewPosition =
+      this.spinner.offsetTop -
+      this.container.offsetTop +
+      this.spinner.clientHeight;
 
     const parentViewHeight = this.container.clientHeight;
     const bottomViewPosition = this.container.scrollTop + parentViewHeight;
@@ -891,6 +938,6 @@ BlazeComponent.extendComponent({
   }
 
   getSkSpinnerName() {
-    return "sk-spinner-" + super.getSpinnerName().toLowerCase();
+    return 'sk-spinner-' + super.getSpinnerName().toLowerCase();
   }
-}.register('spinnerList'));
+}).register('spinnerList');
