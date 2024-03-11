@@ -156,10 +156,13 @@ BlazeComponent.extendComponent({
             element: '.js-toggle-sidebar',
             intro:
               'לחצו על אייקון התפריט על מנת לפתוח את הגדרות הלוח. שם תוכלו להזמין חברים ללוח ולעצב את הלוח.',
-              disableInteraction: true,
           },
         ],
       });
+      // make sure that the previous intro tour is finished
+      if(window.boardintro.isActive()){
+        window.boardintro.exit()
+      }
       window.cardsintro.start();
     }
   },

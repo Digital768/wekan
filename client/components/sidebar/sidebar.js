@@ -20,12 +20,12 @@ window.sidebarIntro.setOptions({
   disableInteraction:true,
   steps: [
     {
-      element: '.js-manage-board-members',
-      intro: "על מנת להוסיף חברים ללוח לחץ על כפתור הפלוס וחפש את שמם"
-    },
-    {
       element: '.js-open-board-menu',
       intro: "על מנת לשנות את עיצוב הלוח או להציג את ארכיון הלוח לחץ על 'הגדרות הלוח'"
+    },
+    {
+      element: '.js-manage-board-members',
+      intro: "על מנת להוסיף חברים ללוח לחץ על כפתור הפלוס וחפש את שמם"
     }
   ]
 });
@@ -79,6 +79,9 @@ BlazeComponent.extendComponent({
   toggle() {
     this._isOpen.set(!this._isOpen.get());
     if(this._isOpen.get() === true){
+      if(window.cardsintro.isActive()){
+        window.cardsintro.exit()
+      }
     setTimeout(() => {
       window.sidebarIntro.start();
     }, "100");

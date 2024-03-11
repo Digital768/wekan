@@ -14,8 +14,11 @@ window.boardintro.setOptions({
   showProgress: true,
   showBullets: false,
   disableInteraction: false,
-  showButtons: false,
+  showButtons: true,
   steps: [
+    {
+      intro: "ברוכים הבאים ללוח שלכם. ניתן לעבור בין תצוגת רשימות למסלולים או לוח שנה. בכל התצוגות ניתן לראות את הכרטיסיות שלכם בתצורות שונות."
+    },
     {
       element: '.list-header-add',
       intro:
