@@ -458,6 +458,12 @@ Users.attachSchema(
       type: Date,
       optional: true,
     },
+    tutorialEnabled: {
+      // enable tutorial mode
+      type: Boolean,
+      defaultValue: true,
+      optional: false,
+    },
     isAdmin: {
       /**
        * is the user an admin of the board?
@@ -524,9 +530,9 @@ Users.attachSchema(
 
 Users.allow({
   update(userId, doc) {
-    const user = ReactiveCache.getUser(userId) || ReactiveCache.getCurrentUser();
-    if (user?.isAdmin)
-      return true;
+    const user =
+      ReactiveCache.getUser(userId) || ReactiveCache.getCurrentUser();
+    if (user?.isAdmin) return true;
     if (!user) {
       return false;
     }
@@ -561,11 +567,13 @@ Users.allow({
 // Non-Admin users can not change to Admin
 Users.deny({
   update(userId, board, fieldNames) {
-    return _.contains(fieldNames, 'isAdmin') && !ReactiveCache.getCurrentUser().isAdmin;
+    return (
+      _.contains(fieldNames, 'isAdmin') &&
+      !ReactiveCache.getCurrentUser().isAdmin
+    );
   },
   fetch: [],
 });
-
 
 // Search a user in the complete server database by its name, username or emails adress. This
 // is used for instance to add a new user to a board.
@@ -636,6 +644,9 @@ if (Meteor.isClient) {
       const board = Utils.getCurrentBoard();
       return board && board.hasWorker(this._id);
     },
+    isTutorialMode() {
+      return this.tutorialEnabled;
+    },
 
     isBoardAdmin(boardId) {
       let board;
@@ -698,6 +709,9 @@ Users.helpers({
         .join(',');
     }
     return '';
+  },
+  isTutorialMode() {
+    return this.tutorialEnabled;
   },
   teamsUserBelongs() {
     if (this.teams) {
@@ -1042,6 +1056,17 @@ Users.mutations({
     if (this.hasTag(tag)) this.removeTag(tag);
     else this.addTag(tag);
   },
+  setTutorialMode(status) {
+    check(status, Boolean);
+    const user = ReactiveCache.getCurrentUser();
+    if (user) {
+      Users.update(user._id, {
+        $set: {
+          tutorialEnabled: status,
+        },
+      });
+  }
+},
 
   setListSortBy(value) {
     return {
@@ -1330,10 +1355,12 @@ if (Meteor.isServer) {
       check(userTeamsArray, Array);
       // Prevent Hyperlink Injection https://github.com/wekan/wekan/issues/5176
       // Thanks to mc-marcy and xet7 !
-      if (fullname.includes('/') ||
+      if (
+        fullname.includes('/') ||
         username.includes('/') ||
         email.includes('/') ||
-        initials.includes('/')) {
+        initials.includes('/')
+      ) {
         return false;
       }
       if (ReactiveCache.getCurrentUser()?.isAdmin) {
@@ -1378,8 +1405,7 @@ if (Meteor.isServer) {
       check(userId, String);
       // Prevent Hyperlink Injection https://github.com/wekan/wekan/issues/5176
       // Thanks to mc-marcy and xet7 !
-      if (username.includes('/') ||
-        userId.includes('/')) {
+      if (username.includes('/') || userId.includes('/')) {
         return false;
       }
       if (ReactiveCache.getCurrentUser()?.isAdmin) {
@@ -1402,8 +1428,7 @@ if (Meteor.isServer) {
       check(username, String);
       // Prevent Hyperlink Injection https://github.com/wekan/wekan/issues/5176
       // Thanks to mc-marcy and xet7 !
-      if (username.includes('/') ||
-        email.includes('/')) {
+      if (username.includes('/') || email.includes('/')) {
         return false;
       }
       if (ReactiveCache.getCurrentUser()?.isAdmin) {
@@ -1442,9 +1467,11 @@ if (Meteor.isServer) {
       check(userId, String);
       // Prevent Hyperlink Injection https://github.com/wekan/wekan/issues/5176
       // Thanks to mc-marcy and xet7 !
-      if (username.includes('/') ||
+      if (
+        username.includes('/') ||
         email.includes('/') ||
-        userId.includes('/')) {
+        userId.includes('/')
+      ) {
         return false;
       }
       if (ReactiveCache.getCurrentUser()?.isAdmin) {
@@ -1468,8 +1495,7 @@ if (Meteor.isServer) {
       check(userId, String);
       // Prevent Hyperlink Injection https://github.com/wekan/wekan/issues/5176
       // Thanks to mc-marcy and xet7 !
-      if (email.includes('/') ||
-        userId.includes('/')) {
+      if (email.includes('/') || userId.includes('/')) {
         return false;
       }
       if (ReactiveCache.getCurrentUser()?.isAdmin) {
@@ -1490,8 +1516,7 @@ if (Meteor.isServer) {
       check(userId, String);
       // Prevent Hyperlink Injection https://github.com/wekan/wekan/issues/5176
       // Thanks to mc-marcy and xet7 !
-      if (initials.includes('/') ||
-        userId.includes('/')) {
+      if (initials.includes('/') || userId.includes('/')) {
         return false;
       }
       if (ReactiveCache.getCurrentUser()?.isAdmin) {
@@ -1508,8 +1533,7 @@ if (Meteor.isServer) {
       check(boardId, String);
       // Prevent Hyperlink Injection https://github.com/wekan/wekan/issues/5176
       // Thanks to mc-marcy and xet7 !
-      if (username.includes('/') ||
-        boardId.includes('/')) {
+      if (username.includes('/') || boardId.includes('/')) {
         return false;
       }
       const inviter = ReactiveCache.getCurrentUser();
@@ -1556,8 +1580,7 @@ if (Meteor.isServer) {
         username = email.substring(0, posAt);
         // Prevent Hyperlink Injection https://github.com/wekan/wekan/issues/5176
         // Thanks to mc-marcy and xet7 !
-        if (username.includes('/') ||
-          email.includes('/')) {
+        if (username.includes('/') || email.includes('/')) {
           return false;
         }
         const newUserId = Accounts.createUser({
@@ -1593,7 +1616,7 @@ if (Meteor.isServer) {
       try {
         const fullName =
           inviter.profile !== undefined &&
-            inviter.profile.fullname !== undefined
+          inviter.profile.fullname !== undefined
             ? inviter.profile.fullname
             : '';
         const userFullName =
@@ -1669,7 +1692,9 @@ if (Meteor.isServer) {
     },
     isImpersonated(userId) {
       check(userId, String);
-      const isImpersonated = ReactiveCache.getImpersonatedUser({ userId: userId });
+      const isImpersonated = ReactiveCache.getImpersonatedUser({
+        userId: userId,
+      });
       return isImpersonated;
     },
     setUsersTeamsTeamDisplayName(teamId, teamDisplayName) {
@@ -1741,14 +1766,11 @@ if (Meteor.isServer) {
         },
       ];
 
-
       // Prevent Hyperlink Injection https://github.com/wekan/wekan/issues/5176
       // Thanks to mc-marcy and xet7 !
-      if (user.username.includes('/') ||
-        email.includes('/')) {
+      if (user.username.includes('/') || email.includes('/')) {
         return false;
       }
-
 
       const initials = user.services.oidc.fullname
         .split(/\s+/)
@@ -1798,7 +1820,8 @@ if (Meteor.isServer) {
       return user;
     }
 
-    const disableRegistration = ReactiveCache.getCurrentSetting().disableRegistration;
+    const disableRegistration =
+      ReactiveCache.getCurrentSetting().disableRegistration;
     // If this is the first Authentication by the ldap and self registration disabled
     if (disableRegistration && options && options.ldap) {
       user.authenticationMethod = 'ldap';
@@ -2101,7 +2124,8 @@ if (Meteor.isServer) {
     }
 
     //invite user to corresponding boards
-    const disableRegistration = ReactiveCache.getCurrentSetting().disableRegistration;
+    const disableRegistration =
+      ReactiveCache.getCurrentSetting().disableRegistration;
     // If ldap, bypass the inviation code if the self registration isn't allowed.
     // TODO : pay attention if ldap field in the user model change to another content ex : ldap field to connection_type
     if (doc.authenticationMethod !== 'ldap' && disableRegistration) {

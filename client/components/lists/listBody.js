@@ -150,7 +150,7 @@ BlazeComponent.extendComponent({
             element: '.minicard',
             intro:
               'ניתן לגרור ולשחרר כרטיסיות בין הרשימות בכדי להציג התקדמות. כמו כן ניתן לגרור רשימות בכדי לסדר מחדש את הלוח.',
-              position:'left'
+            position: 'left',
           },
           {
             element: '.js-toggle-sidebar',
@@ -160,10 +160,12 @@ BlazeComponent.extendComponent({
         ],
       });
       // make sure that the previous intro tour is finished
-      if(window.boardintro.isActive()){
-        window.boardintro.exit()
+      if (ReactiveCache.getCurrentUser().isTutorialMode()) {
+        if (window.boardintro.isActive()) {
+          window.boardintro.exit();
+        }
+        window.cardsintro.start();
       }
-      window.cardsintro.start();
     }
   },
 

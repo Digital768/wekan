@@ -69,4 +69,9 @@ Template.options.events({
     'click .js-open-archived-board'() {
       Modal.open('archivedBoards');
     },
+    'click .js-start-tour'(){
+      ReactiveCache.getCurrentUser().setTutorialMode(true);
+      Popup.back();
+      window.startIntro.start();
+    }
   });

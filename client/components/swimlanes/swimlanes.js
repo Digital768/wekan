@@ -281,33 +281,36 @@ BlazeComponent.extendComponent({
 
             titleInput.value = '';
             titleInput.focus();
-
-            // Wait for a short delay to allow the DOM to update, then start the tour
-            setTimeout(() => {
-              window.listintro = introJs();
-              window.listintro.setOptions({
-                hintButtonLabel: 'הבנתי',
-                nextLabel: 'הבא',
-                prevLabel: 'הקודם',
-                doneLabel: 'סיים',
-                exitOnOverlayClick: false,
-                showProgress: false,
-                showBullets: false,
-                showButtons: false,
-                disableInteraction: false,
-                steps: [
-                  {
-                    element: '.js-list',
-                    title: 'לכל רשימה הוסיפו כרטיסיות',
-                    intro:
-                      'כרטיסיות משמשות לייצוג משימות ורעיונות. ניתן להתאים את הכרטיסיות כך שיכילו מגוון רחב של מידע שימושי על ידי לחיצה עליהם.',
-                    position: 'left',
-                  },
-                ],
-              });
-              window.listintro.start();
-              console.log('list added');
-            }, 100); // Adjust the delay time as needed
+            
+          
+            if (ReactiveCache.getCurrentUser().isTutorialMode()) {
+              // Wait for a short delay to allow the DOM to update, then start the tour
+              setTimeout(() => {
+                window.listintro = introJs();
+                window.listintro.setOptions({
+                  hintButtonLabel: 'הבנתי',
+                  nextLabel: 'הבא',
+                  prevLabel: 'הקודם',
+                  doneLabel: 'סיים',
+                  exitOnOverlayClick: false,
+                  showProgress: false,
+                  showBullets: false,
+                  showButtons: false,
+                  disableInteraction: false,
+                  steps: [
+                    {
+                      element: '.js-list',
+                      title: 'לכל רשימה הוסיפו כרטיסיות',
+                      intro:
+                        'כרטיסיות משמשות לייצוג משימות ורעיונות. ניתן להתאים את הכרטיסיות כך שיכילו מגוון רחב של מידע שימושי על ידי לחיצה עליהם.',
+                      position: 'left',
+                    },
+                  ],
+                });
+                window.listintro.start();
+                console.log('list added');
+              }, 100); // Adjust the delay time as needed
+            }
           }
         },
         'click .js-list-template': Popup.open('searchElement'),

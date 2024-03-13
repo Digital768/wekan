@@ -5,32 +5,32 @@ import '/node_modules/intro.js/minified/introjs.min.css';
 import '/node_modules/intro.js/introjs-rtl.css'; // If you need RTL support
 
 const subManager = new SubsManager();
-const startIntro = introJs();
+window.startIntro = introJs();
 
-startIntro.setOptions({
-  nextLabel: "הבא",
-  prevLabel: "הקודם",
-  doneLabel: "סיים",
+window.startIntro.setOptions({
+  nextLabel: 'הבא',
+  prevLabel: 'הקודם',
+  doneLabel: 'סיים',
   exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
   showProgress: true,
   showButtons: true,
   showBullets: false,
-  disableInteraction:false,
+  disableInteraction: false,
   steps: [
     {
-      title:"ברוך הבא ל- Tboard",
-      intro: "T-BOARD הינה מערכת ייחודית לניהול משימות. בוא נתחיל לסדר את הפרויקטים שלך על מנת שתוכל לעבוד ביעילות ובצורה פרודקטיבית."
+      title: 'ברוך הבא ל- Tboard',
+      intro:
+        'T-BOARD הינה מערכת ייחודית לניהול משימות. בוא נתחיל לסדר את הפרויקטים שלך על מנת שתוכל לעבוד ביעילות ובצורה פרודקטיבית.',
     },
     {
       element: '#js-add-board',
-      title: "הכל מסתכם ללוח",
-      intro: 
-      "הלוחות הן היכן שהעבודה מתבצעת בT-BOARD. שם תמצא את הרשימות, הכרטיסים, תאריכי היעד ועוד על מנת להישאר מאורגנים ולעמוד בזמנים.",
-      position:'left'
-    }
-  ]
+      title: 'הכל מסתכם ללוח',
+      intro:
+        'הלוחות הן היכן שהעבודה מתבצעת בT-BOARD. שם תמצא את הרשימות, הכרטיסים, תאריכי היעד ועוד על מנת להישאר מאורגנים ולעמוד בזמנים.',
+      position: 'left',
+    },
+  ],
 });
-
 
 Template.boardList.helpers({
   hideCardCounterList() {
@@ -82,7 +82,9 @@ BlazeComponent.extendComponent({
   },
 
   onRendered() {
-    startIntro.start();
+    if (ReactiveCache.getCurrentUser().isTutorialMode()) {
+      window.startIntro.start();
+    }
     const itemsSelector = '.js-board:not(.placeholder)';
 
     const $boards = this.$('.js-boards');
@@ -276,7 +278,7 @@ BlazeComponent.extendComponent({
   events() {
     return [
       {
-        'click .js-add-board':Popup.open('createBoard'),
+        'click .js-add-board': Popup.open('createBoard'),
         'click .js-star-board'(evt) {
           const boardId = this.currentData()._id;
           ReactiveCache.getCurrentUser().toggleBoardStar(boardId);

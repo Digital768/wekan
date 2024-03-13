@@ -1246,5 +1246,6 @@
   "show-checklist-at-minicard": "Show checklist at minicard",
   "show-subtasks-field": "Show subtasks field",
   "convert-to-markdown": "Convert to markdown",
-  "tutorial": "Tutorial"
+  "tutorial": "Tutorial",
+  "tutorial-mode": "Tutorial mode"
 }

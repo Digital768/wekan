@@ -17,7 +17,8 @@ window.boardintro.setOptions({
   showButtons: true,
   steps: [
     {
-      intro: "ברוכים הבאים ללוח שלכם. ניתן לעבור בין תצוגת רשימות למסלולים או לוח שנה. בכל התצוגות ניתן לראות את הכרטיסיות שלכם בתצורות שונות."
+      intro:
+        'ברוכים הבאים ללוח שלכם. ניתן לעבור בין תצוגת רשימות למסלולים או לוח שנה. בכל התצוגות ניתן לראות את הכרטיסיות שלכם בתצורות שונות.',
     },
     {
       element: '.list-header-add',
@@ -102,8 +103,10 @@ BlazeComponent.extendComponent({
     }
   },
   onRendered() {
-    window.boardintro.addHints();
-    window.boardintro.start();
+    if (ReactiveCache.getCurrentUser().isTutorialMode()) {
+      window.boardintro.addHints();
+      window.boardintro.start();
+    }
     const boardComponent = this;
     const $swimlanesDom = boardComponent.$('.js-swimlanes');
 

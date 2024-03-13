@@ -1269,5 +1269,6 @@
   "show-checklist-at-minicard": "הצגת רשימת מטלות על הכרטיסון",
   "show-subtasks-field": "הצגת שדה תת־משימות",
   "convert-to-markdown": "המרה ל־Markdown",
-  "tutorial":"מדריך שימוש"
+  "tutorial":"מדריך שימוש",
+  "tutorial-mode":"כניסה למצב הדרכה"
 }

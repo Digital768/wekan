@@ -14,6 +14,7 @@ Meteor.publish('user-miniprofile', function (usernames) {
       fields: {
         ...Users.safeFields,
         importUsernames: 1,
+        tutorialEnabled: 1,
       },
     },
     true,
@@ -28,6 +29,7 @@ Meteor.publish('user-admin', function () {
       teams: 1,
       orgs: 1,
       authenticationMethod: 1,
+      tutorialEnabled: 1,
     },
   });
   return ret;
@@ -42,6 +44,7 @@ Meteor.publish('user-authenticationMethod', function (match) {
         authenticationMethod: 1,
         teams: 1,
         orgs: 1,
+        tutorialEnabled: 1,
       },
     },
     true,

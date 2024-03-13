@@ -4,32 +4,31 @@ import introJs from 'intro.js';
 import '/node_modules/intro.js/minified/introjs.min.css';
 import '/node_modules/intro.js/introjs-rtl.css'; // If you need RTL support
 
-
 Sidebar = null;
 
 window.sidebarIntro = introJs();
 
 window.sidebarIntro.setOptions({
-  nextLabel: "הבא",
-  prevLabel: "הקודם",
-  doneLabel: "סיים",
+  nextLabel: 'הבא',
+  prevLabel: 'הקודם',
+  doneLabel: 'סיים',
   exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
   showProgress: true,
   showButtons: true,
   showBullets: false,
-  disableInteraction:true,
+  disableInteraction: true,
   steps: [
     {
       element: '.js-open-board-menu',
-      intro: "על מנת לשנות את עיצוב הלוח או להציג את ארכיון הלוח לחץ על 'הגדרות הלוח'"
+      intro:
+        "על מנת לשנות את עיצוב הלוח או להציג את ארכיון הלוח לחץ על 'הגדרות הלוח'",
     },
     {
       element: '.js-manage-board-members',
-      intro: "על מנת להוסיף חברים ללוח לחץ על כפתור הפלוס וחפש את שמם"
-    }
-  ]
+      intro: 'על מנת להוסיף חברים ללוח לחץ על כפתור הפלוס וחפש את שמם',
+    },
+  ],
 });
-
 
 const defaultView = 'home';
 const MCB = '.materialCheckBox';
@@ -78,15 +77,18 @@ BlazeComponent.extendComponent({
 
   toggle() {
     this._isOpen.set(!this._isOpen.get());
-    if(this._isOpen.get() === true){
-      if(window.cardsintro.isActive()){
-        window.cardsintro.exit()
+    if (ReactiveCache.getCurrentUser().isTutorialMode()) {
+      if (this._isOpen.get() === true) {
+        if (window.cardsintro.isActive()) {
+          window.cardsintro.exit();
+        }
+        setTimeout(() => {
+          window.sidebarIntro.start();
+        }, '100');
       }
-    setTimeout(() => {
-      window.sidebarIntro.start();
-    }, "100");
-  }
-},
+      ReactiveCache.getCurrentUser().setTutorialMode(false);
+    }
+  },
 
   calculateNextPeak() {
     const sidebarElement = this.find('.js-board-sidebar-content');
@@ -162,7 +164,7 @@ BlazeComponent.extendComponent({
           FlowRouter.go('shortcuts');
         },
         'click .js-close-sidebar'() {
-          Sidebar.toggle()
+          Sidebar.toggle();
         },
       },
     ];
@@ -211,7 +213,9 @@ Template.memberPopup.helpers({
     return ReactiveCache.getCurrentUser().isBoardAdmin();
   },
   memberType() {
-    const type = ReactiveCache.getUser(this.userId).isBoardAdmin() ? 'admin' : 'normal';
+    const type = ReactiveCache.getUser(this.userId).isBoardAdmin()
+      ? 'admin'
+      : 'normal';
     if (type === 'normal') {
       const currentBoard = Utils.getCurrentBoard();
       const commentOnly = currentBoard.hasCommentOnly(this.userId);
@@ -231,10 +235,11 @@ Template.memberPopup.helpers({
     }
   },
   isInvited() {
-    return ReactiveCache.getUser(this.userId).isInvitedTo(Session.get('currentBoard'));
+    return ReactiveCache.getUser(this.userId).isInvitedTo(
+      Session.get('currentBoard'),
+    );
   },
 });
-
 
 Template.boardMenuPopup.events({
   'click .js-rename-board': Popup.open('boardChangeTitle'),
@@ -254,14 +259,14 @@ Template.boardMenuPopup.events({
   'click .js-change-background-image': Popup.open('boardChangeBackgroundImage'),
   'click .js-board-info-on-my-boards': Popup.open('boardInfoOnMyBoards'),
   'click .js-change-language': Popup.open('changeLanguage'),
-  'click .js-archive-board ': Popup.afterConfirm('archiveBoard', function() {
+  'click .js-archive-board ': Popup.afterConfirm('archiveBoard', function () {
     const currentBoard = Utils.getCurrentBoard();
     currentBoard.archive();
     // XXX We should have some kind of notification on top of the page to
     // confirm that the board was successfully archived.
     FlowRouter.go('home');
   }),
-  'click .js-delete-board': Popup.afterConfirm('deleteBoard', function() {
+  'click .js-delete-board': Popup.afterConfirm('deleteBoard', function () {
     const currentBoard = Utils.getCurrentBoard();
     Popup.back();
     Boards.remove(currentBoard._id);
@@ -275,7 +280,7 @@ Template.boardMenuPopup.events({
   'click .js-export-board': Popup.open('exportBoard'),
 });
 
-Template.boardMenuPopup.onCreated(function() {
+Template.boardMenuPopup.onCreated(function () {
   this.apiEnabled = new ReactiveVar(false);
   Meteor.call('_isApiEnabled', (e, result) => {
     this.apiEnabled.set(result);
@@ -310,14 +315,14 @@ Template.memberPopup.events({
     Popup.back();
   },
   'click .js-change-role': Popup.open('changePermissions'),
-  'click .js-remove-member': Popup.afterConfirm('removeMember', function() {
+  'click .js-remove-member': Popup.afterConfirm('removeMember', function () {
     // This works from removing member from board, card members and assignees.
     const boardId = Session.get('currentBoard');
     const memberId = this.userId;
-    ReactiveCache.getCards({ boardId, members: memberId }).forEach(card => {
+    ReactiveCache.getCards({ boardId, members: memberId }).forEach((card) => {
       card.unassignMember(memberId);
     });
-    ReactiveCache.getCards({ boardId, assignees: memberId }).forEach(card => {
+    ReactiveCache.getCards({ boardId, assignees: memberId }).forEach((card) => {
       card.unassignAssignee(memberId);
     });
     ReactiveCache.getBoard(boardId).removeMember(memberId);
@@ -407,18 +412,16 @@ Template.membersWidget.helpers({
   isBoardAdmin() {
     return ReactiveCache.getCurrentUser().isBoardAdmin();
   },
-  AtLeastOneOrgWasCreated(){
-    let orgs = ReactiveCache.getOrgs({}, {sort: { createdAt: -1 }});
-    if(orgs === undefined)
-      return false;
+  AtLeastOneOrgWasCreated() {
+    let orgs = ReactiveCache.getOrgs({}, { sort: { createdAt: -1 } });
+    if (orgs === undefined) return false;
 
     return orgs.length > 0;
   },
 
-  AtLeastOneTeamWasCreated(){
-    let teams = ReactiveCache.getTeams({}, {sort: { createdAt: -1 }});
-    if(teams === undefined)
-      return false;
+  AtLeastOneTeamWasCreated() {
+    let teams = ReactiveCache.getTeams({}, { sort: { createdAt: -1 } });
+    if (teams === undefined) return false;
 
     return teams.length > 0;
   },
@@ -627,7 +630,7 @@ BlazeComponent.extendComponent({
 }).register('exportBoardPopup');
 
 Template.exportBoard.events({
-  'click .html-export-board': async event => {
+  'click .html-export-board': async (event) => {
     event.preventDefault();
     await ExportHtml(Popup)();
   },
@@ -718,7 +721,9 @@ BlazeComponent.extendComponent({
       {
         submit(event) {
           const currentBoard = Utils.getCurrentBoard();
-          const backgroundImageURL = this.find('.js-board-background-image-url').value.trim();
+          const backgroundImageURL = this.find(
+            '.js-board-background-image-url',
+          ).value.trim();
           currentBoard.setBackgroundImageURL(backgroundImageURL);
           Utils.setBackgroundImage();
           Popup.back();
@@ -726,7 +731,7 @@ BlazeComponent.extendComponent({
         },
         'click .js-remove-background-image'() {
           const currentBoard = Utils.getCurrentBoard();
-          currentBoard.setBackgroundImageURL("");
+          currentBoard.setBackgroundImageURL('');
           Popup.back();
           Utils.reload();
           event.preventDefault();
@@ -761,10 +766,10 @@ BlazeComponent.extendComponent({
       {
         'click .js-field-has-cardcounterlist'(evt) {
           evt.preventDefault();
-          this.currentBoard.allowsCardCounterList = !this.currentBoard
-            .allowsCardCounterList;
-            this.currentBoard.setAllowsCardCounterList(
-              this.currentBoard.allowsCardCounterList,
+          this.currentBoard.allowsCardCounterList =
+            !this.currentBoard.allowsCardCounterList;
+          this.currentBoard.setAllowsCardCounterList(
+            this.currentBoard.allowsCardCounterList,
           );
           $(`.js-field-has-cardcounterlist ${MCB}`).toggleClass(
             CKCLS,
@@ -777,10 +782,10 @@ BlazeComponent.extendComponent({
         },
         'click .js-field-has-boardmemberlist'(evt) {
           evt.preventDefault();
-          this.currentBoard.allowsBoardMemberList = !this.currentBoard
-            .allowsBoardMemberList;
-            this.currentBoard.setAllowsBoardMemberList(
-              this.currentBoard.allowsBoardMemberList,
+          this.currentBoard.allowsBoardMemberList =
+            !this.currentBoard.allowsBoardMemberList;
+          this.currentBoard.setAllowsBoardMemberList(
+            this.currentBoard.allowsBoardMemberList,
           );
           $(`.js-field-has-boardmemberlist ${MCB}`).toggleClass(
             CKCLS,
@@ -897,9 +902,7 @@ BlazeComponent.extendComponent({
           const value =
             evt.target.id ||
             $(evt.target).parent()[0].id ||
-            $(evt.target)
-              .parent()[0]
-              .parent()[0].id;
+            $(evt.target).parent()[0].parent()[0].id;
           const options = [
             'prefix-with-full-path',
             'prefix-with-parent',
@@ -907,7 +910,7 @@ BlazeComponent.extendComponent({
             'subtext-with-parent',
             'no-parent',
           ];
-          options.forEach(function(element) {
+          options.forEach(function (element) {
             if (element !== value) {
               $(`#${element} ${MCB}`).toggleClass(CKCLS, false);
               $(`#${element}`).toggleClass(CKCLS, false);
@@ -1059,8 +1062,8 @@ BlazeComponent.extendComponent({
       {
         'click .js-field-has-receiveddate'(evt) {
           evt.preventDefault();
-          this.currentBoard.allowsReceivedDate = !this.currentBoard
-            .allowsReceivedDate;
+          this.currentBoard.allowsReceivedDate =
+            !this.currentBoard.allowsReceivedDate;
           this.currentBoard.setAllowsReceivedDate(
             this.currentBoard.allowsReceivedDate,
           );
@@ -1075,8 +1078,8 @@ BlazeComponent.extendComponent({
         },
         'click .js-field-has-startdate'(evt) {
           evt.preventDefault();
-          this.currentBoard.allowsStartDate = !this.currentBoard
-            .allowsStartDate;
+          this.currentBoard.allowsStartDate =
+            !this.currentBoard.allowsStartDate;
           this.currentBoard.setAllowsStartDate(
             this.currentBoard.allowsStartDate,
           );
@@ -1169,8 +1172,8 @@ BlazeComponent.extendComponent({
         },
         'click .js-field-has-assigned-by'(evt) {
           evt.preventDefault();
-          this.currentBoard.allowsAssignedBy = !this.currentBoard
-            .allowsAssignedBy;
+          this.currentBoard.allowsAssignedBy =
+            !this.currentBoard.allowsAssignedBy;
           this.currentBoard.setAllowsAssignedBy(
             this.currentBoard.allowsAssignedBy,
           );
@@ -1185,8 +1188,8 @@ BlazeComponent.extendComponent({
         },
         'click .js-field-has-requested-by'(evt) {
           evt.preventDefault();
-          this.currentBoard.allowsRequestedBy = !this.currentBoard
-            .allowsRequestedBy;
+          this.currentBoard.allowsRequestedBy =
+            !this.currentBoard.allowsRequestedBy;
           this.currentBoard.setAllowsRequestedBy(
             this.currentBoard.allowsRequestedBy,
           );
@@ -1201,8 +1204,8 @@ BlazeComponent.extendComponent({
         },
         'click .js-field-has-card-sorting-by-number'(evt) {
           evt.preventDefault();
-          this.currentBoard.allowsCardSortingByNumber = !this.currentBoard
-            .allowsCardSortingByNumber;
+          this.currentBoard.allowsCardSortingByNumber =
+            !this.currentBoard.allowsCardSortingByNumber;
           this.currentBoard.setAllowsCardSortingByNumber(
             this.currentBoard.allowsCardSortingByNumber,
           );
@@ -1217,8 +1220,8 @@ BlazeComponent.extendComponent({
         },
         'click .js-field-has-card-show-lists'(evt) {
           evt.preventDefault();
-          this.currentBoard.allowsShowLists = !this.currentBoard
-            .allowsShowLists;
+          this.currentBoard.allowsShowLists =
+            !this.currentBoard.allowsShowLists;
           this.currentBoard.setAllowsShowLists(
             this.currentBoard.allowsShowLists,
           );
@@ -1246,8 +1249,8 @@ BlazeComponent.extendComponent({
         },
         'click .js-field-has-description-title'(evt) {
           evt.preventDefault();
-          this.currentBoard.allowsDescriptionTitle = !this.currentBoard
-            .allowsDescriptionTitle;
+          this.currentBoard.allowsDescriptionTitle =
+            !this.currentBoard.allowsDescriptionTitle;
           this.currentBoard.setAllowsDescriptionTitle(
             this.currentBoard.allowsDescriptionTitle,
           );
@@ -1262,8 +1265,8 @@ BlazeComponent.extendComponent({
         },
         'click .js-field-has-card-number'(evt) {
           evt.preventDefault();
-          this.currentBoard.allowsCardNumber = !this.currentBoard
-            .allowsCardNumber;
+          this.currentBoard.allowsCardNumber =
+            !this.currentBoard.allowsCardNumber;
           this.currentBoard.setAllowsCardNumber(
             this.currentBoard.allowsCardNumber,
           );
@@ -1278,8 +1281,8 @@ BlazeComponent.extendComponent({
         },
         'click .js-field-has-description-text'(evt) {
           evt.preventDefault();
-          this.currentBoard.allowsDescriptionText = !this.currentBoard
-            .allowsDescriptionText;
+          this.currentBoard.allowsDescriptionText =
+            !this.currentBoard.allowsDescriptionText;
           this.currentBoard.setAllowsDescriptionText(
             this.currentBoard.allowsDescriptionText,
           );
@@ -1294,8 +1297,8 @@ BlazeComponent.extendComponent({
         },
         'click .js-field-has-checklists'(evt) {
           evt.preventDefault();
-          this.currentBoard.allowsChecklists = !this.currentBoard
-            .allowsChecklists;
+          this.currentBoard.allowsChecklists =
+            !this.currentBoard.allowsChecklists;
           this.currentBoard.setAllowsChecklists(
             this.currentBoard.allowsChecklists,
           );
@@ -1310,8 +1313,8 @@ BlazeComponent.extendComponent({
         },
         'click .js-field-has-attachments'(evt) {
           evt.preventDefault();
-          this.currentBoard.allowsAttachments = !this.currentBoard
-            .allowsAttachments;
+          this.currentBoard.allowsAttachments =
+            !this.currentBoard.allowsAttachments;
           this.currentBoard.setAllowsAttachments(
             this.currentBoard.allowsAttachments,
           );
@@ -1339,8 +1342,8 @@ BlazeComponent.extendComponent({
         },
         'click .js-field-has-activities'(evt) {
           evt.preventDefault();
-          this.currentBoard.allowsActivities = !this.currentBoard
-            .allowsActivities;
+          this.currentBoard.allowsActivities =
+            !this.currentBoard.allowsActivities;
           this.currentBoard.setAllowsActivities(
             this.currentBoard.allowsActivities,
           );
@@ -1357,7 +1360,6 @@ BlazeComponent.extendComponent({
     ];
   },
 }).register('boardCardSettingsPopup');
-
 
 BlazeComponent.extendComponent({
   onCreated() {
@@ -1380,7 +1382,7 @@ BlazeComponent.extendComponent({
     return this.currentBoard.allowsCardSortingByNumberOnMinicard;
   },
 
- lists() {
+  lists() {
     return ReactiveCache.getLists(
       {
         boardId: this.currentBoard._id,
@@ -1407,8 +1409,8 @@ BlazeComponent.extendComponent({
       {
         'click .js-field-has-description-text-on-minicard'(evt) {
           evt.preventDefault();
-          this.currentBoard.allowsDescriptionTextOnMinicard = !this.currentBoard
-            .allowsDescriptionTextOnMinicard;
+          this.currentBoard.allowsDescriptionTextOnMinicard =
+            !this.currentBoard.allowsDescriptionTextOnMinicard;
           this.currentBoard.setallowsDescriptionTextOnMinicard(
             this.currentBoard.allowsDescriptionTextOnMinicard,
           );
@@ -1423,8 +1425,8 @@ BlazeComponent.extendComponent({
         },
         'click .js-field-has-cover-attachment-on-minicard'(evt) {
           evt.preventDefault();
-          this.currentBoard.allowsCoverAttachmentOnMinicard = !this.currentBoard
-            .allowsCoverAttachmentOnMinicard;
+          this.currentBoard.allowsCoverAttachmentOnMinicard =
+            !this.currentBoard.allowsCoverAttachmentOnMinicard;
           this.currentBoard.setallowsCoverAttachmentOnMinicard(
             this.currentBoard.allowsCoverAttachmentOnMinicard,
           );
@@ -1439,8 +1441,8 @@ BlazeComponent.extendComponent({
         },
         'click .js-field-has-badge-attachment-on-minicard'(evt) {
           evt.preventDefault();
-          this.currentBoard.allowsBadgeAttachmentOnMinicard = !this.currentBoard
-            .allowsBadgeAttachmentOnMinicard;
+          this.currentBoard.allowsBadgeAttachmentOnMinicard =
+            !this.currentBoard.allowsBadgeAttachmentOnMinicard;
           this.currentBoard.setallowsBadgeAttachmentOnMinicard(
             this.currentBoard.allowsBadgeAttachmentOnMinicard,
           );
@@ -1455,12 +1457,14 @@ BlazeComponent.extendComponent({
         },
         'click .js-field-has-card-sorting-by-number-on-minicard'(evt) {
           evt.preventDefault();
-          this.currentBoard.allowsCardSortingByNumberOnMinicard = !this.currentBoard
-            .allowsCardSortingByNumberOnMinicard;
+          this.currentBoard.allowsCardSortingByNumberOnMinicard =
+            !this.currentBoard.allowsCardSortingByNumberOnMinicard;
           this.currentBoard.setallowsCardSortingByNumberOnMinicard(
             this.currentBoard.allowsCardSortingByNumberOnMinicard,
           );
-          $(`.js-field-has-card-sorting-by-number-on-minicard ${MCB}`).toggleClass(
+          $(
+            `.js-field-has-card-sorting-by-number-on-minicard ${MCB}`,
+          ).toggleClass(
             CKCLS,
             this.currentBoard.allowsCardSortingByNumberOnMinicard,
           );
@@ -1545,7 +1549,7 @@ BlazeComponent.extendComponent({
 
 Template.addMemberPopup.helpers({
   searchIndex: () => UserSearchIndex,
-})
+});
 
 BlazeComponent.extendComponent({
   onCreated() {
@@ -1584,24 +1588,29 @@ BlazeComponent.extendComponent({
         },
         'change #jsBoardOrgs'() {
           let currentBoard = Utils.getCurrentBoard();
-          let selectElt = document.getElementById("jsBoardOrgs");
+          let selectElt = document.getElementById('jsBoardOrgs');
           let selectedOrgId = selectElt.options[selectElt.selectedIndex].value;
-          let selectedOrgDisplayName = selectElt.options[selectElt.selectedIndex].text;
+          let selectedOrgDisplayName =
+            selectElt.options[selectElt.selectedIndex].text;
           let boardOrganizations = [];
-          if(currentBoard.orgs !== undefined){
-            for(let i = 0; i < currentBoard.orgs.length; i++){
+          if (currentBoard.orgs !== undefined) {
+            for (let i = 0; i < currentBoard.orgs.length; i++) {
               boardOrganizations.push(currentBoard.orgs[i]);
             }
           }
 
-          if(!boardOrganizations.some((org) => org.orgDisplayName == selectedOrgDisplayName)){
+          if (
+            !boardOrganizations.some(
+              (org) => org.orgDisplayName == selectedOrgDisplayName,
+            )
+          ) {
             boardOrganizations.push({
-              "orgId": selectedOrgId,
-              "orgDisplayName": selectedOrgDisplayName,
-              "isActive" : true,
-            })
+              orgId: selectedOrgId,
+              orgDisplayName: selectedOrgDisplayName,
+              isActive: true,
+            });
 
-            if (selectedOrgId != "-1") {
+            if (selectedOrgId != '-1') {
               Meteor.call('setBoardOrgs', boardOrganizations, currentBoard._id);
             }
           }
@@ -1615,7 +1624,7 @@ BlazeComponent.extendComponent({
 
 Template.addBoardOrgPopup.helpers({
   orgsDatas() {
-    let ret = ReactiveCache.getOrgs({}, {sort: { orgDisplayName: 1 }});
+    let ret = ReactiveCache.getOrgs({}, { sort: { orgDisplayName: 1 } });
     return ret;
   },
 });
@@ -1655,13 +1664,13 @@ BlazeComponent.extendComponent({
         'keyup input'() {
           this.setError('');
         },
-        'click #leaveBoardBtn'(){
+        'click #leaveBoardBtn'() {
           let stringOrgId = document.getElementById('hideOrgId').value;
           let currentBoard = Utils.getCurrentBoard();
           let boardOrganizations = [];
-          if(currentBoard.orgs !== undefined){
-            for(let i = 0; i < currentBoard.orgs.length; i++){
-              if(currentBoard.orgs[i].orgId != stringOrgId){
+          if (currentBoard.orgs !== undefined) {
+            for (let i = 0; i < currentBoard.orgs.length; i++) {
+              if (currentBoard.orgs[i].orgId != stringOrgId) {
                 boardOrganizations.push(currentBoard.orgs[i]);
               }
             }
@@ -1671,7 +1680,7 @@ BlazeComponent.extendComponent({
 
           Popup.back();
         },
-        'click #cancelLeaveBoardBtn'(){
+        'click #cancelLeaveBoardBtn'() {
           Popup.back();
         },
       },
@@ -1701,7 +1710,12 @@ BlazeComponent.extendComponent({
     this.userPage = new ReactiveVar(1);
     this.autorun(() => {
       const limitUsers = this.userPage.get() * Number.MAX_SAFE_INTEGER;
-      this.subscribe('people', this.findUsersOptions.get(), limitUsers, () => {});
+      this.subscribe(
+        'people',
+        this.findUsersOptions.get(),
+        limitUsers,
+        () => {},
+      );
     });
   },
 
@@ -1729,53 +1743,65 @@ BlazeComponent.extendComponent({
         },
         'change #jsBoardTeams'() {
           let currentBoard = Utils.getCurrentBoard();
-          let selectElt = document.getElementById("jsBoardTeams");
+          let selectElt = document.getElementById('jsBoardTeams');
           let selectedTeamId = selectElt.options[selectElt.selectedIndex].value;
-          let selectedTeamDisplayName = selectElt.options[selectElt.selectedIndex].text;
+          let selectedTeamDisplayName =
+            selectElt.options[selectElt.selectedIndex].text;
           let boardTeams = [];
-          if(currentBoard.teams !== undefined){
-            for(let i = 0; i < currentBoard.teams.length; i++){
+          if (currentBoard.teams !== undefined) {
+            for (let i = 0; i < currentBoard.teams.length; i++) {
               boardTeams.push(currentBoard.teams[i]);
             }
           }
 
-          if(!boardTeams.some((team) => team.teamDisplayName == selectedTeamDisplayName)){
+          if (
+            !boardTeams.some(
+              (team) => team.teamDisplayName == selectedTeamDisplayName,
+            )
+          ) {
             boardTeams.push({
-              "teamId": selectedTeamId,
-              "teamDisplayName": selectedTeamDisplayName,
-              "isActive" : true,
-            })
+              teamId: selectedTeamId,
+              teamDisplayName: selectedTeamDisplayName,
+              isActive: true,
+            });
 
-            if (selectedTeamId != "-1") {
+            if (selectedTeamId != '-1') {
               let members = currentBoard.members;
 
               let query = {
-                "teams.teamId": { $in: boardTeams.map(t => t.teamId) },
+                'teams.teamId': { $in: boardTeams.map((t) => t.teamId) },
               };
 
               const boardTeamUsers = ReactiveCache.getUsers(query, {
                 sort: { sort: 1 },
               });
 
-              if(boardTeams !== undefined && boardTeams.length > 0){
+              if (boardTeams !== undefined && boardTeams.length > 0) {
                 let index;
                 if (boardTeamUsers && boardTeamUsers.length > 0) {
                   boardTeamUsers.forEach((u) => {
-                    index = members.findIndex(function(m){ return m.userId == u._id});
-                    if(index == -1){
+                    index = members.findIndex(function (m) {
+                      return m.userId == u._id;
+                    });
+                    if (index == -1) {
                       members.push({
-                        "isActive": true,
-                        "isAdmin": u.isAdmin !== undefined ? u.isAdmin : false,
-                        "isCommentOnly" : false,
-                        "isNoComments" : false,
-                        "userId": u._id,
+                        isActive: true,
+                        isAdmin: u.isAdmin !== undefined ? u.isAdmin : false,
+                        isCommentOnly: false,
+                        isNoComments: false,
+                        userId: u._id,
                       });
                     }
                   });
                 }
               }
 
-              Meteor.call('setBoardTeams', boardTeams, members, currentBoard._id);
+              Meteor.call(
+                'setBoardTeams',
+                boardTeams,
+                members,
+                currentBoard._id,
+              );
             }
           }
 
@@ -1788,7 +1814,7 @@ BlazeComponent.extendComponent({
 
 Template.addBoardTeamPopup.helpers({
   teamsDatas() {
-    let ret = ReactiveCache.getTeams({}, {sort: { teamDisplayName: 1 }});
+    let ret = ReactiveCache.getTeams({}, { sort: { teamDisplayName: 1 } });
     return ret;
   },
 });
@@ -1809,7 +1835,12 @@ BlazeComponent.extendComponent({
     this.userPage = new ReactiveVar(1);
     this.autorun(() => {
       const limitUsers = this.userPage.get() * Number.MAX_SAFE_INTEGER;
-      this.subscribe('people', this.findUsersOptions.get(), limitUsers, () => {});
+      this.subscribe(
+        'people',
+        this.findUsersOptions.get(),
+        limitUsers,
+        () => {},
+      );
     });
   },
 
@@ -1835,13 +1866,13 @@ BlazeComponent.extendComponent({
         'keyup input'() {
           this.setError('');
         },
-        'click #leaveBoardTeamBtn'(){
+        'click #leaveBoardTeamBtn'() {
           let stringTeamId = document.getElementById('hideTeamId').value;
           let currentBoard = Utils.getCurrentBoard();
           let boardTeams = [];
-          if(currentBoard.teams !== undefined){
-            for(let i = 0; i < currentBoard.teams.length; i++){
-              if(currentBoard.teams[i].teamId != stringTeamId){
+          if (currentBoard.teams !== undefined) {
+            for (let i = 0; i < currentBoard.teams.length; i++) {
+              if (currentBoard.teams[i].teamId != stringTeamId) {
                 boardTeams.push(currentBoard.teams[i]);
               }
             }
@@ -1849,19 +1880,27 @@ BlazeComponent.extendComponent({
 
           let members = currentBoard.members;
           let query = {
-            "teams.teamId": stringTeamId
+            'teams.teamId': stringTeamId,
           };
 
           const boardTeamUsers = ReactiveCache.getUsers(query, {
             sort: { sort: 1 },
           });
 
-          if(currentBoard.teams !== undefined && currentBoard.teams.length > 0){
+          if (
+            currentBoard.teams !== undefined &&
+            currentBoard.teams.length > 0
+          ) {
             let index;
             if (boardTeamUsers && boardTeamUsers.length > 0) {
               boardTeamUsers.forEach((u) => {
-                index = members.findIndex(function(m){ return m.userId == u._id});
-                if(index !== -1 && (u.isAdmin === undefined || u.isAdmin == false)){
+                index = members.findIndex(function (m) {
+                  return m.userId == u._id;
+                });
+                if (
+                  index !== -1 &&
+                  (u.isAdmin === undefined || u.isAdmin == false)
+                ) {
                   members.splice(index, 1);
                 }
               });
@@ -1872,7 +1911,7 @@ BlazeComponent.extendComponent({
 
           Popup.back();
         },
-        'click #cancelLeaveBoardTeamBtn'(){
+        'click #cancelLeaveBoardTeamBtn'() {
           Popup.back();
         },
       },

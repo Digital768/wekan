@@ -36,6 +36,10 @@ template(name="boardOptionsPopup")
         a(href="{{pathFor '/tutorial.pdf'}}" download="tutorial.pdf") 
           i.fa.fa-file
           span {{_ 'tutorial'}}
+      li
+        a.js-start-tour(href="{{pathFor 'home'}}")
+          i.fa.fa-info-circle 
+          span {{_ 'tutorial-mode'}}
       //- removed templates from options menu untill we fix it - 12.5
       //- unless currentUser.isWorker
       //-   ul.pop-over-list
