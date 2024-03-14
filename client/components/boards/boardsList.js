@@ -11,6 +11,7 @@ window.startIntro.setOptions({
   nextLabel: 'הבא',
   prevLabel: 'הקודם',
   doneLabel: 'סיים',
+  keyboardNavigation:false, 
   exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
   showProgress: true,
   showButtons: true,
@@ -18,7 +19,7 @@ window.startIntro.setOptions({
   disableInteraction: false,
   steps: [
     {
-      title: 'ברוך הבא ל- Tboard',
+      title: 'ברוך הבא ל T-BOARD',
       intro:
         'T-BOARD הינה מערכת ייחודית לניהול משימות. בוא נתחיל לסדר את הפרויקטים שלך על מנת שתוכל לעבוד ביעילות ובצורה פרודקטיבית.',
     },

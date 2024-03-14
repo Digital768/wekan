@@ -84,7 +84,7 @@ BlazeComponent.extendComponent({
         }
         setTimeout(() => {
           window.sidebarIntro.start();
-        }, '100');
+        }, '200');
       }
       ReactiveCache.getCurrentUser().setTutorialMode(false);
     }

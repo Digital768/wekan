@@ -72,6 +72,9 @@ Template.options.events({
     'click .js-start-tour'(){
       ReactiveCache.getCurrentUser().setTutorialMode(true);
       Popup.back();
-      window.startIntro.start();
+      setTimeout(() => {
+        window.startIntro.start();
+      }, '100');
+      
     }
   });
