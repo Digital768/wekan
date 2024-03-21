@@ -966,5 +966,15 @@ a:not(.disabled).is-active i.fa {
   width: 300px;
   position: absolute;
   bottom: 15px;
-  right: -15px;
+  right: 800px;
+}
+
+@media screen and (max-width: 1000px){
+  .madorWaterMark {
+    width: 300px;
+    position: absolute;
+    bottom: 15px;
+    right: -15px;
+  }
+
 }

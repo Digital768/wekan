@@ -276,9 +276,16 @@ textarea::-moz-placeholder {
 .edit-controls,
 .add-controls {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   margin-top: 0px;
   margin-bottom: 12px;
+}
+.save-and-exit{
+  border-radius: 7px;
+  height: 32px;
+  margin-bottom: 0px;
 }
 @media print {
   .add-controls {
@@ -292,6 +299,7 @@ textarea::-moz-placeholder {
   float: left;
   height: 32px;
   margin-bottom: 0px;
+  border-radius: 7px;
 }
 .edit-controls .fa-times-thin,
 .add-controls .fa-times-thin {

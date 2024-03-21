@@ -133,6 +133,7 @@ BlazeComponent.extendComponent({
           Sidebar.setView();
           Filter.reset();
         },
+        'click .js-change-board-color': Popup.open('boardChangeColor'),
         'click .js-sort-reset'() {
           Session.set('sortBy', '');
         },

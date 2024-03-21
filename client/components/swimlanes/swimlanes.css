@@ -242,10 +242,11 @@
   text-decoration: none;
   display: flex;
   justify-content: space-between;
-  opacity: 0.8;
+  opacity: 0.9;
   border-radius: 15px;
   gap: 8px;
   align-items: center;
+  height:50px;
 }
 
 /* general hover class that can be added to anything, i think */

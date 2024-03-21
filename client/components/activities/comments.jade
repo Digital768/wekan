@@ -6,4 +6,5 @@ template(name="commentForm")
       +editor(class="js-new-comment-input")
         | {{getUnsavedValue 'cardComment' currentCard._id}}
       .add-controls
-        button.primary.confirm.clear.js-add-comment(type="submit") {{_ 'comment'}}
+        button.confirm.clear.js-add-comment(type="submit") {{_ 'comment'}}
+        button.save-and-exit.primary.js-close-card-details {{_ 'save_and_exit}}

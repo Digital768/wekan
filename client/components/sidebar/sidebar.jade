@@ -130,15 +130,16 @@ template(name="boardTeamGeneral")
               | {{_ 'add'}}
       each currentBoard.activeTeams
         +boardTeamRow(teamId=this.teamId)
-
-template(name="boardChangeColorPopup")
-  .board-backgrounds-list.clearfix
-    each backgroundColors
-      .board-background-select.js-select-background
-        span.background-box(class="board-color-{{this}}")
-          //- span {{this}} removed - 23.11
-          if isSelected
-            i.fa.fa-check
+        
+//- added to boardheader.jade - 21.3.24 by ben
+//- template(name="boardChangeColorPopup")
+//-   .board-backgrounds-list.clearfix
+//-     each backgroundColors
+//-       .board-background-select.js-select-background
+//-         span.background-box(class="board-color-{{this}}")
+//-           //- span {{this}} removed - 23.11
+//-           if isSelected
+//-             i.fa.fa-check
 
 template(name="boardChangeBackgroundImagePopup")
   form
@@ -441,11 +442,12 @@ template(name="boardMenuPopup")
       a.js-open-archives
         i.fa.fa-archive
         | {{_ 'archived-items'}}
-    if currentUser.isBoardAdmin
-      li
-        a.js-change-board-color
-          i.fa.fa-paint-brush
-          | {{_ 'board-change-color'}}    
+    //- changed changeColor place from sidebar to navbar by ben - 21.3
+    //- if currentUser.isBoardAdmin
+    //-   li
+    //-     a.js-change-board-color
+    //-       i.fa.fa-paint-brush
+    //-       | {{_ 'board-change-color'}}    
       //- li
       //-   a.js-change-background-image
       //-     i.fa.fa-picture-o

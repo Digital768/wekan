@@ -255,7 +255,7 @@ Template.boardMenuPopup.events({
     Sidebar.setView('archives');
     Popup.back();
   },
-  'click .js-change-board-color': Popup.open('boardChangeColor'),
+  // 'click .js-change-board-color': Popup.open('boardChangeColor'), - moved to boardHeader by ben - 21.3
   'click .js-change-background-image': Popup.open('boardChangeBackgroundImage'),
   'click .js-board-info-on-my-boards': Popup.open('boardInfoOnMyBoards'),
   'click .js-change-language': Popup.open('changeLanguage'),

@@ -73,6 +73,7 @@
 /*added 20.11*/
 .open-list-composer label {
   cursor: pointer;
+  color: black
 }
 
 .list.list-composer .list-name-input,
