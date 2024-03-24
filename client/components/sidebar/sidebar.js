@@ -79,7 +79,7 @@ BlazeComponent.extendComponent({
     this._isOpen.set(!this._isOpen.get());
     if (ReactiveCache.getCurrentUser().isTutorialMode()) {
       if (this._isOpen.get() === true) {
-        if (window.cardsintro.isActive()) {
+        if (window.cardsintro && window.cardsintro.isActive()) {
           window.cardsintro.exit();
         }
         setTimeout(() => {

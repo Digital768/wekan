@@ -295,7 +295,7 @@
   "color-yellow": "amarilla",
   "unset-color": "Desmarcar",
   "comment": "Comentar",
-  "save_and_exit": "save and exit",
+  "save-and-exit": "save and exit",
   "comment-placeholder": "Escribir comentario",
   "comment-only": "Sólo comentarios",
   "comment-only-desc": "Solo puedes comentar en las tarjetas.",

@@ -2,7 +2,9 @@ import { ReactiveCache } from '/imports/reactiveCache';
 import { SyncedCron } from 'meteor/percolate:synced-cron';
 import { TAPi18n } from '/imports/i18n';
 import ImpersonatedUsers from './impersonatedUsers';
+import Boards from "./boards";
 import { Index, MongoDBEngine } from 'meteor/easy:search';
+
 
 // Sandstorm context is detected using the METEOR_SETTINGS environment variable
 // in the package definition.
@@ -1752,6 +1754,20 @@ if (Meteor.isServer) {
     const userCount = ReactiveCache.getUsers({}, {}, true).count();
     user.isAdmin = userCount === 0;
 
+  //   // Create a default board for the new user
+  //   const defaultBoardId = Boards.insert({
+  //     title: 'Welcome Board',
+  //     permission: 'private',
+  //     members: [user._id],
+  // });
+
+  // // Create a default swimlane for the new board
+  // Swimlanes.insert({
+  //     title: 'To Do',
+  //     boardId: defaultBoardId,
+  //     sort: 1,
+  // });
+  
     if (user.services.oidc) {
       let email = user.services.oidc.email;
       if (Array.isArray(email)) {
