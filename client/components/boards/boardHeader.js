@@ -6,6 +6,8 @@ const DOWNCLS = 'fa-sort-down';
 const UPCLS = 'fa-sort-up';
 */
 const sortCardsBy = new ReactiveVar('');
+let pausedTourColorPopup = false;
+
 Template.boardMenuPopup.events({
   'click .js-rename-board': Popup.open('boardChangeTitle'),
   'click .js-custom-fields'() {
@@ -16,16 +18,16 @@ Template.boardMenuPopup.events({
     Sidebar.setView('archives');
     Popup.back();
   },
-  'click .js-change-board-color': Popup.open('boardChangeColor'),
+  // 'click .js-change-board-color': Popup.open('boardChangeColor'), commented out by ben, change background color isn't in boardmenupopup anymore...
   'click .js-change-language': Popup.open('changeLanguage'),
-  'click .js-archive-board ': Popup.afterConfirm('archiveBoard', function() {
+  'click .js-archive-board ': Popup.afterConfirm('archiveBoard', function () {
     const currentBoard = Utils.getCurrentBoard();
     currentBoard.archive();
     // XXX We should have some kind of notification on top of the page to
     // confirm that the board was successfully archived.
     FlowRouter.go('home');
   }),
-  'click .js-delete-board': Popup.afterConfirm('deleteBoard', function() {
+  'click .js-delete-board': Popup.afterConfirm('deleteBoard', function () {
     const currentBoard = Utils.getCurrentBoard();
     Popup.back();
     Boards.remove(currentBoard._id);
@@ -40,14 +42,8 @@ Template.boardMenuPopup.events({
 
 Template.boardChangeTitlePopup.events({
   submit(event, templateInstance) {
-    const newTitle = templateInstance
-      .$('.js-board-name')
-      .val()
-      .trim();
-    const newDesc = templateInstance
-      .$('.js-board-desc')
-      .val()
-      .trim();
+    const newTitle = templateInstance.$('.js-board-name').val().trim();
+    const newDesc = templateInstance.$('.js-board-desc').val().trim();
     if (newTitle) {
       this.rename(newTitle);
       this.setDescription(newDesc);
@@ -100,7 +96,9 @@ BlazeComponent.extendComponent({
       {
         'click .js-edit-board-title': Popup.open('boardChangeTitle'),
         'click .js-star-board'() {
-          ReactiveCache.getCurrentUser().toggleBoardStar(Session.get('currentBoard'));
+          ReactiveCache.getCurrentUser().toggleBoardStar(
+            Session.get('currentBoard'),
+          );
         },
         'click .js-open-board-menu': Popup.open('boardMenu'),
         // 'click .js-change-visibility': Popup.open('boardChangeVisibility'),
@@ -133,7 +131,14 @@ BlazeComponent.extendComponent({
           Sidebar.setView();
           Filter.reset();
         },
-        'click .js-change-board-color': Popup.open('boardChangeColor'),
+        'click .js-change-board-color'(evt){
+          const currentUser = ReactiveCache.getCurrentUser();
+          if (currentUser.isTutorialMode() && window.cardsintro) {
+            window.cardsintro.exit();
+            pausedTourColorPopup = true;
+          }
+          Popup.open('boardChangeColor')(evt);
+        },
         'click .js-sort-reset'() {
           Session.set('sortBy', '');
         },
@@ -195,8 +200,10 @@ const CreateBoard = BlazeComponent.extendComponent({
     Meteor.subscribe('tableVisibilityModeSettings');
   },
 
-  notAllowPrivateVisibilityOnly(){
-    return !TableVisibilityModeSettings.findOne('tableVisibilityMode-allowPrivateOnly').booleanValue;
+  notAllowPrivateVisibilityOnly() {
+    return !TableVisibilityModeSettings.findOne(
+      'tableVisibilityMode-allowPrivateOnly',
+    ).booleanValue;
   },
 
   visibilityCheck() {
@@ -220,7 +227,8 @@ const CreateBoard = BlazeComponent.extendComponent({
     event.preventDefault();
     const title = this.find('.js-new-board-title').value;
 
-    const addTemplateContainer = $('#add-template-container.is-checked').length > 0;
+    const addTemplateContainer =
+      $('#add-template-container.is-checked').length > 0;
     if (addTemplateContainer) {
       //const templateContainerId = Meteor.call('setCreateTemplateContainer');
       //Utils.goBoardId(templateContainerId);
@@ -228,46 +236,40 @@ const CreateBoard = BlazeComponent.extendComponent({
 
       this.boardId.set(
         Boards.insert({
-            // title: TAPi18n.__('templates'),
-            title: title,
-            permission: 'private',
-            type: 'template-container',
-          }),
-       );
+          // title: TAPi18n.__('templates'),
+          title: title,
+          permission: 'private',
+          type: 'template-container',
+        }),
+      );
 
       // Insert the card templates swimlane
       Swimlanes.insert({
-          // title: TAPi18n.__('card-templates-swimlane'),
-          title: 'Card Templates',
-          boardId: this.boardId.get(),
-          sort: 1,
-          type: 'template-container',
-        }),
-
-      // Insert the list templates swimlane
-      Swimlanes.insert(
-        {
+        // title: TAPi18n.__('card-templates-swimlane'),
+        title: 'Card Templates',
+        boardId: this.boardId.get(),
+        sort: 1,
+        type: 'template-container',
+      }),
+        // Insert the list templates swimlane
+        Swimlanes.insert({
           // title: TAPi18n.__('list-templates-swimlane'),
           title: 'List Templates',
           boardId: this.boardId.get(),
           sort: 2,
           type: 'template-container',
-        },
-      );
+        });
 
       // Insert the board templates swimlane
-      Swimlanes.insert(
-        {
-          //title: TAPi18n.__('board-templates-swimlane'),
-          title: 'Board Templates',
-          boardId: this.boardId.get(),
-          sort: 3,
-          type: 'template-container',
-        },
-      );
+      Swimlanes.insert({
+        //title: TAPi18n.__('board-templates-swimlane'),
+        title: 'Board Templates',
+        boardId: this.boardId.get(),
+        sort: 3,
+        type: 'template-container',
+      });
 
       Utils.goBoardId(this.boardId.get());
-
     } else {
       const visibility = this.visibility.get();
 
@@ -283,7 +285,7 @@ const CreateBoard = BlazeComponent.extendComponent({
         boardId: this.boardId.get(),
       });
       // when creating a board, it will open as lists mode.
-      Utils.setBoardView('board-view-lists')
+      Utils.setBoardView('board-view-lists');
       Utils.goBoardId(this.boardId.get());
     }
   },
@@ -299,7 +301,8 @@ const CreateBoard = BlazeComponent.extendComponent({
         submit: this.onSubmit,
         'click .js-import-board': Popup.open('chooseBoardSource'),
         'click .js-board-template': Popup.open('searchElement'),
-        'click .js-toggle-add-template-container': this.toggleAddTemplateContainer,
+        'click .js-toggle-add-template-container':
+          this.toggleAddTemplateContainer,
       },
     ];
   },
@@ -311,11 +314,13 @@ const CreateBoard = BlazeComponent.extendComponent({
     // Immediately star boards crated with the headerbar popup.
     ReactiveCache.getCurrentUser().toggleBoardStar(this.boardId.get());
   }
-}.register('headerBarCreateBoardPopup'));
+}).register('headerBarCreateBoardPopup');
 
 BlazeComponent.extendComponent({
-  notAllowPrivateVisibilityOnly(){
-    return !TableVisibilityModeSettings.findOne('tableVisibilityMode-allowPrivateOnly').booleanValue;
+  notAllowPrivateVisibilityOnly() {
+    return !TableVisibilityModeSettings.findOne(
+      'tableVisibilityMode-allowPrivateOnly',
+    ).booleanValue;
   },
   visibilityCheck() {
     const currentBoard = Utils.getCurrentBoard();
@@ -367,6 +372,42 @@ BlazeComponent.extendComponent({
     ];
   },
 }).register('boardChangeWatchPopup');
+
+// moved from sidebar.js by ben - 25.3
+
+BlazeComponent.extendComponent({
+  backgroundColors() {
+    return Boards.simpleSchema()._schema.color.allowedValues;
+  },
+
+  isSelected() {
+    const currentBoard = Utils.getCurrentBoard();
+    return currentBoard.color === this.currentData().toString();
+  },
+  // added a function that checks if user is in tutorial mode and paused the tour to choose a background. if he is in tutorial mode he needs to continue the tour at step 4 - added by ben - 25.3
+  onDestroyed() {
+    console.log(this,"destroyed");
+    const currentUser = ReactiveCache.getCurrentUser();
+    // Check if the tour was paused when the color popup was opened
+    if (currentUser.isTutorialMode() == true && pausedTourColorPopup) {
+        // Start the tour at step 4
+        window.cardsintro.goToStep(4)
+    }
+  },
+
+  events() {
+    return [
+      {
+        'click .js-select-background'(evt) {
+          const currentBoard = Utils.getCurrentBoard();
+          const newColor = this.currentData().toString();
+          currentBoard.setColor(newColor);
+          evt.preventDefault();
+        },
+      },
+    ];
+  },
+}).register('boardChangeColorPopup');
 
 /*
 BlazeComponent.extendComponent({

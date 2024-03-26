@@ -18,8 +18,7 @@ window.boardintro.setOptions({
   steps: [
     {
       element: '.list-header-add',
-      intro:
-        "שמות הרשימות יכולים להיות פשוטים כמו שלבים של 'משימות חדשות', 'משימות בתהליך' ו-'משימות סגורות' או מפורטים לפי הצורך עבור התהליך עבודה שהצוות שלכם עושה. ניתן להוסיף כמה רשימות שתרצו כדי לבנות תהליך עבודה שיתאים לצרכים היחודיים שלכם.",
+      intro: "רשימה היא מקבץ של כרטיסיות שמייצגות משימות, אוסף רעיונות או יעדים קבוצתיים. ניתן להוסיף כמה רשימות שתרצו בכדי לבנות תהליך עבודה שיתאים לצרכים שלכם!",
       position: 'left',
     },
   ],
@@ -100,7 +99,7 @@ BlazeComponent.extendComponent({
   },
   onRendered() {
     if (ReactiveCache.getCurrentUser().isTutorialMode()) {
-      window.boardintro.addHints();
+      // window.boardintro.addHints();
       window.boardintro.start();
     }
     const boardComponent = this;

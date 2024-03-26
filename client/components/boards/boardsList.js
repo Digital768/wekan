@@ -21,7 +21,8 @@ window.startIntro.setOptions({
     {
       title: 'ברוך הבא ל T-BOARD',
       intro:
-        'T-BOARD הינה מערכת ייחודית לניהול משימות. בוא נתחיל לסדר את הפרויקטים שלך על מנת שתוכל לעבוד ביעילות ובצורה פרודקטיבית.',
+        'T-BOARD הינה מערכת ייעודית לניהול משימות אשר מאפשרת לצוותים לחשוב, לתכנן ולנהל את עבודתם יחד באופן מאורגן ויעיל',
+        nextLabel: 'בואו נתחיל',
     },
     {
       element: '#js-add-board',
@@ -32,6 +33,27 @@ window.startIntro.setOptions({
     },
   ],
 });
+
+createButtonIntro = introJs();
+createButtonIntro.setOptions({
+  nextLabel: 'הבא',
+  prevLabel: 'הקודם',
+  doneLabel: 'סיים',
+  keyboardNavigation:false, 
+  exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
+  showButtons: true,
+  showProgress: false,
+  showBullets: false,
+  disableInteraction: false,
+  steps: [
+    {
+      element: '.js-pop-over',
+      title: "יצירת לוח",
+      intro: "כדי להתחיל, תנו שם ללוח אשר ייצג את נושא לוח המשימות שתרצו להתחיל לעבוד עליו",
+      position:"bottom"
+    }
+  ]
+})
 
 Template.boardList.helpers({
   hideCardCounterList() {
@@ -279,7 +301,13 @@ BlazeComponent.extendComponent({
   events() {
     return [
       {
-        'click .js-add-board': Popup.open('createBoard'),
+        'click .js-add-board'(evt){
+            Popup.open('createBoard')(evt)
+           if (ReactiveCache.getCurrentUser().isTutorialMode()){
+           setTimeout(() => {
+            createButtonIntro.start();
+          }, 300);
+        }},
         'click .js-star-board'(evt) {
           const boardId = this.currentData()._id;
           ReactiveCache.getCurrentUser().toggleBoardStar(boardId);

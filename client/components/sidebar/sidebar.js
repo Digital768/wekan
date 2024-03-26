@@ -21,7 +21,7 @@ window.sidebarIntro.setOptions({
     {
       element: '.js-open-board-menu',
       intro:
-        "על מנת לשנות את עיצוב הלוח או להציג את ארכיון הלוח לחץ על 'הגדרות הלוח'",
+        "במסך הגדרות הלוח ישנן כמה אפשרויות כמו הצגת ארכיון הלוח, ייצוא הלוח לאקסל ועוד..",
     },
     {
       element: '.js-manage-board-members',
@@ -691,29 +691,30 @@ function draggableMembersLabelsWidgets() {
 Template.membersWidget.onRendered(draggableMembersLabelsWidgets);
 Template.labelsWidget.onRendered(draggableMembersLabelsWidgets);
 
-BlazeComponent.extendComponent({
-  backgroundColors() {
-    return Boards.simpleSchema()._schema.color.allowedValues;
-  },
+// moved to boardHeader.js by ben - 25.3
+// BlazeComponent.extendComponent({
+//   backgroundColors() {
+//     return Boards.simpleSchema()._schema.color.allowedValues;
+//   },
 
-  isSelected() {
-    const currentBoard = Utils.getCurrentBoard();
-    return currentBoard.color === this.currentData().toString();
-  },
+//   isSelected() {
+//     const currentBoard = Utils.getCurrentBoard();
+//     return currentBoard.color === this.currentData().toString();
+//   },
 
-  events() {
-    return [
-      {
-        'click .js-select-background'(evt) {
-          const currentBoard = Utils.getCurrentBoard();
-          const newColor = this.currentData().toString();
-          currentBoard.setColor(newColor);
-          evt.preventDefault();
-        },
-      },
-    ];
-  },
-}).register('boardChangeColorPopup');
+//   events() {
+//     return [
+//       {
+//         'click .js-select-background'(evt) {
+//           const currentBoard = Utils.getCurrentBoard();
+//           const newColor = this.currentData().toString();
+//           currentBoard.setColor(newColor);
+//           evt.preventDefault();
+//         },
+//       },
+//     ];
+//   },
+// }).register('boardChangeColorPopup');
 
 BlazeComponent.extendComponent({
   events() {

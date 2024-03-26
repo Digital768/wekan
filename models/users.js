@@ -141,7 +141,7 @@ Users.attachSchema(
       autoValue() {
         if (this.isInsert && !this.isSet) {
           return {
-            boardView: 'board-view-swimlanes',
+            boardView: 'board-view-lists',
           };
         }
       },
@@ -2011,25 +2011,29 @@ if (Meteor.isServer) {
       };
 
       fakeUserId.withValue(doc._id, () => {
-        /*
+        
 
         // Insert the Welcome Board
         Boards.insert({
-          title: TAPi18n.__('welcome-board'),
+          // title: TAPi18n.__('welcome-board'),
+          title: 'לוח לדוגמה',
           permission: 'private',
+          color: 'mountain',
+          boardView: 'board-view-lists'
+
         }, fakeUser, (err, boardId) => {
 
           Swimlanes.insert({
-            title: TAPi18n.__('welcome-swimlane'),
+            title: 'מסלול לדוגמה',
             boardId,
             sort: 1,
           }, fakeUser);
 
-          ['welcome-list1', 'welcome-list2'].forEach((title, titleIndex) => {
-            Lists.insert({title: TAPi18n.__(title), boardId, sort: titleIndex}, fakeUser);
+          ['משימות חדשות', 'משימות בתהליך', 'משימות שבוצעו' ].forEach((title, titleIndex) => {
+            Lists.insert({title: title, boardId, sort: titleIndex}, fakeUser);
           });
         });
-        */
+        
 
         // Insert Template Container
         const Future = require('fibers/future');
