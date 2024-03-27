@@ -296,6 +296,7 @@ BlazeComponent.extendComponent({
                   showProgress: false,
                   showBullets: false,
                   showButtons: false,
+                  tooltipClass: 'customTooltip',
                   disableInteraction: false,
                   steps: [
                     {

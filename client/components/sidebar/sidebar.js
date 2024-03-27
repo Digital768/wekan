@@ -13,9 +13,10 @@ window.sidebarIntro.setOptions({
   prevLabel: 'הקודם',
   doneLabel: 'סיים',
   exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
-  showProgress: true,
+  showProgress: false,
   showButtons: true,
-  showBullets: false,
+  showBullets: true,
+  tooltipClass: 'customTooltip',
   disableInteraction: true,
   steps: [
     {

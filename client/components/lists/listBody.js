@@ -135,9 +135,10 @@ BlazeComponent.extendComponent({
         prevLabel: 'הקודם',
         doneLabel: 'סיים',
         exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
-        showProgress: true,
+        showProgress: false,
         showBullets: true,
         showButtons: true,
+        tooltipClass: 'customTooltip',
         disableInteraction: false,
         steps: [
           {

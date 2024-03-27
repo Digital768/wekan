@@ -13,15 +13,16 @@ window.startIntro.setOptions({
   doneLabel: 'סיים',
   keyboardNavigation:false, 
   exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
-  showProgress: true,
+  showProgress: false,
   showButtons: true,
-  showBullets: false,
+  showBullets: true,
+  tooltipClass: 'customTooltip',
   disableInteraction: false,
   steps: [
     {
       title: 'ברוך הבא ל T-BOARD',
       intro:
-        'T-BOARD הינה מערכת ייעודית לניהול משימות אשר מאפשרת לצוותים לחשוב, לתכנן ולנהל את עבודתם יחד באופן מאורגן ויעיל',
+        'T-BOARD הינה מערכת ייעודית לניהול משימות אשר מאפשרת לצוותים לחשוב, לתכנן ולנהל את עבודתם יחד באופן מאורגן ויעיל.',
         nextLabel: 'בואו נתחיל',
     },
     {
@@ -45,6 +46,7 @@ createButtonIntro.setOptions({
   showProgress: false,
   showBullets: false,
   disableInteraction: false,
+  tooltipClass: 'customTooltip',
   steps: [
     {
       element: '.js-pop-over',

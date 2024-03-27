@@ -11,12 +11,14 @@ window.boardintro.setOptions({
   prevLabel: 'הקודם',
   doneLabel: 'סיים',
   exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
-  showProgress: true,
+  showProgress: false,
   showBullets: false,
+  tooltipClass: 'customTooltip',
   disableInteraction: false,
   showButtons: true,
   steps: [
     {
+      title: 'רשימה',
       element: '.list-header-add',
       intro: "רשימה היא מקבץ של כרטיסיות שמייצגות משימות, אוסף רעיונות או יעדים קבוצתיים. ניתן להוסיף כמה רשימות שתרצו בכדי לבנות תהליך עבודה שיתאים לצרכים שלכם!",
       position: 'left',
