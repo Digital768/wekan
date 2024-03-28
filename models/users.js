@@ -2027,11 +2027,54 @@ if (Meteor.isServer) {
             title: 'מסלול לדוגמה',
             boardId,
             sort: 1,
-          }, fakeUser);
+          }, fakeUser, (err, swimlaneId) => {
 
-          ['משימות חדשות', 'משימות בתהליך', 'משימות שבוצעו' ].forEach((title, titleIndex) => {
-            Lists.insert({title: title, boardId, sort: titleIndex}, fakeUser);
-          });
+          // ['משימות חדשות', 'משימות בתהליך', 'משימות שבוצעו' ].forEach((title, titleIndex) => {
+          //   Lists.insert({title: title, boardId, sort: titleIndex}, fakeUser);
+          // });
+
+          Lists.insert({title: 'משימות חדשות', boardId, sort: 0}, fakeUser, (err, listId) => {
+            Cards.insert({
+              userId: doc._id,
+              title: "להכין מסמך אפיון לישיבה ",
+              listId: listId,
+              swimlaneId: swimlaneId,
+              boardId: boardId,
+              sort: 0,
+            })
+            Cards.insert({
+              userId: doc._id,
+              title: "לענות לפניות ציבור של אזרחים",
+              listId: listId,
+              swimlaneId: swimlaneId,
+              boardId: boardId,
+              sort: 1,
+            })
+          })
+
+          Lists.insert({title: 'משימות בתהליך', boardId, sort: 0}, fakeUser, (err, listId) => {
+            Cards.insert({
+              userId: doc._id,
+              title: "חיסון חיילים חדשים",
+              listId: listId,
+              swimlaneId: swimlaneId,
+              boardId: boardId,
+              sort: 0,
+            })
+          })
+
+          Lists.insert({title: 'משימות שבוצעו', boardId, sort: 0}, fakeUser, (err, listId) => {
+            Cards.insert({
+              userId: doc._id,
+              title: "העברת מסדר מגורים",
+              listId: listId,
+              swimlaneId: swimlaneId,
+              boardId: boardId,
+              sort: 0,
+            })
+          })
+            
+        });
         });
         
 

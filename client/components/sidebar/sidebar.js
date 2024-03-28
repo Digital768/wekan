@@ -11,7 +11,7 @@ window.sidebarIntro = introJs();
 window.sidebarIntro.setOptions({
   nextLabel: 'הבא',
   prevLabel: 'הקודם',
-  doneLabel: 'סיים',
+  doneLabel: 'בהצלחה!',
   exitOnOverlayClick: false, // Prevent users from exiting the tour by clicking outside
   showProgress: false,
   showButtons: true,
@@ -26,7 +26,7 @@ window.sidebarIntro.setOptions({
     },
     {
       element: '.js-manage-board-members',
-      intro: 'על מנת להוסיף חברים ללוח לחץ על כפתור הפלוס וחפש את שמם',
+      intro:  'על מנת להוסיף חברים ללוח, לחצו על כפתור הפלוס וחפשו את שמם. שימו לב! רק לאחר התחברות ראשונית של משתמש ניתן יהיה למצוא אותו במערכת.',
     },
   ],
 });
@@ -391,8 +391,8 @@ BlazeComponent.extendComponent({
   tabs() {
     return [
       { name: TAPi18n.__('people'), slug: 'people' },
-      { name: TAPi18n.__('organizations'), slug: 'organizations' },
-      { name: TAPi18n.__('teams'), slug: 'teams' },
+      // { name: TAPi18n.__('organizations'), slug: 'organizations' },
+      // { name: TAPi18n.__('teams'), slug: 'teams' },
     ];
   },
 }).register('membersWidget');

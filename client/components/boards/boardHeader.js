@@ -133,7 +133,7 @@ BlazeComponent.extendComponent({
         },
         'click .js-change-board-color'(evt){
           const currentUser = ReactiveCache.getCurrentUser();
-          if (currentUser.isTutorialMode() && window.cardsintro) {
+          if (currentUser.isTutorialMode() && window.cardsintro?._currentStep === 2) {
             window.cardsintro.exit();
             pausedTourColorPopup = true;
           }
@@ -386,12 +386,12 @@ BlazeComponent.extendComponent({
   },
   // added a function that checks if user is in tutorial mode and paused the tour to choose a background. if he is in tutorial mode he needs to continue the tour at step 4 - added by ben - 25.3
   onDestroyed() {
-    console.log(this,"destroyed");
     const currentUser = ReactiveCache.getCurrentUser();
     // Check if the tour was paused when the color popup was opened
-    if (currentUser.isTutorialMode() == true && pausedTourColorPopup) {
+    if (currentUser.isTutorialMode() == true && pausedTourColorPopup === true) {
         // Start the tour at step 4
         window.cardsintro.goToStep(4)
+        pausedTourColorPopup = false
     }
   },
 

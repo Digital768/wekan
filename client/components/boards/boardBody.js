@@ -18,7 +18,7 @@ window.boardintro.setOptions({
   showButtons: true,
   steps: [
     {
-      title: 'רשימה',
+      title: 'יצירת רשימה',
       element: '.list-header-add',
       intro: "רשימה היא מקבץ של כרטיסיות שמייצגות משימות, אוסף רעיונות או יעדים קבוצתיים. ניתן להוסיף כמה רשימות שתרצו בכדי לבנות תהליך עבודה שיתאים לצרכים שלכם!",
       position: 'left',
